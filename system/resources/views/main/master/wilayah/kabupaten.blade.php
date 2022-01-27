@@ -44,7 +44,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -84,7 +84,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -120,7 +120,7 @@
 									List Kabupaten
 								</div>
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div class="btn-block btn-warning btn" data-toggle="modal" data-target="#tambahKabupaten"><i class="fa fa-plus"></i> Tambah</div>
+									<div class="btn-block btn-danger btn" data-toggle="modal" data-target="#tambahKabupaten"><i class="fa fa-plus"></i> Tambah</div>
 									<div id="btnEditKabupaten" class="btn-block btn-primary btn hide" data-toggle="modal" data-target="#editKabupaten"> Tambah</div>
 								</div>
 							  </div>

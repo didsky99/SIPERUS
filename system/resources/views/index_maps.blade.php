@@ -319,7 +319,7 @@
 			'<td>'+telp+'</td>'+
 			'</tr>'+
 			'<tr>'+
-				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-warning pull-right" onclick="goToData(`DPD`,`'+address+'`)"><i class="fa fa-info-circle"></i></div></td>'+
+				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`DPD`,`'+address+'`)"><i class="fa fa-info-circle"></i></div></td>'+
 			'</tr>'+
 		'</table>'+
 		'</div>'+
@@ -368,7 +368,7 @@
 			'<td>'+telp+'</td>'+
 			'</tr>'+
 			'<tr>'+
-				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-warning pull-right" onclick="goToData(`DPC`,`'+provinsi+'`,`'+lokasi+'`)"><i class="fa fa-info-circle"></i></div></td>'+
+				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`DPC`,`'+provinsi+'`,`'+lokasi+'`)"><i class="fa fa-info-circle"></i></div></td>'+
 			'</tr>'+
 		  '</table>'+
 		  '</div>'+

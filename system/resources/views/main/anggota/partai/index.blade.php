@@ -6,6 +6,7 @@
 @endsection
 
 @section('content')
+
 @include('main.anggota.partai.include.modal_detail')
 @include('main.user.modal-map')
 <link rel="stylesheet" href="{{ asset('asset/plugins/daterangepicker/daterangepicker.css') }}">
@@ -34,7 +35,7 @@
 					List User
 				</div>
 				<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-					<div class="@yield('add-button','show') btn-block  btn-warning btn" onclick="goTo('{{ asset('anggota/partai/add') }}')"><i class="fa fa-plus"></i> Tambah</div>
+					<div class="@yield('add-button','show') btn-block  btn-danger btn" onclick="goTo('{{ asset('anggota/partai/add') }}')"><i class="fa fa-plus"></i> Tambah</div>
 				</div>
 			</div>
 			<div class="container-fluid">

@@ -53,7 +53,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -106,7 +106,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">

@@ -151,7 +151,7 @@
 		</style>
 	</head>
 	<body class="hold-transition skin-blue sidebar-mini">
-		<div class="row" style="background-color:#f39c12;color:#fff;font-family: 'Open Sans'; font-size:2em; padding:10px; font-weight:600; min-height:45px;top:0;"> 
+		<div class="row" style="background-color:#dd4b39;color:#fff;font-family: 'Open Sans'; font-size:2em; padding:10px; font-weight:600; min-height:45px;top:0;"> 
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-8 col-sm-8 col-xs-3 hidden-xs" style="font-size:20px; !important;">

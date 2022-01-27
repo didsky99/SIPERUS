@@ -86,13 +86,13 @@
 								</div>
 								@if(session('statActHide') != 1)
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right hide ">
-									<div class="@yield('add-button','hide') btn-block  btn-warning btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> Tambah</div>
+									<div class="@yield('add-button','hide') btn-block  btn-danger btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> Tambah</div>
 								</div>
 								<div class="@yield('download-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div class="btn-warning btn-block btn" onclick="actionDownload('excel','verifikasi','DPD{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> Excel</div>
+									<div class="btn-danger btn-block btn" onclick="actionDownload('excel','verifikasi','DPD{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> Excel</div>
 								</div>
 								<div class="@yield('download-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div class="btn-warning btn-block btn" onclick="actionDownload('pdf','verifikasi','DPD{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> PDF</div>
+									<div class="btn-danger btn-block btn" onclick="actionDownload('pdf','verifikasi','DPD{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> PDF</div>
 								</div>
 								@endif
 							</div>
@@ -121,13 +121,13 @@
 								</div>
 								@if(session('statActHide') != 1)
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right hide">
-									<div class="@yield('add-button','hide') btn-block  btn-warning btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> Tambah</div>
+									<div class="@yield('add-button','hide') btn-block  btn-danger btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> Tambah</div>
 								</div>
 								<div class="@yield('download-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div class="btn-warning btn-block btn" onclick="actionDownload('excel','verifikasi','DPC{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> Excel</div>
+									<div class="btn-danger btn-block btn" onclick="actionDownload('excel','verifikasi','DPC{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> Excel</div>
 								</div>
 								<div class="@yield('download-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div class="btn-warning btn-block btn" onclick="actionDownload('pdf','verifikasi','DPC{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> PDF</div>
+									<div class="btn-danger btn-block btn" onclick="actionDownload('pdf','verifikasi','DPC{{ (session('idRole') == 3)?$statusProvinsi:'' }}','{{ (session('idRole') == 3)?$Provinsi:'' }}')"><i class="fa fa-print"></i> PDF</div>
 								</div>
 								@endif
 							</div>

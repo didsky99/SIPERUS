@@ -38,13 +38,13 @@
 						@yield('struk_tipe_box_header')
 					</div>
 					<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-						<div class="@yield('add-button','show') btn-block  btn-warning btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> @yield('name-button','Tambah')</div>
+						<div class="@yield('add-button','show') btn-block  btn-danger btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> @yield('name-button','Tambah')</div>
 					</div>
 					<div class="col-md-1 col-sm-3 col-xs-6 pull-right">
-						<div class="btn-warning btn" onclick="printPdf('@yield('a_type')', '@yield('a_prov')', '@yield('a_kab')', '@yield('a_kec')', '@yield('a_deskel')', '@yield('a_rw')')" data-toggle="tooltip" data-placement="bottom" title="Print PDF" style="margin-top: 3px;"><i class="fa fa-file-pdf-o"></i> </div>
+						<div class="btn-danger btn" onclick="printPdf('@yield('a_type')', '@yield('a_prov')', '@yield('a_kab')', '@yield('a_kec')', '@yield('a_deskel')', '@yield('a_rw')')" data-toggle="tooltip" data-placement="bottom" title="Print PDF" style="margin-top: 3px;"><i class="fa fa-file-pdf-o"></i> </div>
 					</div>
 					<div class="col-md-1 col-sm-3 col-xs-6 pull-right">
-						<div class="btn-warning btn" onclick="printExcel('@yield('a_type')', '@yield('a_prov')', '@yield('a_kab')', '@yield('a_kec')', '@yield('a_deskel')', '@yield('a_rw')')" data-toggle="tooltip" data-placement="bottom" title="Print Excel" style="margin-top: 3px;"><i class="fa fa-file-excel-o"></i></div>
+						<div class="btn-danger btn" onclick="printExcel('@yield('a_type')', '@yield('a_prov')', '@yield('a_kab')', '@yield('a_kec')', '@yield('a_deskel')', '@yield('a_rw')')" data-toggle="tooltip" data-placement="bottom" title="Print Excel" style="margin-top: 3px;"><i class="fa fa-file-excel-o"></i></div>
 					</div>
 					<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
 						@if($sk_baru != "-")

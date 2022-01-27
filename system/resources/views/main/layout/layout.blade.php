@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="{{ asset('asset/css/AdminLTE.min.css') }}">
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
-  <link rel="stylesheet" href="{{asset('asset/css/skins/skin-yellow.min.css ')}}">
+  <link rel="stylesheet" href="{{asset('asset/css/skins/skin-red.min.css ')}}">
   <!-- Link Style.css Custom -->
   <link rel="stylesheet" type="text/css" href="{{asset('asset/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('asset/plugins/select2/select2.min.css')}}">
@@ -66,7 +66,7 @@
 <?php $dataUsers = HelperData::getDataUser('idLogin'); ?>
 @include('main.anggota.partai.include.modal_detail')
 @include('main.master.struktur.include.modal_detail')
-<body class="hold-transition skin-yellow sidebar-mini no-padding" style="padding-right: 0px !important;">
+<body class="hold-transition skin-red sidebar-mini no-padding" style="padding-right: 0px !important;">
 <div class="se-pre-con"></div>
 <div class="alert alert-success pull-right" id="alert">
     <strong>Success!</strong> <p></p>

@@ -26,7 +26,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -90,7 +90,7 @@
 								</div>
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
 								  <div id="btnEditProvinsi" class="btn-primary btn hide" data-toggle="modal" data-target="#editProvinsi"> Tambah</div>
-								  <div class="btn-warning btn-block btn" data-toggle="modal" data-target="#tambahProvinsi"><i class="fa fa-plus"></i> Tambah</div>
+								  <div class="btn-danger btn-block btn" data-toggle="modal" data-target="#tambahProvinsi"><i class="fa fa-plus"></i> Tambah</div>
 								</div>
 							  </div>
 						  </div>

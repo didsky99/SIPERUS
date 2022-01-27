@@ -34,7 +34,7 @@
 			<div class="tab-content">
 			  <div class="active tab-pane" id="hakAkses">
 				<div class="col-md-6 no-padding">
-					<div class="btn-warning btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
+					<div class="btn-danger btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
 				</div>
 				<table class="table table-striped data-table" style="font-size:15px;">
 					<thead>

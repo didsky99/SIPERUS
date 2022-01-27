@@ -54,7 +54,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -104,7 +104,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -140,7 +140,7 @@
 									List Kecamatan
 								</div>
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div onclick="addKec({{session('idProvinsi')}})" class="btn-block btn-warning btn" data-toggle="modal" data-target="#tambahKecamatan"><i class="fa fa-plus"></i> Tambah</div>
+									<div onclick="addKec({{session('idProvinsi')}})" class="btn-block btn-danger btn" data-toggle="modal" data-target="#tambahKecamatan"><i class="fa fa-plus"></i> Tambah</div>
 									<div id="btnEditKecamatan" class="btn-block btn-warning btn hide" data-toggle="modal" data-target="#editKecamatan"><i class="fa fa-plus"></i> Tambah</div>
 								</div>
 							  </div>

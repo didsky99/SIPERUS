@@ -25,7 +25,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -52,7 +52,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -88,7 +88,7 @@
 									List Struktur DPP
 								</div>
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div class="btn-block btn-warning btn" data-toggle="modal" data-target="#tambahProvinsi"><i class="fa fa-plus"></i> Tambah</div>
+									<div class="btn-block btn-danger btn" data-toggle="modal" data-target="#tambahProvinsi"><i class="fa fa-plus"></i> Tambah</div>
 									<div id="btnEditProvinsi" class="btn-primary btn hide" data-toggle="modal" data-target="#editProvinsi"><i class="fa fa-plus"></i> Tambah</div>
 								</div>
 							  </div>

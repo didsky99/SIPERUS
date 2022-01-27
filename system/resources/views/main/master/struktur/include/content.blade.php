@@ -26,7 +26,7 @@
 									<h4>@yield('box-header')</h4>
 								</div>
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div class="@yield('add-button','show') btn-block  btn-warning btn" data-toggle="modal" data-target="#modalStruktur" onclick="actionTambah()"><i class="fa fa-plus"></i> @yield('name-button','Tambah')</div>
+									<div class="@yield('add-button','show') btn-block  btn-danger btn" data-toggle="modal" data-target="#modalStruktur" onclick="actionTambah()"><i class="fa fa-plus"></i> @yield('name-button','Tambah')</div>
 								</div>
 							  </div>
 						  </div>

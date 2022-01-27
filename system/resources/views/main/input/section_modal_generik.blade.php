@@ -13,8 +13,8 @@
   </div>
 	</div>
 	<div class="modal-footer">
-	<button type="button" class="btn btn-warning"  data-dismiss="modal">Close</button>
-	<button type="submit" class="btn btn-warning"  id="submiter">Simpan</button>
+	<button type="button" class="btn btn-danger"  data-dismiss="modal">Close</button>
+	<button type="submit" class="btn btn-danger"  id="submiter">Simpan</button>
 	</div>
   </div>
   <input type="hidden" name="_token" value="{{csrf_token()}}">

@@ -13,7 +13,7 @@
 ?>
 		<div class="on-map-menu">
 			<div class="box app-menu" style="border:0px;">
-				<div class="box-header" style="background:#f39c12;color:white;">
+				<div class="box-header" style="background:#dd4b39;color:white;">
 					<div class="col-md-11 col-sm-11 col-xs-11 menu-title" style="font-family: 'Open Sans';font-size:11px;padding:0;color:white;">Filter By :</div>
 					<div class="col-md-1 col-sm-1 col-xs-1 box-tools">
 						<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus" style="color:white;"></i></button>
@@ -37,10 +37,10 @@
 							</ul>
 						</li>					
 						<li id="data">
-							<a href="#data" onclick="showDPDDPC('getData')">Data DPD & DPC Hanura</a>
+							<a href="#data" onclick="showDPDDPC('getData')">Data PIMDA & PIMCAB PKN</a>
 							<ul class="sub-menu">						
-								<li><a href="#data" id="kontakDPD" onclick="showDPD('kontakDPD')" ><em>01</em>DPD ( {{ count($dataDPDAll) }} )</a></li>						
-								<li><a href="#data" id="kontakDPC" onclick="showDPC('kontakDPC')" ><em>02</em>DPC ( {{ count($dataDPCAll) }} )</a></li>
+								<li><a href="#data" id="kontakDPD" onclick="showDPD('kontakDPD')" ><em>01</em>PIMDA ( {{ count($dataDPDAll) }} )</a></li>						
+								<li><a href="#data" id="kontakDPC" onclick="showDPC('kontakDPC')" ><em>02</em>PIMCAB ( {{ count($dataDPCAll) }} )</a></li>
 							</ul>
 						</li>				
 						<li id="penduduk" class="mail">

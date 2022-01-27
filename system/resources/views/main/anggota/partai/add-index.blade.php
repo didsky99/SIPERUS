@@ -6,6 +6,9 @@
 @endsection
 
 @section('content')
+<script type="text/javascript" src="{{asset('asset/js/jquery-3.1.1.js ')}}"></script>
+<script type="text/javascript" src="{{asset('asset/js/AhmadApp.js ')}}"></script>
+
 @include('main.user.modal-map')
 <link rel="stylesheet" href="{{ asset('asset/plugins/daterangepicker/daterangepicker.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/plugins/select2/select2.min.css') }}">
@@ -36,20 +39,20 @@
 						<input type="hidden" name="_token" value="{{ csrf_token() }}"/>
 						<div class="nav-tabs-custom tab-custom" style="box-shadow: 0 0 0 rgba(0,0,0,0);">
 							<ul class="nav nav-tabs" style="border:0px; margin-bottom: 20px;">
-								<li class="col-md-4 col-sm-4 col-xs-12 active" align="center"><a id="clickBiodata" href="#biodata" data-toggle="tab">Biodata Diri</a></li>
-								<li class="col-md-4 col-sm-4 col-xs-12" align="center"><a href="#riwayat" data-toggle="tab">Riwayat</a></li>
-								<li class="col-md-3 col-sm-3 col-xs-12" align="center"><a href="#dokumen" data-toggle="tab">Dokumen Pendukung</a></li>
+								<!-- <li class="col-md-4 col-sm-4 col-xs-12 active" align="center"><a id="clickBiodata" href="#biodata" data-toggle="tab">Biodata Diri</a></li> -->
+								<!-- <li class="col-md-4 col-sm-4 col-xs-12" align="center"><a href="#riwayat" data-toggle="tab">Riwayat</a></li>
+								<li class="col-md-3 col-sm-3 col-xs-12" align="center"><a href="#dokumen" data-toggle="tab">Dokumen Pendukung</a></li> -->
 							</ul>
 							<div class="tab-content">
 								<div class="active tab-pane" id="biodata">
 									@include('main.user.tabs-biodata')
 								</div>
-								<div class="tab-pane" id="riwayat">
+								<!-- <div class="tab-pane" id="riwayat">
 									@include('main.user.tabs-riwayat')
 								</div>
 								<div class="tab-pane" id="dokumen">
 									@include('main.user.tabs-dokumen')
-								</div>
+								</div> -->
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-2 pull-right">
@@ -67,6 +70,7 @@
 	  </div>
 	</section>
 </div>
+<script src="{{asset('asset/js/moment.js')}}"></script>
 <script src="{{ asset('asset/js/jquery-3.0.0.min.js') }}"> </script>
 <script src="{{ asset('asset/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>
@@ -440,4 +444,5 @@ $(wrapper_penghargaan).on("click","#remove_penghargaan", function(e){ //user cli
     $('#datepicker').datepicker({dateFormat: "dd-mm-yy"});
   });
 </script>
+
 @endsection

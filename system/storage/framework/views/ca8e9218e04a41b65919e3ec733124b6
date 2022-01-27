@@ -128,7 +128,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-2 col-xs-12">Alamat</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="alamat" id="alamat" class="form-control" placeholder="Pilih Lokasi Pada Maps" required>
+					<input type="text" name="alamat" id="alamat" class="form-control" placeholder="Pilih Lokasi Pada Maps" >
 				</div>
 				<div class="col-md-1 col-sm-1 col-xs-1 multi-row">
 					<div class="btn btn-default btn-custom" id="google_maps_balon" data-toggle="modal" data-target="#modal_maps_balon"><span class="glyphicon glyphicon-search" style="padding:3px;" aria-hidden="true"></span></div>

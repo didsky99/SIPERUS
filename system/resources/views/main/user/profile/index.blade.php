@@ -48,12 +48,12 @@ foreach($dataUsers as $tmps){} ?>
 							</div>
 						</div>
 					</div>
-					<button type="submit" id="saveForm" class="hide btn btn-warning">Simpan</button>
+					<button type="submit" id="saveForm" class="hide btn btn-danger">Simpan</button>
 				</form>
 			</div>
 			<div class="modal-footer">
 				<input type="hidden" id="next-modal" data-toggle="modal" data-target="#modal-konfirmasi">
-				<div type="submit" class="btn btn-warning" onclick="savePassword()">Simpan</div>
+				<div type="submit" class="btn btn-danger" onclick="savePassword()">Simpan</div>
 			</div>
 		</div>
 	</div>

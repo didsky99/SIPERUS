@@ -79,7 +79,7 @@
 	  </div>
       <div class="row" style="margin-top:5px;">
         <div class="form-group col-md-12">
-          <div class="btn btn-warning btn-block btn-flat btn-auth border-radius" onclick="cekLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i> Masuk</div>
+          <div class="btn btn-danger btn-block btn-flat btn-auth border-radius" onclick="cekLogin()"><i class="fa fa-sign-in" aria-hidden="true"></i> Masuk</div>
         </div> 
       </div>
     </form>

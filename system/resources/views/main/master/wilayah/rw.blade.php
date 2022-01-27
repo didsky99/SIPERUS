@@ -74,7 +74,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Simpan</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Simpan</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -153,7 +153,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-warning"  id="barangbuktibtn">Edit</button>
+					<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Edit</button>
 				</div>
 			</div>
 		<input type="hidden" name="_token" value="{{csrf_token()}}">
@@ -189,7 +189,7 @@
 									List Rukun Warga
 								</div>
 								<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-									<div onclick="addRw({{session('idProvinsi')}})" class="btn-block btn-warning btn" data-toggle="modal" data-target="#tambahRW"><i class="fa fa-plus"></i> Tambah</div>
+									<div onclick="addRw({{session('idProvinsi')}})" class="btn-block btn-danger btn" data-toggle="modal" data-target="#tambahRW"><i class="fa fa-plus"></i> Tambah</div>
 									<div id="btnEditRW" class="btn-block btn-primary btn hide" data-toggle="modal" data-target="#editRW"><i class="fa fa-plus"></i> Tambah</div>
 								</div>
 							  </div>

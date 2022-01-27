@@ -82,7 +82,7 @@
 				</div>
 			</div>
 			<div class="modal-footer">
-				<button type="submit" class="btn btn-primary"  id="barangbuktibtn">Tambah</button>
+				<button type="submit" class="btn btn-danger"  id="barangbuktibtn">Tambah</button>
 			</div>
   		</div>
   	</div>

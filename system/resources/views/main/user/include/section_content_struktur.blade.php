@@ -28,7 +28,7 @@
 						@yield('struk_tipe_box_header')
 					</div>
 					<div class="col-md-2 col-sm-3 col-xs-6 pull-right">
-						<div class="btn-block  btn-warning btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> Tambah</div>
+						<div class="btn-block  btn-danger btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> Tambah</div>
 					</div>
 				  </div>
 			  </div>
