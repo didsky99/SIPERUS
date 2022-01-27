@@ -1,12 +1,12 @@
 @extends('main.layout.layout')
 
-@section('struktur','PR')
-@section('title-page','Struktur PR')
+@section('struktur','PIMRAN')
+@section('title-page','Struktur PIMRAN')
 
 @section('content')
 	@section('menu','Master Data')
-	@section('sub_menu','Struktur PR')
-	@section('box-header','List Struktur PR')
+	@section('sub_menu','Struktur PIMRAN')
+	@section('box-header','List Struktur PIMRAN')
 	
 	@section('filter')
 		@section('filter_prov','initial')
@@ -31,7 +31,7 @@
 	@section('table_head')
 		<tr>
 			<th>No</th>
-			<th>Struktur PR</th>
+			<th>Struktur PIMRAN</th>
 			<th width="150">Aksi</th>
 		</tr>
 	@stop	

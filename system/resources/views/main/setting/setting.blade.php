@@ -60,7 +60,7 @@
 			  <!-- /.tab-pane -->
 			  <div class="tab-pane" id="agama">
 				<div class="col-md-6 no-padding">
-					<div class="btn-warning btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
+					<div class="btn-danger btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
 				</div>
 				<table class="table table-striped data-table" style="font-size:15px;">
 					<thead>
@@ -86,7 +86,7 @@
 			  <!-- /.tab-pane -->
 			  <div class="tab-pane" id="identitas">
 				<div class="col-md-6 no-padding">
-					<div class="btn-warning btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
+					<div class="btn-danger btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
 				</div>
 				<table class="table table-striped data-table" style="font-size:15px;">
 					<thead>
@@ -112,7 +112,7 @@
 			  <!-- /.tab-pane -->
 			  <div class="tab-pane" id="jk">
 				<div class="col-md-6 no-padding">
-					<div class="btn-warning btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
+					<div class="btn-danger btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
 				</div>
 				<table class="table table-striped data-table" style="font-size:15px;">
 					<thead>
@@ -138,7 +138,7 @@
 			  <!-- /.tab-pane -->
 			  <div class="tab-pane" id="pekerjaan">
 				<div class="col-md-6 no-padding">
-					<div class="btn-warning btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
+					<div class="btn-danger btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
 				</div>
 				<table class="table table-striped data-table" style="font-size:15px;">
 					<thead>
@@ -164,7 +164,7 @@
 			  <!-- /.tab-pane -->
 			  <div class="tab-pane" id="statusKawin">
 				<div class="col-md-6 no-padding">
-					<div class="btn-warning btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
+					<div class="btn-danger btn" data-toggle="modal" data-target="#modalTambahHakAkses">Tambah</div>
 				</div>
 				<table class="table table-striped data-table" style="font-size:15px;">
 					<thead>
@@ -211,8 +211,8 @@
 	  
 	  </div>
 	  <div class="modal-footer">
-		<button type="button" class="btn-warning btn" data-dismiss="modal">Close</button>
-		<button type="button" class="btn-warning btn" onclick="$('#btn-save').click()">Save changes</button>
+		<button type="button" class="btn-danger btn" data-dismiss="modal">Close</button>
+		<button type="button" class="btn-danger btn" onclick="$('#btn-save').click()">Save changes</button>
 	  </div>
 	</div>
   </div>

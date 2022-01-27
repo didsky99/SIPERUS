@@ -79,9 +79,9 @@
 	  <div class="row">
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="canvasResponseProvinsi">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-map-marker"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-map-marker"></i></span>
             <div class="info-box-content">
-				  <span class="info-box-text">DPD / Provinsi</span>
+				  <span class="info-box-text">PIMDA / Provinsi</span>
 				  <span class="info-box-number responseProvinsi" style="font-size: 15px">
 					{{ number_format($dataProvAda,0, "." , ".") }} / {{ number_format($dataProvAll,0, "." , ".") }}
 			  <h2 class="no-margin">
@@ -96,9 +96,9 @@
         <!-- /.col -->
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="canvasResponseKabupaten">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-map-marker"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-map-marker"></i></span>
             <div class="info-box-content">
-				  <span class="info-box-text">DPC / Kota</span>
+				  <span class="info-box-text">PIMCAB / Kota</span>
 				  <span class="info-box-number responseKabupaten" style="font-size: 15px">
 				  {{ number_format($dataKabAda,0, "." , ".") }} / {{ number_format($dataKabAll,0, "." , ".") }}
               <br>
@@ -115,9 +115,9 @@
     
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="canvasResponseKecamatan">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-map-marker"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-map-marker"></i></span>
             <div class="info-box-content">
-				  <span class="info-box-text">PAC / Kecamatan</span>
+				  <span class="info-box-text">PIMCAM / Kecamatan</span>
 				  <span class="info-box-number responseKecamatan" style="font-size: 15px">
 					  {{ number_format($dataKecAda,0, "." , ".") }} / {{ number_format($dataKecAll,0, "." , ".") }}
               <br>
@@ -134,9 +134,9 @@
 
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="canvasResponseKelurahan">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-map-marker"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-map-marker"></i></span>
             <div class="info-box-content">
-				  <span class="info-box-text">PR / Kelurahan</span>
+				  <span class="info-box-text">PIMRAN / Kelurahan</span>
 				  <span class="info-box-number responseKelurahan" style="font-size: 15px">
 					  {{ number_format($dataKelAda,0, "." , ".") }} / {{ number_format($dataKelAll,0, "." , ".") }}
               <br>
@@ -153,7 +153,7 @@
 
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="canvasResponseRW">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-map-marker"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-map-marker"></i></span>
             <div class="info-box-content">
 				  <span class="info-box-text">PAR / RW</span>
 				  <span class="info-box-number responseRW" style="font-size: 15px">
@@ -172,7 +172,7 @@
 			
 			<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" id="canvasResponseRT">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-map-marker"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-map-marker"></i></span>
             <div class="info-box-content">
 				  <span class="info-box-text">KPA / RT</span>
 				  <span class="info-box-number responseRT" style="font-size: 15px">
@@ -191,7 +191,7 @@
 		
         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
           <div class="info-box">
-            <span class="info-box-icon bg-yellow"><i class="fa fa-users"></i></span>
+            <span class="info-box-icon bg-red"><i class="fa fa-users"></i></span>
             <div class="info-box-content">
               <span class="info-box-text">Penduduk</span>
 				  <span class="info-box-number responsePenduduk" style="font-size: 15px">{{ number_format($jumlahPenduduk,0, "." , ".") }}</span>

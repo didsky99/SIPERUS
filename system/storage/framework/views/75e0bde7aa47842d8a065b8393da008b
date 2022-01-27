@@ -1,10 +1,10 @@
-<?php $__env->startSection('struktur','PR'); ?>
-<?php $__env->startSection('title-page','Struktur PR'); ?>
+<?php $__env->startSection('struktur','PIMRAN'); ?>
+<?php $__env->startSection('title-page','Struktur PIMRAN'); ?>
 
 <?php $__env->startSection('content'); ?>
 	<?php $__env->startSection('menu','Master Data'); ?>
-	<?php $__env->startSection('sub_menu','Struktur PR'); ?>
-	<?php $__env->startSection('box-header','List Struktur PR'); ?>
+	<?php $__env->startSection('sub_menu','Struktur PIMRAN'); ?>
+	<?php $__env->startSection('box-header','List Struktur PIMRAN'); ?>
 	
 	<?php $__env->startSection('filter'); ?>
 		<?php $__env->startSection('filter_prov','initial'); ?>
@@ -29,7 +29,7 @@
 	<?php $__env->startSection('table_head'); ?>
 		<tr>
 			<th>No</th>
-			<th>Struktur PR</th>
+			<th>Struktur PIMRAN</th>
 			<th width="150">Aksi</th>
 		</tr>
 	<?php $__env->stopSection(); ?>	

@@ -1,12 +1,12 @@
 @extends('main.layout.layout')
 
-@section('struktur','DPD')
-@section('title-page','Struktur DPD')
+@section('struktur','PIMDA')
+@section('title-page','Struktur PIMDA')
 
 @section('content')
 	@section('menu','Master Data')
-	@section('sub_menu','Struktur DPD')
-	@section('box-header','List Struktur DPD')
+	@section('sub_menu','Struktur PIMDA')
+	@section('box-header','List Struktur PIMDA')
 	
 	@section('filter')
 		@section('filter_prov','initial') 
@@ -25,7 +25,7 @@
 	@section('table_head')
 		<tr>
 			<th>No</th>
-			<th>Struktur DPD</th>
+			<th>Struktur PIMDA</th>
 			<th width="150">Aksi</th>
 		</tr>
 	@stop	

@@ -2,11 +2,11 @@
 @section('content')
 	<script type="text/javascript" src="{{asset('asset/js/jquery-3.1.1.js ')}}"></script>
 	<script type="text/javascript" src="{{asset('asset/js/AhmadApp.js ')}}"></script>
-	@section('title-page','Data Pengurus PAC ')
-	@section('modal_struk_tipe','PAC')
+	@section('title-page','Data Pengurus PIMCAM ')
+	@section('modal_struk_tipe','PIMCAM')
 	@section('struk_tipe_menu','Data Pengurus')
-	@section('struk_tipe_sub_menu','PAC')
-	@section('struk_tipe_box_header','List PAC')
+	@section('struk_tipe_sub_menu','PIMCAM')
+	@section('struk_tipe_box_header','List PIMCAM')
 
 	@section('use_filter_kta','none')
 	@section('use_filter_sk','none')
@@ -25,8 +25,8 @@
 		@include('main.input.section_indo_filter_combo')
 	@stop
 
-	@section('content_title_header_small','List PAC')
-	@section('content_title_header_small','Data PAC')
+	@section('content_title_header_small','List PIMCAM')
+	@section('content_title_header_small','Data PIMCAM')
 
 	@section('content_action_tambah','tambah/pac')
 	@section('content_action_edit','edit/pac/')

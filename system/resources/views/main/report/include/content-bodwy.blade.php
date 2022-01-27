@@ -84,7 +84,7 @@
 								<div class="col-md-4">
 									<div class="panel panel-default">
 										<div class="panel-heading">
-											<label>DPC Belum Terbentuk</label>
+											<label>PIMCAB Belum Terbentuk</label>
 										</div>
 										<div class="panel-body" id="area-nf-dpc" style="padding: 0; height: 500px; overflow-x: hidden;">
 											<table class="table table-bordered table-striped">
@@ -117,7 +117,7 @@
 								<div class="col-md-4">
 									<div class="panel panel-default">
 										<div class="panel-heading">
-											<label>PAC Belum Terbentuk</label>
+											<label>PIMCAM Belum Terbentuk</label>
 										</div>
 										<div class="panel-body" id="area-nf-pac" style="padding: 0; height: 500px; overflow-x: hidden;">
 											<table class="table table-bordered table-striped">
@@ -152,7 +152,7 @@
 								<div class="col-md-4">
 									<div class="panel panel-default">
 										<div class="panel-heading">
-											<label>PR Belum Terbentuk</label>
+											<label>PIMRAN Belum Terbentuk</label>
 										</div>
 										<div class="panel-body" id="area-nf-pr" style="padding: 0; height: 500px; overflow-x: hidden;">
 											<table class="table table-bordered table-striped">

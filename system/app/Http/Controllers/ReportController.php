@@ -28,17 +28,17 @@ class ReportController extends Controller
 		if($type == 'dashboard') {
 			$breadcrumb[]='Dashboard Report';
 		} else if($type == 'dpd') {
-			$breadcrumb[]='Perfoma DPD';
+			$breadcrumb[]='Perfoma PIMDA';
 		} else if($type == 'dpc') {
-			$breadcrumb[]='Perfoma DPD Terhadap Pembentukan DPC';
+			$breadcrumb[]='Perfoma PIMDA Terhadap Pembentukan PIMCAB';
 		} else if($type == 'pac') {
-			$breadcrumb[]='Perfoma DPD Terhadap Pembentukan PAC';
+			$breadcrumb[]='Perfoma PIMDA Terhadap Pembentukan PIMCAM';
 			
 		} else if($type == 'pr') {
-			$breadcrumb[]='Perfoma DPD Terhadap Pembentukan PR';
+			$breadcrumb[]='Perfoma PIMDA Terhadap Pembentukan PIMRAN';
 			
 		} else if($type == 'par') {
-			$breadcrumb[]='Perfoma DPD Terhadap Pembentukan PAR';
+			$breadcrumb[]='Perfoma PIMDA Terhadap Pembentukan PAR';
 			
 		} else if($type == 'kpa') {
 			$breadcrumb[]='Perfoma DPD Terhadap Pembentukan KPA';
@@ -346,7 +346,7 @@ class ReportController extends Controller
 			}
 			$data['dataProvPer'] = $dataProvPer;
 			/* $dataGrafik = [['Provinsi',count($dataProv)],['DPC B.TBK',@$dataProv@$pengurus->pengurus_dpc-@$pengurus->pengurus_dpc_ada],['DPC TBK',@$pengurus->pengurus_dpc_ada]]; */
-			$dataGrafik = [['Provinsi',@$cProv],['DPD B.TBK',@$cProv-@$dpd_tbk],['DPD TBK', @$dpd_tbk]];
+			$dataGrafik = [['Provinsi',@$cProv],['DPD B.TBK',@$cProv-@$dpd_tbk],['PIMDA TBK', @$dpd_tbk]];
 		} else if($type == 'kabupaten'){
 			$return = 'main.report.line';
 			$dataKab = DB::table('m_geo_kab')
@@ -360,7 +360,7 @@ class ReportController extends Controller
 			}
 			$data['dataKabPer'] = $dataKabPer;
 			/* $dataGrafik = [['Kabupaten',@$pengurus->pengurus_dpc],['DPC B.TBK',@$pengurus->pengurus_dpc-@$pengurus->pengurus_dpc_ada],['DPC TBK',@$pengurus->pengurus_dpc_ada]]; */
-			$dataGrafik = [['Kabupaten',@$cKokab],['DPC B.TBK',@$cKokab-@$dpc_tbk],['DPC TBK',@$dpc_tbk]];
+			$dataGrafik = [['Kabupaten',@$cKokab],['DPC B.TBK',@$cKokab-@$dpc_tbk],['PIMCAB TBK',@$dpc_tbk]];
 		} else if($type == 'kecamatan'){
 			$return = 'main.report.line';
 			$dataKec = DB::table('m_geo_kec_kpu')
@@ -377,7 +377,7 @@ class ReportController extends Controller
 			}
 			$data['dataKecPer'] = $dataKecPer;		
 			/* $dataGrafik = [['Kecamatan',@$pengurus->pengurus_pac],['PAC B.TBK',@$pengurus->pengurus_pac-@$pengurus->pengurus_pac_ada],['PAC TBK',@$pengurus->pengurus_pac_ada]]; */
-			$dataGrafik = [['Kecamatan',@$cKecam],['PAC B.TBK',@$cKecam-@$pac_tbk],['PAC TBK',@$pac_tbk]];
+			$dataGrafik = [['Kecamatan',@$cKecam],['PAC B.TBK',@$cKecam-@$pac_tbk],['PIMCAM TBK',@$pac_tbk]];
 		} else if($type == 'kelurahan'){
 			$return = 'main.report.line';
 			$dataKel = DB::table('m_geo_deskel')
@@ -398,7 +398,7 @@ class ReportController extends Controller
 			}
 			$data['dataKelPer'] = $dataKelPer;			
 			/* $dataGrafik = [['Kelurahan',@$pengurus->pengurus_ranting],['PR B.TBK',@$pengurus->pengurus_ranting-@$pengurus->pengurus_ranting_ada],['PR TBK',@$pengurus->pengurus_ranting_ada]]; */
-			$dataGrafik = [['Kelurahan',@$cDeskel],['PR B.TBK',@$cDeskel-@$pr_tbk],['PR TBK',@$pr_tbk]];
+			$dataGrafik = [['Kelurahan',@$cDeskel],['PR B.TBK',@$cDeskel-@$pr_tbk],['PIMRAN TBK',@$pr_tbk]];
 		} else if($type == 'rw'){
 			$return = 'main.report.line';
 			$dataRW = DB::table('m_geo_rw')
@@ -489,7 +489,7 @@ class ReportController extends Controller
 				colorByPoint: true,
 				data: [{
 					name: '".@$dataGrafik[0][0]."',
-					color: '#f39c12',
+					color: '#dd4b39',
 					y: ".@$dataGrafik[0][1]."
 				},{
 					name: '".@$dataGrafik[1][0]."',
@@ -504,7 +504,7 @@ class ReportController extends Controller
 					data: [".@$dataGrafik[0][1]."]
 				}, {
 					name: '".@$dataGrafik[2][0]."',
-					color: '#f39c12',
+					color: '#dd4b39',
 					data: [".@$dataGrafik[2][1]."]
 				}]";
 		}

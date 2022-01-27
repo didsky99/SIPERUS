@@ -110,7 +110,7 @@
 	}
 	.canvas-picture-xs {
 		height: 62px;
-		border: 2px solid #f39c12;
+		border: 2px solid #dd4b39;
 		border-radius: 50%;
 		overflow: hidden;
 	}
@@ -173,7 +173,7 @@ span.info-box-icon>i {
 .optionActive {
 	color: #fff !important;
     font-weight: bold !important;
-    background: #f39c12 !important;
+    background: #dd4b39 !important;
 }
 .optionActive>em {
     color: white;

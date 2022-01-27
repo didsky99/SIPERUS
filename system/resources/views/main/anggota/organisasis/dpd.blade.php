@@ -2,11 +2,11 @@
 @section('content')
 	<script type="text/javascript" src="{{asset('asset/js/jquery-3.1.1.js ')}}"></script>
 	<script type="text/javascript" src="{{asset('asset/js/AhmadApp.js ')}}"></script>
-	@section('title-page','Data Pengurus DPD ')
-	@section('modal_struk_tipe','DPD')
+	@section('title-page','Data Pengurus PIMDA ')
+	@section('modal_struk_tipe','PIMDA')
 	@section('struk_tipe_menu','Data Pengurus')
-	@section('struk_tipe_sub_menu','DPD')
-	@section('struk_tipe_box_header','List DPD')
+	@section('struk_tipe_sub_menu','PIMDA')
+	@section('struk_tipe_box_header','List PIMDA')
 	
 	@section('sk_baru', $sk_baru)
 

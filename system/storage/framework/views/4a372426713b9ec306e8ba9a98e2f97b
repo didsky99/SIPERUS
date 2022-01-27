@@ -1,10 +1,10 @@
-<?php $__env->startSection('struktur','PAC'); ?>
-<?php $__env->startSection('title-page','Struktur PAC'); ?>
+<?php $__env->startSection('struktur','PIMCAM'); ?>
+<?php $__env->startSection('title-page','Struktur PIMCAM'); ?>
 
 <?php $__env->startSection('content'); ?>
 	<?php $__env->startSection('menu','Master Data'); ?>
-	<?php $__env->startSection('sub_menu','Struktur PAC'); ?>
-	<?php $__env->startSection('box-header','List Struktur PAC'); ?>
+	<?php $__env->startSection('sub_menu','Struktur PIMCAM'); ?>
+	<?php $__env->startSection('box-header','List Struktur PIMCAM'); ?>
 	
 	<?php $__env->startSection('filter'); ?>
 		<?php $__env->startSection('filter_prov','initial'); ?>
@@ -27,7 +27,7 @@
 	<?php $__env->startSection('table_head'); ?>
 		<tr>
 			<th>No</th>
-			<th>Struktur PAC</th>
+			<th>Struktur PIMCAM</th>
 			<th width="150">Aksi</th>
 		</tr>
 	<?php $__env->stopSection(); ?>	

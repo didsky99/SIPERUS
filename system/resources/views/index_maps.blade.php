@@ -191,12 +191,12 @@
 		'<div class="top" style="border-bottom:2px solid #f39c12;">'+address+'</div>'+
 		'<table style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
 			'<tr>'+
-			'<td>DPC</td>'+
+			'<td>PIMCAB</td>'+
 			'<td  style="width:10px; text-align:center;">:</td>'+
 			'<td>'+dpc_ada+'/<b>'+dpc+'</b>  ('+getPercent(dpc_ada,dpc)+' %)</td>'+
 			'</tr>'+
 			'<tr>'+
-			'<td>PAC</td>'+
+			'<td>PIMCAM</td>'+
 			'<td  style="width:10px; text-align:center;">:</td>'+
 			'<td>'+pac_ada+'/<b>'+pac+'</b>  ('+getPercent(pac_ada,pac)+' %)</td>'+
 			'</tr>'+

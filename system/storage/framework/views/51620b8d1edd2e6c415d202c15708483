@@ -1,10 +1,10 @@
-<?php $__env->startSection('struktur','DPC'); ?>
-<?php $__env->startSection('title-page','Struktur DPC'); ?>
+<?php $__env->startSection('struktur','PIMCAB'); ?>
+<?php $__env->startSection('title-page','Struktur PIMCAB'); ?>
 
 <?php $__env->startSection('content'); ?>
 	<?php $__env->startSection('menu','Master Data'); ?>
-	<?php $__env->startSection('sub_menu','Struktur DPC'); ?>
-	<?php $__env->startSection('box-header','List Struktur DPC'); ?>
+	<?php $__env->startSection('sub_menu','Struktur PIMCAB'); ?>
+	<?php $__env->startSection('box-header','List Struktur PIMCAB'); ?>
 	
 	<?php $__env->startSection('filter'); ?>
 		<?php $__env->startSection('filter_prov','initial'); ?>
@@ -25,7 +25,7 @@
 	<?php $__env->startSection('table_head'); ?>
 		<tr>
 			<th>No</th>
-			<th>Struktur DPC</th>
+			<th>Struktur PIMCAB</th>
 			<th width="150">Aksi</th>
 		</tr>
 	<?php $__env->stopSection(); ?>	

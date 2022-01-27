@@ -1,12 +1,12 @@
 @extends('main.layout.layout')
 
-@section('struktur','DPP')
-@section('title-page','Struktur DPP')
+@section('struktur','PIMNAS')
+@section('title-page','Struktur PIMNAS')
 
 @section('content')
 	@section('menu','Master Data')
-	@section('sub_menu','Struktur DPP')
-	@section('box-header','List Struktur DPP')
+	@section('sub_menu','Struktur PIMNAS')
+	@section('box-header','List Struktur PIMNAS')
 	  
 	@section('action-tambah','proses/tambah/struktur/dpp')
 	@section('action-edit','proses/edit/struktur/dpp')
@@ -18,7 +18,7 @@
 	@section('table_head')
 		<tr>
 			<th>No</th>
-			<th>Struktur DPP</th>
+			<th>Struktur PIMNAS</th>
 			<th width="150">Aksi</th>
 		</tr>
 	@stop	

@@ -1,12 +1,12 @@
 @extends('main.layout.layout')
 
-@section('struktur','DPC')
-@section('title-page','Struktur DPC')
+@section('struktur','PIMCAB')
+@section('title-page','Struktur PIMCAB')
 
 @section('content')
 	@section('menu','Master Data')
-	@section('sub_menu','Struktur DPC')
-	@section('box-header','List Struktur DPC')
+	@section('sub_menu','Struktur PIMCAB')
+	@section('box-header','List Struktur PIMCAB')
 	
 	@section('filter')
 		@section('filter_prov','initial')
@@ -27,7 +27,7 @@
 	@section('table_head')
 		<tr>
 			<th>No</th>
-			<th>Struktur DPC</th>
+			<th>Struktur PIMCAB</th>
 			<th width="150">Aksi</th>
 		</tr>
 	@stop	

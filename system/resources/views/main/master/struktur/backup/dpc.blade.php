@@ -124,7 +124,7 @@
 		<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
 		<li>Master Data</li>
 		<li>Struktur</li>
-		<li class="active">DPC</li>
+		<li class="active">PIMCAB</li>
 	  </ol>
 	</section>
 

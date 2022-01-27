@@ -5,8 +5,8 @@
 
 
 	<?php $__env->startSection('menu','Verifikasi<small>List</small>'); ?>
-	<?php $__env->startSection('box-header-dpd','List Verifikasi DPD'); ?>
-	<?php $__env->startSection('box-header-dpc','List Verifikasi DPC'); ?>
+	<?php $__env->startSection('box-header-dpd','List Verifikasi PIMDA'); ?>
+	<?php $__env->startSection('box-header-dpc','List Verifikasi PIMCAB'); ?>
 	
 	<?php $__env->startSection('action-tambah','actions/verifikasi'); ?>
 	<?php $__env->startSection('action-edit','actions/verifikasi/'); ?>

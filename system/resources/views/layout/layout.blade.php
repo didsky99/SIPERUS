@@ -145,7 +145,7 @@
 			.activeKursiLi {
 				color: #fff !important;
 				font-weight: bold !important;
-				background: #f39c12 !important;
+				background: #dd4b39 !important;
 			}
 
 		</style>
@@ -155,7 +155,7 @@
 			<div class="col-md-12">
 				<div class="row">
 					<div class="col-md-8 col-sm-8 col-xs-3 hidden-xs" style="font-size:20px; !important;">
-						GEO MAP PARTAI HANURA
+						GEO MAP PKN
 					</div>
 					<div class="col-md-8 col-sm-8 col-xs-3 hidden-lg hidden-md hidden-sm visible-xs">
 						GEO

@@ -1,12 +1,12 @@
 @extends('main.layout.layout')
 
-@section('struktur','PAC')
-@section('title-page','Struktur PAC')
+@section('struktur','PIMCAM')
+@section('title-page','Struktur PIMCAM')
 
 @section('content')
 	@section('menu','Master Data')
-	@section('sub_menu','Struktur PAC')
-	@section('box-header','List Struktur PAC')
+	@section('sub_menu','Struktur PIMCAM')
+	@section('box-header','List Struktur PIMCAM')
 	
 	@section('filter')
 		@section('filter_prov','initial')
@@ -29,7 +29,7 @@
 	@section('table_head')
 		<tr>
 			<th>No</th>
-			<th>Struktur PAC</th>
+			<th>Struktur PIMCAM</th>
 			<th width="150">Aksi</th>
 		</tr>
 	@stop	

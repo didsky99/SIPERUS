@@ -2,11 +2,11 @@
 @section('content')
 	<script type="text/javascript" src="{{asset('asset/js/jquery-3.1.1.js ')}}"></script>
 	<script type="text/javascript" src="{{asset('asset/js/AhmadApp.js ')}}"></script>
-	@section('title-page','Data Pengurus DPC ')
-	@section('modal_struk_tipe','DPC')
+	@section('title-page','Data Pengurus PIMCAB ')
+	@section('modal_struk_tipe','PIMCAB')
 	@section('struk_tipe_menu','Data Pengurus')
-	@section('struk_tipe_sub_menu','DPC')
-	@section('struk_tipe_box_header','List DPC')
+	@section('struk_tipe_sub_menu','PIMCAB')
+	@section('struk_tipe_box_header','List PIMCAB')
 
 	@section('use_filter_kta','none')
 	@section('use_filter_sk','none')

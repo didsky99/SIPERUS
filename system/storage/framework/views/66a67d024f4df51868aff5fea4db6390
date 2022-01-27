@@ -1,10 +1,10 @@
-<?php $__env->startSection('struktur','DPD'); ?>
-<?php $__env->startSection('title-page','Struktur DPD'); ?>
+<?php $__env->startSection('struktur','PIMDA'); ?>
+<?php $__env->startSection('title-page','Struktur PIMDA'); ?>
 
 <?php $__env->startSection('content'); ?>
 	<?php $__env->startSection('menu','Master Data'); ?>
-	<?php $__env->startSection('sub_menu','Struktur DPD'); ?>
-	<?php $__env->startSection('box-header','List Struktur DPD'); ?>
+	<?php $__env->startSection('sub_menu','Struktur PIMDA'); ?>
+	<?php $__env->startSection('box-header','List Struktur PIMDA'); ?>
 	
 	<?php $__env->startSection('filter'); ?>
 		<?php $__env->startSection('filter_prov','initial'); ?> 
@@ -23,7 +23,7 @@
 	<?php $__env->startSection('table_head'); ?>
 		<tr>
 			<th>No</th>
-			<th>Struktur DPD</th>
+			<th>Struktur PIMDA</th>
 			<th width="150">Aksi</th>
 		</tr>
 	<?php $__env->stopSection(); ?>	

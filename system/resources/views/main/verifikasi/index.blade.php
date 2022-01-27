@@ -6,8 +6,8 @@
 
 
 	@section('menu','Verifikasi<small>List</small>')
-	@section('box-header-dpd','List Verifikasi DPD')
-	@section('box-header-dpc','List Verifikasi DPC')
+	@section('box-header-dpd','List Verifikasi PIMDA')
+	@section('box-header-dpc','List Verifikasi PIMCAB')
 	
 	@section('action-tambah','actions/verifikasi')
 	@section('action-edit','actions/verifikasi/')

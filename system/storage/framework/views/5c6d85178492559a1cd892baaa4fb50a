@@ -85,7 +85,7 @@
 	</selct>
 </div>
 <div class="col-md-1" style="display:<?php echo $__env->yieldContent('indo_combo_fdpp','none'); ?>">
-	<button class="btn btn-warning" id="btn-search-dpp" style="margin-top: 25px">
+	<button class="btn btn-danger" id="btn-search-dpp" style="margin-top: 25px">
 		<i class="fa fa-search"></i>
 	</button>
 </div>

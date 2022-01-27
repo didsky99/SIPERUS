@@ -1,16 +1,16 @@
 <?php
 	if($type == 'provinsi'){
-		$jenisGarfik = 'DPD';
-		$struktur = 'DPD ('.$dataProvPer.'%)';
+		$jenisGarfik = 'PIMDA';
+		$struktur = 'PIMDA ('.$dataProvPer.'%)';
 	} else if($type == 'kabupaten'){
-		$jenisGarfik = 'DPC';
-		$struktur = 'DPC ('.$dataKabPer.'%)';
+		$jenisGarfik = 'PIMCAB';
+		$struktur = 'PIMCAB ('.$dataKabPer.'%)';
 	} else if($type == 'kecamatan'){
-		$jenisGarfik = 'PAC';
-		$struktur = 'PAC ('.$dataKecPer.'%)';
+		$jenisGarfik = 'PIMCAM';
+		$struktur = 'PIMCAM ('.$dataKecPer.'%)';
 	} else if($type == 'kelurahan'){
-		$jenisGarfik = 'PR';
-		$struktur = 'PR ('.$dataKelPer.'%)';
+		$jenisGarfik = 'PIMRAN';
+		$struktur = 'PIMRAN ('.$dataKelPer.'%)';
 	} else if($type == 'rw'){
 		$jenisGarfik = 'PAR';
 		$struktur = 'PAR ('.$dataRwPer.'%)';
