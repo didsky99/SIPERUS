@@ -269,7 +269,7 @@ var alertStatus = 0;
 					$($($("#detailNameKel").parent('div')).parent('div')).hide();
 					$($($("#detailNameRW").parent('div')).parent('div')).hide();
 					$($($("#detailNameRT").parent('div')).parent('div')).hide();
-					$("#detailNameStruk").text(resp['struk_dpc_nama']);
+					$("#detailNameStruk").text(resp['struk_pimcab_nama']);
 					$("#detailNameBio").text(resp['fullName']);
 				} else if(jenis == 'dpd') {
 					$("#detailNameProv").text(resp['geo_prov_nama']);
@@ -278,7 +278,7 @@ var alertStatus = 0;
 					$($($("#detailNameKel").parent('div')).parent('div')).hide();
 					$($($("#detailNameRW").parent('div')).parent('div')).hide();
 					$($($("#detailNameRT").parent('div')).parent('div')).hide();
-					$("#detailNameStruk").text(resp['struk_dpd_nama']);
+					$("#detailNameStruk").text(resp['struk_pimda_nama']);
 					$("#detailNameBio").text(resp['fullName']);
 				} else if(jenis == 'dpc') {
 					$("#detailNameProv").text(resp['geo_prov_nama']);
@@ -287,7 +287,7 @@ var alertStatus = 0;
 					$($($("#detailNameKel").parent('div')).parent('div')).hide();
 					$($($("#detailNameRW").parent('div')).parent('div')).hide();
 					$($($("#detailNameRT").parent('div')).parent('div')).hide();
-					$("#detailNameStruk").text(resp['struk_dpc_nama']);
+					$("#detailNameStruk").text(resp['struk_pimcab_nama']);
 					$("#detailNameBio").text(resp['fullName']);
 				} else if(jenis == 'pac') {
 					$("#detailNameProv").text(resp['geo_prov_nama']);
@@ -470,7 +470,7 @@ var alertStatus = 0;
             var resp = eval(data);
 			$("#modal-view-statistik").modal('show');
 			$("#provins").text(resp['geo_prov_nama']);
-			$("#kabupaten").text(resp['pengurus_dpc_ada']+"/"+resp['pengurus_dpc']);
+			$("#kabupaten").text(resp['pengurus_pimcab_ada']+"/"+resp['pengurus_pimcab']);
 			$("#kecamatan").text(resp['pengurus_pac_ada']+"/"+resp['pengurus_pac']);
 			$("#ranting").text(resp['pengurus_ranting_ada']+"/"+resp['pengurus_ranting']);
 			$("#aranting").text(resp['pengurus_anak_ranting_ada']+"/"+resp['pengurus_anak_ranting']);

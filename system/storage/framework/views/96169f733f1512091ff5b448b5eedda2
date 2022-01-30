@@ -60,13 +60,13 @@
 			}
 		echo '];';
 		echo 'var DPD = [';
-			foreach($dataDPDAll as $tmp)
+			foreach($datapimdaAll as $tmp)
 			{				
 				echo '["'.$tmp->prov_nama.'","'.RTRIM($tmp->nama).'","'.$tmp->no_telp.'","'.$tmp->email.'",'.$tmp->lat.','.$tmp->lng.','.$tmp->id_bio.',"'.$tmp->sk.'"],';
 			}
 		echo '];';
 		echo 'var DPC = [';
-			foreach($dataDPCAll as $tmp)
+			foreach($datapimcabAll as $tmp)
 			{
 			if($tmp->dpc_kab_id != ''){
 				$lokasi = $tmp->kab_nama;					

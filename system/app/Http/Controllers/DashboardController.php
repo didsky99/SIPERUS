@@ -28,67 +28,67 @@ class DashboardController extends Controller
 	}
 	
 	public function getAllStruktur($jenis) {
-		if($jenis == 'dpd') {
+		if($jenis == 'pimda') {
 			$dataKabupaten = DB::table('m_geo_prov_kpu')
 				->get();
 				
 			foreach($dataKabupaten as $tmp){				
-				$savePendaftaran1 = DB::table('m_struk_dpd')
+				$savePendaftaran1 = DB::table('m_struk_pimda')
 					->insertGetId([
 						'geo_prov_id' => $tmp->geo_prov_id,
-						'struk_dpd_nama' => 'Ketua',
-						'struk_dpd_created_date' => date('Y-m-d H:i:s'),
-						'struk_dpd_created_by' => 1,
-						'struk_dpd_status' => 1
+						'struk_pimda_nama' => 'Ketua',
+						'struk_pimda_created_date' => date('Y-m-d H:i:s'),
+						'struk_pimda_created_by' => 1,
+						'struk_pimda_status' => 1
 					]);
-				$savePendaftaran2 = DB::table('m_struk_dpd')
+				$savePendaftaran2 = DB::table('m_struk_pimda')
 					->insertGetId([
 						'geo_prov_id' => $tmp->geo_prov_id,
-						'struk_dpd_nama' => 'Sekretaris',
-						'struk_dpd_created_date' => date('Y-m-d H:i:s'),
-						'struk_dpd_created_by' => 1,
-						'struk_dpd_status' => 1
+						'struk_pimda_nama' => 'Sekretaris',
+						'struk_pimda_created_date' => date('Y-m-d H:i:s'),
+						'struk_pimda_created_by' => 1,
+						'struk_pimda_status' => 1
 					]);
-				$savePendaftaran3 = DB::table('m_struk_dpd')
+				$savePendaftaran3 = DB::table('m_struk_pimda')
 					->insertGetId([
 						'geo_prov_id' => $tmp->geo_prov_id,
-						'struk_dpd_nama' => 'Bendahara',
-						'struk_dpd_created_date' => date('Y-m-d H:i:s'),
-						'struk_dpd_created_by' => 1,
-						'struk_dpd_status' => 1
+						'struk_pimda_nama' => 'Bendahara',
+						'struk_pimda_created_date' => date('Y-m-d H:i:s'),
+						'struk_pimda_created_by' => 1,
+						'struk_pimda_status' => 1
 					]);
 			}	
-		} else if($jenis == 'dpc'){
+		} else if($jenis == 'pimcab'){
 			$dataKabupaten = DB::table('m_geo_kab_kpu')
 				->get();
 				
 			foreach($dataKabupaten as $tmp){				
-				$savePendaftaran1 = DB::table('m_struk_dpc')
+				$savePendaftaran1 = DB::table('m_struk_pimcab')
 					->insertGetId([
 						'geo_prov_id' => $tmp->geo_prov_id,
 						'geo_kab_id' => $tmp->geo_kab_id,
-						'struk_dpc_nama' => 'Ketua',
-						'struk_dpc_created_date' => date('Y-m-d H:i:s'),
-						'struk_dpc_created_by' => 1,
-						'struk_dpc_status' => 1
+						'struk_pimcab_nama' => 'Ketua',
+						'struk_pimcab_created_date' => date('Y-m-d H:i:s'),
+						'struk_pimcab_created_by' => 1,
+						'struk_pimcab_status' => 1
 					]);
-				$savePendaftaran2 = DB::table('m_struk_dpc')
+				$savePendaftaran2 = DB::table('m_struk_pimcab')
 					->insertGetId([
 						'geo_prov_id' => $tmp->geo_prov_id,
 						'geo_kab_id' => $tmp->geo_kab_id,
-						'struk_dpc_nama' => 'Sekretaris',
-						'struk_dpc_created_date' => date('Y-m-d H:i:s'),
-						'struk_dpc_created_by' => 1,
-						'struk_dpc_status' => 1
+						'struk_pimcab_nama' => 'Sekretaris',
+						'struk_pimcab_created_date' => date('Y-m-d H:i:s'),
+						'struk_pimcab_created_by' => 1,
+						'struk_pimcab_status' => 1
 					]);
-				$savePendaftaran3 = DB::table('m_struk_dpc')
+				$savePendaftaran3 = DB::table('m_struk_pimcab')
 					->insertGetId([
 						'geo_prov_id' => $tmp->geo_prov_id,
 						'geo_kab_id' => $tmp->geo_kab_id,
-						'struk_dpc_nama' => 'Bendahara',
-						'struk_dpc_created_date' => date('Y-m-d H:i:s'),
-						'struk_dpc_created_by' => 1,
-						'struk_dpc_status' => 1
+						'struk_pimcab_nama' => 'Bendahara',
+						'struk_pimcab_created_date' => date('Y-m-d H:i:s'),
+						'struk_pimcab_created_by' => 1,
+						'struk_pimcab_status' => 1
 					]);
 			}	
 		}
@@ -149,7 +149,7 @@ class DashboardController extends Controller
 		} else { // Proses Cek
 			$count = 0;
 			$dataSKAll = [];
-			$arrayJenis = ['dpp','dpd','dpc','pac','par','kpa'];
+			$arrayJenis = ['pimnas','pimda','pimcab','pimcam','par','kpa'];
 			for($z=0; $z<count($arrayJenis); $z++){
 				$jenis = $arrayJenis[$z];
 				
@@ -407,28 +407,28 @@ class DashboardController extends Controller
 	
 	public function viewIndex()
 	{
-		$kontak_dpd = @$_GET['kontak_dpd'];
-		$kontak_dpc = @$_GET['kontak_dpc'];
+		$kontak_pimda = @$_GET['kontak_pimda'];
+		$kontak_pimcab = @$_GET['kontak_pimcab'];
 		$suara_tahun = @$_GET['suara_tahun'];
 		$agenda_tahun = @$_GET['agenda_tahun'];
 		
-		$dataDPD = array(); 
+		$datapimda = array(); 
 		$dataDPC = array(); 
-		$dataDPCAll = array(); 
-		$dataDPDAll = array(); 
+		$datapimcabAll = array(); 
+		$datapimdaAll = array(); 
 		$dataPengurusAll = array(); 
 		
 		$jumlahProv = DB::table('m_geo_prov_kpu')->count();
 		
 		$dataStatistikOrganisasi = DB::table('m_pengurus')
 			->select(
-				'pengurus_dpc as dpc',
-				'pengurus_pac as pac',
+				'pengurus_pimcab as pimcab',
+				'pengurus_pimcam as pimcam',
 				'pengurus_ranting as ranting',
 				'pengurus_anak_ranting as anak_ranting',
 				'pengurus_kpa as kpa',
-				'pengurus_dpc_ada as dpc_ada',
-				'pengurus_pac_ada as pac_ada',
+				'pengurus_pimcab_ada as pimcab_ada',
+				'pengurus_pimcam_ada as pimcam_ada',
 				'pengurus_ranting_ada as ranting_ada',
 				'pengurus_anak_ranting_ada as anak_ranting_ada',
 				'pengurus_kpa_ada as kpa_ada',
@@ -451,7 +451,7 @@ class DashboardController extends Controller
 			inner join m_geo_prov_kpu on m_geo_prov_kpu.geo_prov_id = m_statistik_kursi.geo_prov_id 
 			group by m_statistik_kursi.geo_prov_id');
 
-		$dataDPDAll = DB::table('m_struk_dpd')
+		$datapimdaAll = DB::table('m_struk_pimda')
 			->select(
 				'm_bio.bio_id as id_bio',
 				'm_bio.bio_nama_depan as nama',
@@ -460,17 +460,17 @@ class DashboardController extends Controller
 				'm_geo_prov_kpu.geo_prov_nama as prov_nama',
 				'm_geo_prov_kpu.geo_prov_lat as lat',
 				'm_geo_prov_kpu.geo_prov_lng as lng',
-				'm_struk_dpd.struk_dpd_nama as struk_nama',
-				'r_bio_dpd.bio_dpd_sk as sk'
+				'm_struk_pimda.struk_pimda_nama as struk_nama',
+				'r_bio_pimda.bio_pimda_sk as sk'
 			)
-				->join('r_bio_dpd','r_bio_dpd.struk_dpd_id','=','m_struk_dpd.struk_dpd_id')
-				->join('m_bio','m_bio.bio_id','=','r_bio_dpd.bio_id')
-				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_dpd.geo_prov_id')
-					->where('m_struk_dpd.struk_dpd_nama','like','ketua%')
-						->groupBy('r_bio_dpd.geo_prov_id')
+				->join('r_bio_pimda','r_bio_pimda.struk_pimda_id','=','m_struk_pimda.struk_pimda_id')
+				->join('m_bio','m_bio.bio_id','=','r_bio_pimda.bio_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_pimda.geo_prov_id')
+					->where('m_struk_pimda.struk_pimda_nama','like','ketua%')
+						->groupBy('r_bio_pimda.geo_prov_id')
 							->get(); 
 						
-		$dataDPCAll = DB::table('r_bio_dpc')
+		$datapimcabAll = DB::table('r_bio_pimcab')
 			->select(
 				'm_bio.bio_id as id_bio',
 				'm_bio.bio_nama_depan as nama',
@@ -480,25 +480,25 @@ class DashboardController extends Controller
 				'm_geo_kab_kpu.geo_kab_nama as kab_nama',
 				'm_geo_kab_kpu.geo_kab_lat as lat',
 				'm_geo_kab_kpu.geo_kab_lng as lng',
-				'r_bio_dpc.geo_kab_id as dpc_kab_id',
-				'm_struk_dpc.struk_dpc_nama as struk_nama',
-				'r_bio_dpc.bio_dpc_sk as sk'
+				'r_bio_pimcab.geo_kab_id as pimcab_kab_id',
+				'm_struk_pimcab.struk_pimcab_nama as struk_nama',
+				'r_bio_pimcab.bio_pimcab_sk as sk'
 			)
-				->join('m_struk_dpc','r_bio_dpc.struk_dpc_id','=','m_struk_dpc.struk_dpc_id')
-				->join('m_bio','m_bio.bio_id','=','r_bio_dpc.bio_id')
-				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_dpc.geo_prov_id')
-				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','r_bio_dpc.geo_kab_id')
-					->where('m_struk_dpc.dijabat', '1')
-						->groupBy('r_bio_dpc.geo_kab_id')
+				->join('m_struk_pimcab','r_bio_pimcab.struk_pimcab_id','=','m_struk_pimcab.struk_pimcab_id')
+				->join('m_bio','m_bio.bio_id','=','r_bio_pimcab.bio_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_pimcab.geo_prov_id')
+				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','r_bio_pimcab.geo_kab_id')
+					->where('m_struk_pimcab.dijabat', '1')
+						->groupBy('r_bio_pimcab.geo_kab_id')
 							->get();  
 
 		$type = 'all';
 		return view('index', array(
 			'jumlahProv' => $jumlahProv,
-			'dataDPD' => $dataDPD,
+			'datapimda' => $datapimda,
 			'dataDPC' => $dataDPC,
-			'dataDPDAll' => $dataDPDAll,
-			'dataDPCAll' => $dataDPCAll,
+			'datapimdaAll' => $datapimdaAll,
+			'datapimcabAll' => $datapimcabAll,
 			'dataStatistikOrganisasi' => $dataStatistikOrganisasi,
 			'dataStatistikKursi' => $dataStatistikKursi,
 			'type' => $type
@@ -721,10 +721,10 @@ class DashboardController extends Controller
 		$provinsi = DB::table('provinsi')->get();
 		echo '<script src="../asset/js/jquery-3.0.0.min.js"></script>';
 		echo '<script src="../asset/js/ajaxLokasi.js"></script>';
-		if($change == 'kontak_dpd')
+		if($change == 'kontak_pimda')
 		{
 			echo '<div class="form-group col-md-12">
-				<label for="dpd" class="col-md-2">DPD</label>
+				<label for="pimda" class="col-md-2">pimda</label>
 				<div class="col-md-4">
 					<select name="" id="provinsi" class="form-control">
 					<option value="">--- Provinsi ---</option>';
@@ -734,9 +734,9 @@ class DashboardController extends Controller
 					echo '</select>
 				</div> 
 				<div class="result col-md-5"></div></div>';
-		} else if($change == 'kontak_dpc') {
+		} else if($change == 'kontak_pimcab') {
 			echo '<div class="form-group col-md-12">
-				<label for="dpd" class="col-md-2">DPC</label>
+				<label for="pimda" class="col-md-2">DPC</label>
 				<div class="col-md-4">
 					<select name="" id="provinsi" class="form-control">
 					<option value="">--- Provinsi ---</option>';
@@ -753,7 +753,7 @@ class DashboardController extends Controller
 			</div>';
 		} else if($change == 'caleg') {
 			echo '<div class="form-group col-md-12">
-				<label for="dpd" class="col-md-2">Caleg</label>
+				<label for="pimda" class="col-md-2">Caleg</label>
 				<div class="col-md-4">
 					<select name="" id="provinsi" class="form-control">
 					<option value="">--- Provinsi ---</option>';
@@ -808,64 +808,64 @@ class DashboardController extends Controller
 				'dataCalon' => $dataCalon,
 				'type' => 'Caleg'
 			));
-		} else if($case == "DPD") {
-			$dataCalon = DB::table('call_center_dpd')
-				->leftjoin('provinsi','provinsi.id_provinsi','=','call_center_dpd.provinsi')
+		} else if($case == "pimda") {
+			$dataCalon = DB::table('call_center_pimda')
+				->leftjoin('provinsi','provinsi.id_provinsi','=','call_center_pimda.provinsi')
 				->join('kabupaten','kabupaten.id_provinsi','=','provinsi.id_provinsi')
 				->select(
-					'call_center_dpd.email as email',
-					'call_center_dpd.no_telp as no_telp',
-					'call_center_dpd.nama_dpd as nama',
-					'call_center_dpd.kabupaten',
+					'call_center_pimda.email as email',
+					'call_center_pimda.no_telp as no_telp',
+					'call_center_pimda.nama_pimda as nama',
+					'call_center_pimda.kabupaten',
 					'provinsi.Nama_provinsi',
 					'kabupaten.Nama_kabupaten'
 				)
-				->groupBy('call_center_dpd.nama_dpd')
+				->groupBy('call_center_pimda.nama_pimda')
 				->get();
-			return response()->view('dpd_maps', array(
+			return response()->view('pimda_maps', array(
 				'dataCalon' => $dataCalon,
-				'type' => 'DPD'
+				'type' => 'pimda'
 			));
 		} else if($case == "DPC") {
-			$dataCalon = DB::table('call_center_dpc')
-				->leftjoin('kabupaten','call_center_dpc.kabupaten_kota','=','kabupaten.id_kabupaten')
+			$dataCalon = DB::table('call_center_pimcab')
+				->leftjoin('kabupaten','call_center_pimcab.kabupaten_kota','=','kabupaten.id_kabupaten')
 				->leftjoin('provinsi','kabupaten.id_provinsi','=','provinsi.id_provinsi')
 				->groupBy('kabupaten.Nama_kabupaten')
-				->groupBy('call_center_dpc.nama_ketua_dpc')
+				->groupBy('call_center_pimcab.nama_ketua_pimcab')
 					->select(
-					'call_center_dpc.email as email',
-					'call_center_dpc.no_telp as no_telp',
-					'call_center_dpc.nama_ketua_dpc as nama',
-					'call_center_dpc.presentase',
+					'call_center_pimcab.email as email',
+					'call_center_pimcab.no_telp as no_telp',
+					'call_center_pimcab.nama_ketua_pimcab as nama',
+					'call_center_pimcab.presentase',
 					'provinsi.Nama_provinsi',
 					'kabupaten.Nama_kabupaten',
-					'call_center_dpc.*'
+					'call_center_pimcab.*'
 				)
 				->get();
-			return response()->view('dpc_maps', array(
+			return response()->view('pimcab_maps', array(
 				'dataCalon' => $dataCalon,
 				'type' => 'DPC'
 			));
 		} else if($case == 'Survey')  {
-			$dataCalon = DB::table('call_center_dpc')
-				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_dpc.kabupaten_kota')
-				->join('provinsi','provinsi.id_provinsi','=','call_center_dpc.provinsi')
-				->where('call_center_dpc.presentase','!=','0')
-				->where('call_center_dpc.responden','!=','')
+			$dataCalon = DB::table('call_center_pimcab')
+				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_pimcab.kabupaten_kota')
+				->join('provinsi','provinsi.id_provinsi','=','call_center_pimcab.provinsi')
+				->where('call_center_pimcab.presentase','!=','0')
+				->where('call_center_pimcab.responden','!=','')
 				->select(
-					'call_center_dpc.email as email',
-					'call_center_dpc.no_telp as no_telp',
-					'call_center_dpc.nama_ketua_dpc as nama',
-					'call_center_dpc.presentase',
+					'call_center_pimcab.email as email',
+					'call_center_pimcab.no_telp as no_telp',
+					'call_center_pimcab.nama_ketua_pimcab as nama',
+					'call_center_pimcab.presentase',
 					'provinsi.Nama_provinsi',
 					'kabupaten.Nama_kabupaten'
-				)->groupBy('kode_dpc')
+				)->groupBy('kode_pimcab')
 				->get();
-			$dataProvinsi = DB::table('call_center_dpc')
-				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_dpc.kabupaten_kota')
-				->join('provinsi','provinsi.id_provinsi','=','call_center_dpc.provinsi')
-				->where('call_center_dpc.presentase','!=','0')
-				->where('call_center_dpc.responden','!=','')
+			$dataProvinsi = DB::table('call_center_pimcab')
+				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_pimcab.kabupaten_kota')
+				->join('provinsi','provinsi.id_provinsi','=','call_center_pimcab.provinsi')
+				->where('call_center_pimcab.presentase','!=','0')
+				->where('call_center_pimcab.responden','!=','')
 				->groupBy('provinsi.Nama_provinsi')
 				->orderBy('provinsi.Nama_provinsi','asc')
 				->get();
@@ -899,31 +899,31 @@ class DashboardController extends Controller
 					'kabupaten.Nama_kabupaten',
 					'caleg_drh.*'
 				)->get();
-		} else if($case == "DPD") {
-			$dataCalon = DB::table('call_center_dpd')
-				->leftjoin('provinsi','provinsi.id_provinsi','=','call_center_dpd.provinsi')
-				->leftjoin('kabupaten','kabupaten.id_kabupaten','=','call_center_dpd.kabupaten')
-				->where('caleg.nama_dpd','like',$cari.'%')
+		} else if($case == "pimda") {
+			$dataCalon = DB::table('call_center_pimda')
+				->leftjoin('provinsi','provinsi.id_provinsi','=','call_center_pimda.provinsi')
+				->leftjoin('kabupaten','kabupaten.id_kabupaten','=','call_center_pimda.kabupaten')
+				->where('caleg.nama_pimda','like',$cari.'%')
 				->select(
-					'call_center_dpd.email as email',
-					'call_center_dpd.no_telp as no_telp',
-					'call_center_dpd.nama_dpd as nama',
+					'call_center_pimda.email as email',
+					'call_center_pimda.no_telp as no_telp',
+					'call_center_pimda.nama_pimda as nama',
 					'provinsi.Nama_provinsi',
 					'kabupaten.Nama_kabupaten',
-					'call_center_dpd.*'
+					'call_center_pimda.*'
 				)->get();
 		} else if($case == "DPC") {
-			$dataCalon = DB::table('call_center_dpc')
-				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_dpc.kabupaten_kota')
+			$dataCalon = DB::table('call_center_pimcab')
+				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_pimcab.kabupaten_kota')
 				->join('provinsi','provinsi.id_provinsi','=','kabupaten.id_provinsi')
-				->where('caleg.nama_ketua_dpc','like',$cari.'%')
+				->where('caleg.nama_ketua_pimcab','like',$cari.'%')
 				->select(
-					'call_center_dpc.email as email',
-					'call_center_dpc.no_telp as no_telp',
-					'call_center_dpc.nama_ketua_dpc as nama',
+					'call_center_pimcab.email as email',
+					'call_center_pimcab.no_telp as no_telp',
+					'call_center_pimcab.nama_ketua_pimcab as nama',
 					'provinsi.Nama_provinsi',
 					'kabupaten.Nama_kabupaten',
-					'call_center_dpc.*'
+					'call_center_pimcab.*'
 				)->get();
 		}
 		foreach ($dataCalon as $key) {
@@ -998,14 +998,14 @@ class DashboardController extends Controller
 			
 		if(session('idRole') == 1 || session('idRole') == 3) {
 			$dataKabAllQuery = DB::table('m_pengurus')
-				->select(DB::raw('SUM(pengurus_dpc) as dpc'));
+				->select(DB::raw('SUM(pengurus_pimcab) as pimcab'));
 			$dataKabAdaQuery = DB::table('m_pengurus')
-				->select(DB::raw('SUM(pengurus_dpc_ada) as dpc_ada'));			
+				->select(DB::raw('SUM(pengurus_pimcab_ada) as pimcab_ada'));			
 			
 			$dataKecAllQuery = DB::table('m_pengurus')
-				->select(DB::raw('SUM(pengurus_pac) as pac'));
+				->select(DB::raw('SUM(pengurus_pimcam) as pimcam'));
 			$dataKecAdaQuery = DB::table('m_pengurus')
-				->select(DB::raw('SUM(pengurus_pac_ada) as pac_ada'));
+				->select(DB::raw('SUM(pengurus_pimcam_ada) as pimcam_ada'));
 				
 			$dataKelAllQuery = DB::table('m_pengurus')
 				->select(DB::raw('SUM(pengurus_ranting) as ranting'));
@@ -1084,17 +1084,17 @@ class DashboardController extends Controller
 			$dataRTAdaQuery = $dataRTAdaQuery->get();	
 			
 			foreach($dataKabAllQuery as $tmp){
-				$dataKabAll = $tmp->dpc;
+				$dataKabAll = $tmp->pimcab;
 			}
 			foreach($dataKabAdaQuery as $tmp){
-				$dataKabAda = $tmp->dpc_ada;
+				$dataKabAda = $tmp->pimcab_ada;
 			}
 			
 			foreach($dataKecAllQuery as $tmp){
-				$dataKecAll = $tmp->pac;
+				$dataKecAll = $tmp->pimcam;
 			}
 			foreach($dataKecAdaQuery as $tmp){
-				$dataKecAda = $tmp->pac_ada;
+				$dataKecAda = $tmp->pimcam_ada;
 			}
 			
 			foreach($dataKelAllQuery as $tmp){
@@ -1121,9 +1121,9 @@ class DashboardController extends Controller
 			$dataProvAll = DB::table('m_geo_prov_kpu')
 				->count();
 			$dataProvAda = DB::table('m_bio')
-				->join('r_bio_dpd','r_bio_dpd.bio_id','=','m_bio.bio_id')
-				->leftjoin('m_struk_dpd','m_struk_dpd.struk_dpd_id','=','r_bio_dpd.struk_dpd_id')
-					->where('m_struk_dpd.struk_dpd_nama','=',"Ketua")
+				->join('r_bio_pimda','r_bio_pimda.bio_id','=','m_bio.bio_id')
+				->leftjoin('m_struk_pimda','m_struk_pimda.struk_pimda_id','=','r_bio_pimda.struk_pimda_id')
+					->where('m_struk_pimda.struk_pimda_nama','=',"Ketua")
 						->count();
 						
 			if($dataProvAda != 0 || $dataProvAll != 0){
@@ -1512,15 +1512,15 @@ class DashboardController extends Controller
 			$dataPendudukKab = DB::table('m_penduduk')
 				->select(DB::raw('SUM(penduduk_jumlah) as jumlah_penduduk'))
 					->get();
-			$dataKabV = DB::table('r_bio_dpc')
+			$dataKabV = DB::table('r_bio_pimcab')
 					->where('geo_prov_id', $prov)
 					->groupBy('geo_kab_id')
 					->get();
-			$dataKecV = DB::table('r_bio_pac')
+			$dataKecV = DB::table('r_bio_pimcam')
 					->where('geo_prov_id', $prov)
 					->groupBy('geo_kec_id')
 					->get();	
-			$dataKelV = DB::table('r_bio_pr')
+			$dataKelV = DB::table('r_bio_pimran')
 					->where('geo_prov_id', $prov)
 					->groupBy('geo_deskel_id')
 					->get();
@@ -1557,15 +1557,15 @@ class DashboardController extends Controller
 			$dataPendudukKab = DB::table('m_penduduk')
 				->select(DB::raw('SUM(penduduk_jumlah) as jumlah_penduduk'))
 					->get();
-			$dataKabV = DB::table('r_bio_dpc')
+			$dataKabV = DB::table('r_bio_pimcab')
 					->where('geo_prov_id', $prov)
 					->groupBy('geo_kab_id')
 					->get();
-			$dataKecV = DB::table('r_bio_pac')
+			$dataKecV = DB::table('r_bio_pimcam')
 					->where('geo_prov_id', $prov)
 					->groupBy('geo_kec_id')
 					->get();	
-			$dataKelV = DB::table('r_bio_pr')
+			$dataKelV = DB::table('r_bio_pimran')
 					->where('geo_prov_id', $prov)
 					->groupBy('geo_deskel_id')
 					->get();
@@ -1593,9 +1593,9 @@ class DashboardController extends Controller
 			$dataRTV = $tmp->kpa_ada;
 		}		
 
-		/*$dataKab = $tmp->dpc;
+		/*$dataKab = $tmp->pimcab;
 		foreach($dataKec as $tmp){
-			$dataKec = $tmp->pac;
+			$dataKec = $tmp->pimcam;
 		}		
 		foreach($dataKel as $tmp){
 			$dataKel = $tmp->ranting;
@@ -1655,44 +1655,44 @@ class DashboardController extends Controller
 	public function filterSurvei(){
 		$survei = @$_GET['survei'];
 		if($survei != 'semua'){
-			$dataSurvei = DB::table('call_center_dpc')
-				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_dpc.kabupaten_kota')
-				->join('provinsi','provinsi.id_provinsi','=','call_center_dpc.provinsi')
-				->leftjoin('call_center_dpd','call_center_dpd.provinsi','=','call_center_dpc.provinsi')
-					->where('call_center_dpc.presentase','!=','0')
-					->where('call_center_dpc.responden','!=','')
+			$dataSurvei = DB::table('call_center_pimcab')
+				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_pimcab.kabupaten_kota')
+				->join('provinsi','provinsi.id_provinsi','=','call_center_pimcab.provinsi')
+				->leftjoin('call_center_pimda','call_center_pimda.provinsi','=','call_center_pimcab.provinsi')
+					->where('call_center_pimcab.presentase','!=','0')
+					->where('call_center_pimcab.responden','!=','')
 					->where('provinsi.Nama_provinsi',$survei)
 						->select(
-							'call_center_dpc.email as email',
-							'call_center_dpc.no_telp as no_telp',
-							'call_center_dpc.nama_ketua_dpc',
-							'call_center_dpd.nama_dpd',
-							'call_center_dpd.kabupaten',
-							'call_center_dpd.provinsi',
-							'call_center_dpc.presentase',
+							'call_center_pimcab.email as email',
+							'call_center_pimcab.no_telp as no_telp',
+							'call_center_pimcab.nama_ketua_pimcab',
+							'call_center_pimda.nama_pimda',
+							'call_center_pimda.kabupaten',
+							'call_center_pimda.provinsi',
+							'call_center_pimcab.presentase',
 							'provinsi.Nama_provinsi',
 							'kabupaten.Nama_kabupaten'
-						)->groupBy('kode_dpc')
+						)->groupBy('kode_pimcab')
 							->get();
 			$type = $survei;
 		}else{
-			$dataSurvei = DB::table('call_center_dpc')
-				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_dpc.kabupaten_kota')
-				->join('provinsi','provinsi.id_provinsi','=','call_center_dpc.provinsi')
-				->leftjoin('call_center_dpd','call_center_dpd.provinsi','=','call_center_dpc.provinsi')
-					->where('call_center_dpc.presentase','!=','0')
-					->where('call_center_dpc.responden','!=','')
+			$dataSurvei = DB::table('call_center_pimcab')
+				->join('kabupaten','kabupaten.id_kabupaten','=','call_center_pimcab.kabupaten_kota')
+				->join('provinsi','provinsi.id_provinsi','=','call_center_pimcab.provinsi')
+				->leftjoin('call_center_pimda','call_center_pimda.provinsi','=','call_center_pimcab.provinsi')
+					->where('call_center_pimcab.presentase','!=','0')
+					->where('call_center_pimcab.responden','!=','')
 						->select(
-							'call_center_dpc.email as email',
-							'call_center_dpc.no_telp as no_telp',
-							'call_center_dpc.nama_ketua_dpc',
-							'call_center_dpd.nama_dpd',
-							'call_center_dpd.kabupaten',
-							'call_center_dpd.provinsi',
-							'call_center_dpc.presentase',
+							'call_center_pimcab.email as email',
+							'call_center_pimcab.no_telp as no_telp',
+							'call_center_pimcab.nama_ketua_pimcab',
+							'call_center_pimda.nama_pimda',
+							'call_center_pimda.kabupaten',
+							'call_center_pimda.provinsi',
+							'call_center_pimcab.presentase',
 							'provinsi.Nama_provinsi',
 							'kabupaten.Nama_kabupaten'
-						)->groupBy('kode_dpc')
+						)->groupBy('kode_pimcab')
 							->get();
 			$type = 'semua';
 		}

@@ -75,7 +75,7 @@
 
 		<?php $__env->startSection('content_table_body'); ?>
 			<?php /**/$no =1/**/ ?>
-			<?php /**/$bio_xxx_id='bio_dpc_id'/**/ ?>
+			<?php /**/$bio_xxx_id='bio_pimcab_id'/**/ ?>
 			<?php /**/$type='dpc'/**/ ?>
 			  <?php foreach($data as $val): ?>
 			  <?php /**/
@@ -128,7 +128,7 @@
 					</td>
 					<!-- <td>{ { ($val->gender==1?'Laki-Laki':($val->gender==2?'Perempuan':'-')) } }</td> -->
 					<td><?php echo e($val->no_sk2?:'-'); ?></td>
-					<td><?php echo e($val->bio_dpc_kta?str_replace('.', '', $val->no_kta2):'-'); ?></td>
+					<td><?php echo e($val->bio_pimcab_kta?str_replace('.', '', $val->no_kta2):'-'); ?></td>
 					<td><?php echo e($val->bio_nomer_identitas); ?></td>
 					<td><?php echo e($val->no_hp?:'-'); ?></td>
 					<!-- <td><?php echo e($val->email?:'-'); ?></td> -->

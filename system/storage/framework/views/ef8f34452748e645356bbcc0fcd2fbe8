@@ -71,13 +71,13 @@
             <div class="info-box-content">
               <span class="info-box-text">Kota</span>
               <span class="info-box-number responseKabupaten" > 
-              <?php echo e($tmp->pengurus_dpc_ada); ?>
+              <?php echo e($tmp->pengurus_pimcab_ada); ?>
 
               /
-              <?php echo e($tmp->pengurus_dpc); ?> 
+              <?php echo e($tmp->pengurus_pimcab); ?> 
               <br>      
 			  <h2 class="no-margin">
-              <?php echo e(number_format(($tmp->pengurus_dpc_ada/$tmp->pengurus_dpc * 100),2, "," , ".")); ?>%
+              <?php echo e(number_format(($tmp->pengurus_pimcab_ada/$tmp->pengurus_pimcab * 100),2, "," , ".")); ?>%
 			  </h2>
               </span>
             </div>
@@ -100,7 +100,7 @@
 
               <br>
 			  <h2 class="no-margin">
-              <?php echo e(number_format(($tmp->pengurus_pac_ada/$tmp->pengurus_pac * 100),2, "," , ".")); ?>%
+              <?php echo e(number_format(($tmp->pengurus_pac_ada/$tmp->pengurus_pimcam* 100),2, "," , ".")); ?>%
 			  </h2>
               </span>
             </div>

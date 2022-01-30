@@ -1,4 +1,4 @@
-<input id="pac-input" class="controls" type="text" placeholder="Search Box">
+<input id="pimcam-input" class="controls" type="text" placeholder="Search Box">
 <div id="map" style="background:#eee; height:93%;"></div>
 <script type="text/javascript" src="{{asset('asset/js/jquery-3.0.0.min.js')}}"></script>
 <script>
@@ -7,7 +7,7 @@
 	var marker_statistik_organisasi = [];
 	var marker_statistik_kursi = [];
 	var marker_dpd = [];
-	var marker_dpc = [];
+	var marker_pimcab = [];
 	var marker_survey = [];
 	var marker_gubernur = [];
 	var marker_bupati = [];
@@ -44,7 +44,7 @@
 		echo 'var statistikOrganisasi = [';
 			foreach($dataStatistikOrganisasi as $tmp)
 			{
-				echo '["'.$tmp->prov_nama.'",'.$tmp->lat.','.$tmp->lng.','.$tmp->dpc.','.$tmp->pac.','.$tmp->ranting.','.$tmp->anak_ranting.','.$tmp->kpa.','.$tmp->dpc_ada.','.$tmp->pac_ada.','.$tmp->ranting_ada.','.$tmp->anak_ranting_ada.','.$tmp->kpa_ada.'],';
+				echo '["'.$tmp->prov_nama.'",'.$tmp->lat.','.$tmp->lng.','.$tmp->pimcab.','.$tmp->pimcam.','.$tmp->ranting.','.$tmp->anak_ranting.','.$tmp->kpa.','.$tmp->pimcab_ada.','.$tmp->pimcam_ada.','.$tmp->ranting_ada.','.$tmp->anak_ranting_ada.','.$tmp->kpa_ada.'],';
 			}
 		echo '];';
 		echo 'var statistikKursi = [';
@@ -60,15 +60,15 @@
 			}
 		echo '];';
 		echo 'var DPD = [';
-			foreach($dataDPDAll as $tmp)
+			foreach($datapimdaAll as $tmp)
 			{
 				echo '[`'.$tmp->prov_nama.'`,`'.RTRIM($tmp->nama).'`,`'.$tmp->no_telp.'`,`'.$tmp->email.'`,'.$tmp->lat.','.$tmp->lng.','.$tmp->id_bio.',`'.$tmp->sk.'`],';
 			}
 		echo '];';
-		echo 'var DPC = [';
-			foreach($dataDPCAll as $tmp)
+		echo 'var pimcab = [';
+			foreach($datapimcabAll as $tmp)
 			{
-			if($tmp->dpc_kab_id != ''){
+			if($tmp->pimcab_kab_id != ''){
 				$lokasi = $tmp->kab_nama;
 			} else {
 				$lokasi = $tmp->prov_nama;
@@ -111,7 +111,7 @@
 			mapTypeId: google.maps.MapTypeId.TERRAIN
 		});
 
-        input = document.getElementById('pac-input');
+        input = document.getElementById('pimcam-input');
         searchBox = new google.maps.places.SearchBox(input);
         map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
@@ -157,9 +157,9 @@
 			{
 				addMarkerDPD(DPD[a][0],"{{ asset('asset/icon/user-black-orange2.png') }}",DPD[a][1],DPD[a][3],DPD[a][2],a,"DPD",DPD[a][4],DPD[a][5],DPD[a][6], DPD[a][7]);
 			}
-			for(var b=0; b < DPC.length; b++)
+			for(var b=0; b < pimcab.length; b++)
 			{
-				addMarkerDPC(DPC[b][0],"{{ asset('asset/icon/user-red-orange.png') }}",DPC[b][1],DPC[b][3],DPC[b][2],b,DPC[b][4],"DPC",DPC[b][5],DPC[b][6],DPC[b][7], DPC[b][8], DPC[b][9]);
+				addMarkerpimcab(pimcab[b][0],"{{ asset('asset/icon/user-red-orange.png') }}",pimcab[b][1],pimcab[b][3],pimcab[b][2],b,pimcab[b][4],"pimcab",pimcab[b][5],pimcab[b][6],pimcab[b][7], pimcab[b][8], pimcab[b][9]);
 			}
 			for(var b=0; b < statistikOrganisasi.length; b++)
 			{
@@ -183,7 +183,7 @@
 	}
 
 	// Add Marker Statistik Organisasi
-	function addMarkerStatistikOrganisasi(address, icon, lats ,lngs,dpc,pac,ranting,anak_ranting,kpa,dpc_ada,pac_ada,ranting_ada,anak_ranting_ada,kpa_ada){
+	function addMarkerStatistikOrganisasi(address, icon, lats ,lngs,pimcab,pimcam,ranting,anak_ranting,kpa,pimcab_ada,pimcam_ada,ranting_ada,anak_ranting_ada,kpa_ada){
 		var over =
 		'<div id="content">'+
 		'</div>'+
@@ -193,12 +193,12 @@
 			'<tr>'+
 			'<td>PIMCAB</td>'+
 			'<td  style="width:10px; text-align:center;">:</td>'+
-			'<td>'+dpc_ada+'/<b>'+dpc+'</b>  ('+getPercent(dpc_ada,dpc)+' %)</td>'+
+			'<td>'+pimcab_ada+'/<b>'+pimcab+'</b>  ('+getPercent(pimcab_ada,pimcab)+' %)</td>'+
 			'</tr>'+
 			'<tr>'+
 			'<td>PIMCAM</td>'+
 			'<td  style="width:10px; text-align:center;">:</td>'+
-			'<td>'+pac_ada+'/<b>'+pac+'</b>  ('+getPercent(pac_ada,pac)+' %)</td>'+
+			'<td>'+pimcam_ada+'/<b>'+pimcam+'</b>  ('+getPercent(pimcam_ada,pimcam)+' %)</td>'+
 			'</tr>'+
 			'<tr>'+
 			'<td>Ranting</td>'+
@@ -337,8 +337,8 @@
 		marker_dpd.push(marker2);
 	}
 
-	// Add Marker DPC
-	function addMarkerDPC(address, icon, name, email, telephone, i,lokasi, type, lats ,lngs, bioId, sk, provinsi){
+	// Add Marker pimcab
+	function addMarkerpimcab(address, icon, name, email, telephone, i,lokasi, type, lats ,lngs, bioId, sk, provinsi){
 		var telp = '';
 		  if( telephone != ''){
 			telp = telephone;
@@ -368,7 +368,7 @@
 			'<td>'+telp+'</td>'+
 			'</tr>'+
 			'<tr>'+
-				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`DPC`,`'+provinsi+'`,`'+lokasi+'`)"><i class="fa fa-info-circle"></i></div></td>'+
+				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`pimcab`,`'+provinsi+'`,`'+lokasi+'`)"><i class="fa fa-info-circle"></i></div></td>'+
 			'</tr>'+
 		  '</table>'+
 		  '</div>'+
@@ -383,7 +383,7 @@
 			position: {lat:lats, lng:lngs}
 		});
 		google.maps.event.addListener(marker3, 'click', infoCallback(over, marker3));
-		marker_dpc.push(marker3);
+		marker_pimcab.push(marker3);
 	}
 
 	/* Marker Pendudk */
@@ -538,9 +538,9 @@
           marker_statistik_kursi[i1].setMap(map);
         }
     }
-	function setDPC(map) {
-        for (var i3 = 0; i3 < marker_dpc.length; i3++) {
-          marker_dpc[i3].setMap(map);
+	function setpimcab(map) {
+        for (var i3 = 0; i3 < marker_pimcab.length; i3++) {
+          marker_pimcab[i3].setMap(map);
         }
     }
     function setDPD(map) {
@@ -614,7 +614,7 @@
 	function hideAllMarker()
 	{
     	setDPD(null);
-    	setDPC(null);
+    	setpimcab(null);
 		setGub(null);
     	setBup(null);
     	setWal(null);
@@ -830,7 +830,7 @@
     	setStatistikOrganisasi(null);
     	setStatistikKursi(null);
     	setDPD(map);
-    	setDPC(null);
+    	setpimcab(null);
 		setGub(null);
     	setBup(null);
     	setWal(null);
@@ -840,11 +840,11 @@
 		addOptionActive(jenis);
     }
 
-	function showDPC(jenis) {
+	function showpimcab(jenis) {
     	setStatistikOrganisasi(null);
     	setStatistikKursi(null);
     	setDPD(null);
-    	setDPC(map);
+    	setpimcab(map);
 		setGub(null);
     	setBup(null);
     	setWal(null);
@@ -856,7 +856,7 @@
 
 	function showPenduduk(jenis) {
 		setDPD(null);
-		setDPC(null);
+		setpimcab(null);
 		setGub(null);
 		setBup(null);
 		setWal(null);
@@ -920,11 +920,11 @@
 		}
 	}
 
-    function showDPDDPC(jenis) {
+    function showDPDpimcab(jenis) {
     	setStatistikOrganisasi(null);
     	setStatistikKursi(null);
     	setDPD(map);
-    	setDPC(map);
+    	setpimcab(map);
 		setGub(null);
     	setBup(null);
     	setWal(null);
@@ -938,7 +938,7 @@
     	setStatistikOrganisasi(null);
     	setStatistikKursi(null);
     	setDPD(null);
-    	setDPC(null);
+    	setpimcab(null);
 		setGub(map);
     	setBup(map);
     	setWal(map);
@@ -952,7 +952,7 @@
     	setStatistikOrganisasi(null);
     	setStatistikKursi(null);
     	setDPD(map);
-    	setDPC(map);
+    	setpimcab(map);
 		setGub(null);
     	setBup(null);
     	setWal(null);

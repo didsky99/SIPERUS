@@ -6,7 +6,7 @@ use Redirect;
 use Illuminate\Http\Request;
 use App\IndonesiaDataLokasi\Model\Provinsi;
 use App\IndonesiaDataLokasi\Model\Kabupaten;
-use App\Pusdatin\V3\Model\BioDPC ;
+use App\Pusdatin\V3\Model\Biopimcab ;
 
 use Maatwebsite\Excel\Facades\Excel;
 /**
@@ -70,10 +70,10 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 			   $join_r_bio->addselect(
 			   	'r_bio_'.$type.'.bio_'.$type.'_sk as no_sk2',
 			   	'r_bio_'.$type.'.bio_'.$type.'_tgl as turun_sk',
@@ -106,10 +106,10 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 				$join_r_bio ->leftjoin('m_struk_'.$type,'m_struk_'.$type.'.struk_'.$type.'_id','=','r_bio_'.$type.'.struk_'.$type.'_id');
 		}
 
@@ -119,20 +119,20 @@ class InputController extends Controller
 				$join_r_bio->leftjoin('m_geo_rw','m_geo_rw.geo_rw_id','=','r_bio_'.$type.'.geo_rw_id');
 			case 'par':
 				$join_r_bio->leftjoin('m_geo_deskel','m_geo_deskel.geo_deskel_id','=','r_bio_'.$type.'.geo_deskel_id');
-			case 'pac':
+			case 'pimcam':
 				$join_r_bio->leftjoin('m_geo_kec','m_geo_kec.geo_kec_id','=','r_bio_'.$type.'.geo_kec_id');
-			case 'dpc':
+			case 'pimcab':
 			case 'dprdii':
 				/* $join_r_bio->leftjoin('m_geo_kab','m_geo_kab.geo_kab_id','=','r_bio_'.$type.'.geo_kab_id'); */
 				$join_r_bio->leftjoin('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','r_bio_'.$type.'.geo_kab_id');
-			case 'dpd':
+			case 'pimda':
 			case 'dprdi':
 				/* $join_r_bio->leftjoin('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_'.$type.'.geo_prov_id'); */
 				$join_r_bio->leftjoin('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_'.$type.'.geo_prov_id');
 			break;
 			case 'dprri':
 				$join_r_bio->leftjoin('m_dapil as dpl','dpl.dapil_id','=','r_bio_'.$type.'.dapil_id');
-			case 'dpp':// what?
+			case 'pimnas':// what?
 		}
 
 		switch ($type) {
@@ -159,7 +159,7 @@ class InputController extends Controller
 					$join_r_bio->where('m_struk_'.$type.'.struk_'.$type.'_nama','=',"Ketua");
 					$showIndex=true;
 				}
-			case 'pac':
+			case 'pimcam':
 				if($kec)
 					$join_r_bio->where('r_bio_'.$type.'.geo_kec_id','=',$kec);
 				else{
@@ -168,7 +168,7 @@ class InputController extends Controller
 					$join_r_bio->where('m_struk_'.$type.'.struk_'.$type.'_nama','=',"Ketua");
 					$showIndex=true;
 				}
-			case 'dpc':
+			case 'pimcab':
 				if(!$kab)
 					{
 						$join_r_bio->addselect(
@@ -176,7 +176,7 @@ class InputController extends Controller
 						$join_r_bio->where('m_struk_'.$type.'.struk_'.$type.'_nama','=',"Ketua");
 						$showIndex=true;
 					}
-			case 'dpd':
+			case 'pimda':
 				if(!$prov)
 					{	$join_r_bio->addselect(
 						   	'm_geo_prov_kpu.geo_prov_nama','m_geo_prov_kpu.geo_prov_id');
@@ -198,7 +198,7 @@ class InputController extends Controller
 				}
 			break;
 
-			case 'dpp':
+			case 'pimnas':
 				if(!$prov)
 					$showIndex=true;
 
@@ -234,11 +234,11 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pr' :
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimran':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 				$breadcrumb[]='Data Pengurus';
 				$breadcrumb[]=strtoupper($type);
 			break;
@@ -289,21 +289,21 @@ class InputController extends Controller
 		if($showIndex){
 			$masterData['test']=[];
 			foreach($provinsi as $row){
-				$masterData['kabn'][]=DB::table('r_bio_dpc')
-					->select(DB::raw('geo_kab_nama,count(bio_dpc_id) as jml_dpc'))
-						->leftJoin('m_geo_kab','m_geo_kab.geo_kab_id','=','r_bio_dpc.geo_kab_id')
-							->groupBy('r_bio_dpc.geo_kab_id')
-								->where('r_bio_dpc.geo_prov_id','=',$row->geo_prov_id)
+				$masterData['kabn'][]=DB::table('r_bio_pimcab')
+					->select(DB::raw('geo_kab_nama,count(bio_pimcab_id) as jml_pimcab'))
+						->leftJoin('m_geo_kab','m_geo_kab.geo_kab_id','=','r_bio_pimcab.geo_kab_id')
+							->groupBy('r_bio_pimcab.geo_kab_id')
+								->where('r_bio_pimcab.geo_prov_id','=',$row->geo_prov_id)
 									->get();
 
 			}
-			$masterData['test']=DB::table('r_bio_dpc')
+			$masterData['test']=DB::table('r_bio_pimcab')
 				->select(DB::raw('COALESCE(count(*),0) as jml'))
-					->rightJoin('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id')
+					->rightJoin('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id')
 						->groupBy('m_geo_prov.geo_prov_id')
 							//->where('m_geo_prov.geo_prov_id','=',$row->geo_prov_id)
 							->get();
-				$masterData['countstruktot']=DB::table('m_struk_dpc')
+				$masterData['countstruktot']=DB::table('m_struk_pimcab')
 					->select(DB::raw('count(*) as jml'))
 						->groupBy('geo_prov_id')
 							//->where('geo_prov_id','=',$row->geo_prov_id)
@@ -314,16 +314,16 @@ class InputController extends Controller
 						->groupBy('geo_prov_id')
 							//->where('geo_prov_id','=',$row->geo_prov_id)
 							->get();
-				$masterData['countstrukav']=DB::table('m_struk_dpc')
-					->select(DB::raw('count(m_struk_dpc.struk_dpc_id) as jml'))
+				$masterData['countstrukav']=DB::table('m_struk_pimcab')
+					->select(DB::raw('count(m_struk_pimcab.struk_pimcab_id) as jml'))
 						->rightJoin('m_geo_prov',function($join){
-							$join->on('m_geo_prov.geo_prov_id','=','m_struk_dpc.geo_prov_id');
+							$join->on('m_geo_prov.geo_prov_id','=','m_struk_pimcab.geo_prov_id');
 							$join->whereNull('dijabat');
 						})->groupBy('m_geo_prov.geo_prov_id')
 							->get();
 			//echo '<pre>' . var_export($data, true) . '</pre>';
 
-			if($type == 'dpp' || $typ="par" || $typ="kpa")
+			if($type == 'pimnas' || $typ="par" || $typ="kpa")
 				return view('main.input.'.$type,$masterData);
 			else if($type == 'dprdi' || $type == 'dprdii')
 				return view('main.anggota.legislatif.'.$type,$masterData);
@@ -341,25 +341,25 @@ class InputController extends Controller
 	{
 		$query=DB::table('m_bio')
 				->select(DB::raw('count(m_bio.bio_jenis_kelamin) as jml'))
-				->join('r_bio_dpc',function($join){
-					$join->on('r_bio_dpc.bio_id','=','m_bio.bio_id');
+				->join('r_bio_pimcab',function($join){
+					$join->on('r_bio_pimcab.bio_id','=','m_bio.bio_id');
 				});
 		switch($type){
 			case 'l':
 				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id');
+					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->where('m_bio.bio_jenis_kelamin','=','1');
 				});
 				break;
 			case 'p':
 				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id');
+					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->where('m_bio.bio_jenis_kelamin','=','0');
 				});
 				break;
 			case 'a':
 				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id');
+					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->whereNull('m_bio.bio_jenis_kelamin');
 				});
 				break;
@@ -460,11 +460,11 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pr' :
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimran':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 				$data['struk_'.$type.'_id'] = $request->input('jabatan')?:null;
 				$data['bio_'.$type.'_sk'] = $noSK;
 				$data['bio_'.$type.'_tgl'] = $tglSK;
@@ -483,11 +483,11 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pr' :
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimran':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 				DB::table('m_struk_'.$type)
 					->where('struk_'.$type.'_id',$data['struk_'.$type.'_id'])
 						->update(['dijabat' => 1, 'struk_'.$type.'_created_date' => date("Y-m-d H:i:s"), "struk_".$type."_created_by" => session('idLogin')]);
@@ -579,11 +579,11 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pr' :
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimran':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 				$data['struk_'.$type.'_id'] = $request->input('jabatan')?:null;
 				$data['bio_'.$type.'_sk'] = $noSK;
 				$data['bio_'.$type.'_tgl'] = $tglSK;
@@ -602,11 +602,11 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pr' :
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimran':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 				$q->select('struk_'.$type.'_id as struk_id','bio_id');
 				$row=$q->where('bio_'.$type.'_id',$target_id)->first();
 				$struk_id=$row->struk_id;
@@ -682,11 +682,11 @@ class InputController extends Controller
 		switch($type){
 			case 'kpa':
 			case 'par':
-			case 'pr' :
-			case 'pac':
-			case 'dpc':
-			case 'dpd':
-			case 'dpp':
+			case 'pimran':
+			case 'pimcam':
+			case 'pimcab':
+			case 'pimda':
+			case 'pimnas':
 				$q->select('struk_'.$type.'_id as struk_id','bio_id');
 				$row=$q->where('bio_'.$type.'_id',$target_id)->first();
 				$struk_id=$row->struk_id;
@@ -724,27 +724,27 @@ class InputController extends Controller
 				$data['geo_rw_id'] = $request->input('rukunwarga');
 				break;
 			case 'par':
-			case 'pr' :
+			case 'pimran':
 				$data['geo_deskel_id'] = $request->input('desakelurahan');
 				$data['geo_kec_id'] = $request->input('kecamatan');
 				$data['geo_kab_id'] = $request->input('kabupaten');
 				$data['geo_prov_id'] = $request->input('provinsi');
 				break;
-			case 'pac':
+			case 'pimcam':
 				$data['geo_kec_id'] = $request->input('kecamatan');
 				$data['geo_kab_id'] = $request->input('kabupaten');
 				$data['geo_prov_id'] = $request->input('provinsi');
 				break;
-			case 'dpc':
+			case 'pimcab':
 			case 'dprdii':
 				$data['geo_kab_id'] = $request->input('kabupaten');
 				$data['geo_prov_id'] = $request->input('provinsi');
 				break;
-			case 'dpd':
+			case 'pimda':
 			case 'dprdi':
 				$data['geo_prov_id'] = $request->input('provinsi');
 				break;
-			case 'dpp':
+			case 'pimnas':
 			case 'dprri':
 				break;
 		}
@@ -770,19 +770,19 @@ class InputController extends Controller
 			case 'par':
 				$query->where("geo_rw_id","=",$deskel);
 				break;
-			case 'pr':
+			case 'pimran':
 				$query->where("geo_deskel_id","=",$deskel);
 				break;
-			case 'pac':
+			case 'pimcam':
 				$query->where("geo_kec_id","=",$kec);
 				break;
-			case 'dpc':
+			case 'pimcab':
 				$query->where("geo_kab_id","=",$kab);
 				break;
-			case 'dpd':
+			case 'pimda':
 				$query->where("geo_prov_id","=",$prov);
 				break;
-			case 'dpp':
+			case 'pimnas':
 			break;
 		}
 		$query->where("dijabat","=",null);

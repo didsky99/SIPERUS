@@ -30,10 +30,10 @@ class PengurusController extends Controller
 						->leftjoin('r_bio_dprri','r_bio_dprri.bio_id','=','m_bio.bio_id')
 						->leftjoin('r_bio_dprdi','r_bio_dprdi.bio_id','=','m_bio.bio_id')
 						->leftjoin('r_bio_dprdii','r_bio_dprdii.bio_id','=','m_bio.bio_id')
-						->leftjoin('r_bio_dpd','r_bio_dpd.bio_id','=','m_bio.bio_id')
-						->leftjoin('r_bio_dpc','r_bio_dpc.bio_id','=','m_bio.bio_id')
-						->leftjoin('r_bio_pac','r_bio_pac.bio_id','=','m_bio.bio_id')
-						->leftjoin('r_bio_pr','r_bio_pr.bio_id','=','m_bio.bio_id')
+						->leftjoin('r_bio_pimda','r_bio_pimda.bio_id','=','m_bio.bio_id')
+						->leftjoin('r_bio_pimcab','r_bio_pimcab.bio_id','=','m_bio.bio_id')
+						->leftjoin('r_bio_pimcam','r_bio_pimcam.bio_id','=','m_bio.bio_id')
+						->leftjoin('r_bio_pimran','r_bio_pimran.bio_id','=','m_bio.bio_id')
 						->leftjoin('r_bio_par','r_bio_par.bio_id','=','m_bio.bio_id')
 						->leftjoin('r_bio_kpa','r_bio_kpa.bio_id','=','m_bio.bio_id');*/
 			switch (session('idRole')) {
@@ -43,10 +43,10 @@ class PengurusController extends Controller
 					/*$dataBio->leftjoin('r_bio_dprri','r_bio_dprri.bio_id','=','m_bio.bio_id');
 						$dataBio->leftjoin('r_bio_dprdi','r_bio_dprdi.bio_id','=','m_bio.bio_id');
 						$dataBio->leftjoin('r_bio_dprdii','r_bio_dprdii.bio_id','=','m_bio.bio_id');
-						$dataBio->leftjoin('r_bio_dpd','r_bio_dpd.bio_id','=','m_bio.bio_id');
-						$dataBio->leftjoin('r_bio_dpc','r_bio_dpc.bio_id','=','m_bio.bio_id');
-						$dataBio->leftjoin('r_bio_pac','r_bio_pac.bio_id','=','m_bio.bio_id');
-						$dataBio->leftjoin('r_bio_pr','r_bio_pr.bio_id','=','m_bio.bio_id');
+						$dataBio->leftjoin('r_bio_pimda','r_bio_pimda.bio_id','=','m_bio.bio_id');
+						$dataBio->leftjoin('r_bio_pimcab','r_bio_pimcab.bio_id','=','m_bio.bio_id');
+						$dataBio->leftjoin('r_bio_pimcam','r_bio_pimcam.bio_id','=','m_bio.bio_id');
+						$dataBio->leftjoin('r_bio_pimran','r_bio_pimran.bio_id','=','m_bio.bio_id');
 						$dataBio->leftjoin('r_bio_par','r_bio_par.bio_id','=','m_bio.bio_id');
 						$dataBio->leftjoin('r_bio_kpa','r_bio_kpa.bio_id','=','m_bio.bio_id');*/
 					$dataBio->orWhere(function ($query) {
@@ -55,10 +55,10 @@ class PengurusController extends Controller
 						/*$query->where('r_bio_dprri.geo_prov_id',session('idProvinsi2'))
 									  ->orWhere('r_bio_dprdi.geo_prov_id',session('idProvinsi2'))
 									  ->orWhere('r_bio_dprdii.geo_prov_id',session('idProvinsi2'))
-									  ->orWhere('r_bio_dpd.geo_prov_id',session('idProvinsi2'))
-									  ->orWhere('r_bio_dpc.geo_prov_id',session('idProvinsi2'))
-									  ->orWhere('r_bio_pac.geo_prov_id',session('idProvinsi2'))
-									  ->orWhere('r_bio_pr.geo_prov_id',session('idProvinsi2'))
+									  ->orWhere('r_bio_pimda.geo_prov_id',session('idProvinsi2'))
+									  ->orWhere('r_bio_pimcab.geo_prov_id',session('idProvinsi2'))
+									  ->orWhere('r_bio_pimcam.geo_prov_id',session('idProvinsi2'))
+									  ->orWhere('r_bio_pimran.geo_prov_id',session('idProvinsi2'))
 									  ->orWhere('r_bio_par.geo_prov_id',session('idProvinsi2'))
 									  ->orWhere('r_bio_kpa.geo_prov_id',session('idProvinsi2'))
 									  ->orWhere('ref_bio.geo_prov_id',session('idProvinsi2'));*/
@@ -79,23 +79,23 @@ class PengurusController extends Controller
 					});
 					break;
 				case 6:
-					$dataBio->leftjoin('r_bio_pr', 'r_bio_pr.bio_id', '=', 'm_bio.bio_id');
+					$dataBio->leftjoin('r_bio_pimran', 'r_bio_pimran.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->leftjoin('r_bio_par', 'r_bio_par.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->leftjoin('r_bio_kpa', 'r_bio_kpa.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->orWhere(function ($query) {
-						$query->orWhere('r_bio_pr.geo_deskel_id', session('idKelurahan'))
+						$query->orWhere('r_bio_pimran.geo_deskel_id', session('idKelurahan'))
 							->orWhere('r_bio_par.geo_deskel_id', session('idKelurahan'))
 							->orWhere('r_bio_kpa.geo_deskel_id', session('idKelurahan'));
 					});
 					break;
 				case 5:
-					$dataBio->leftjoin('r_bio_pac', 'r_bio_pac.bio_id', '=', 'm_bio.bio_id');
-					$dataBio->leftjoin('r_bio_pr', 'r_bio_pr.bio_id', '=', 'm_bio.bio_id');
+					$dataBio->leftjoin('r_bio_pimcam', 'r_bio_pimcam.bio_id', '=', 'm_bio.bio_id');
+					$dataBio->leftjoin('r_bio_pimran', 'r_bio_pimran.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->leftjoin('r_bio_par', 'r_bio_par.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->leftjoin('r_bio_kpa', 'r_bio_kpa.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->orWhere(function ($query) {
-						$query->orWhere('r_bio_pac.geo_kec_id', session('idKecamatan'))
-							->orWhere('r_bio_pr.geo_kec_id', session('idKecamatan'))
+						$query->orWhere('r_bio_pimcam.geo_kec_id', session('idKecamatan'))
+							->orWhere('r_bio_pimran.geo_kec_id', session('idKecamatan'))
 							->orWhere('r_bio_par.geo_kec_id', session('idKecamatan'))
 							->orWhere('r_bio_kpa.geo_kec_id', session('idKecamatan'));
 					});
@@ -103,17 +103,17 @@ class PengurusController extends Controller
 				case 4:
 					$dataBio->leftjoin('ref_bio', 'ref_bio.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->leftjoin('r_bio_dprdii', 'r_bio_dprdii.bio_id', '=', 'm_bio.bio_id');
-					$dataBio->leftjoin('r_bio_dpd', 'r_bio_dpd.bio_id', '=', 'm_bio.bio_id');
-					$dataBio->leftjoin('r_bio_dpc', 'r_bio_dpc.bio_id', '=', 'm_bio.bio_id');
-					$dataBio->leftjoin('r_bio_pac', 'r_bio_pac.bio_id', '=', 'm_bio.bio_id');
-					$dataBio->leftjoin('r_bio_pr', 'r_bio_pr.bio_id', '=', 'm_bio.bio_id');
+					$dataBio->leftjoin('r_bio_pimda', 'r_bio_pimda.bio_id', '=', 'm_bio.bio_id');
+					$dataBio->leftjoin('r_bio_pimcab', 'r_bio_pimcab.bio_id', '=', 'm_bio.bio_id');
+					$dataBio->leftjoin('r_bio_pimcam', 'r_bio_pimcam.bio_id', '=', 'm_bio.bio_id');
+					$dataBio->leftjoin('r_bio_pimran', 'r_bio_pimran.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->leftjoin('r_bio_par', 'r_bio_par.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->leftjoin('r_bio_kpa', 'r_bio_kpa.bio_id', '=', 'm_bio.bio_id');
 					$dataBio->orWhere(function ($query) {
 						$query->orWhere('r_bio_dprdii.geo_kab_id', session('idKabupaten'))
-							->orWhere('r_bio_dpc.geo_kab_id', session('idKabupaten'))
-							->orWhere('r_bio_pac.geo_kab_id', session('idKabupaten'))
-							->orWhere('r_bio_pr.geo_kab_id', session('idKabupaten'))
+							->orWhere('r_bio_pimcab.geo_kab_id', session('idKabupaten'))
+							->orWhere('r_bio_pimcam.geo_kab_id', session('idKabupaten'))
+							->orWhere('r_bio_pimran.geo_kab_id', session('idKabupaten'))
 							->orWhere('r_bio_par.geo_kab_id', session('idKabupaten'))
 							->orWhere('r_bio_kpa.geo_kab_id', session('idKabupaten'))
 							->orWhere('ref_bio.geo_kab_id', session('idKabupaten'));
@@ -981,13 +981,13 @@ class PengurusController extends Controller
 					$join_r_bio->leftJoin('m_struk_' . $type, 'm_struk_' . $type . '.struk_' . $type . '_id', '=', 'r_bio_' . $type . '.struk_' . $type . '_id');
 
 
-					if ($type == 'dpp') {
-					} else if ($type == 'dpd') {
+					if ($type == 'pimnas') {
+					} else if ($type == 'pimda') {
 						$join_r_bio->join('m_geo_prov_kpu', 'm_geo_prov_kpu.geo_prov_id', '=', 'r_bio_' . $type . '.geo_prov_id');
-					} else if ($type == 'dpc') {
+					} else if ($type == 'pimcab') {
 						$join_r_bio->join('m_geo_kab_kpu', 'm_geo_kab_kpu.geo_kab_id', '=', 'r_bio_' . $type . '.geo_kab_id');
 						$join_r_bio->join('m_geo_prov_kpu', 'm_geo_prov_kpu.geo_prov_id', '=', 'r_bio_' . $type . '.geo_prov_id');
-					} else if ($type == 'pac') {
+					} else if ($type == 'pimcam') {
 						$join_r_bio->join('m_geo_kec_kpu', 'm_geo_kec_kpu.geo_kec_id', '=', 'r_bio_' . $type . '.geo_kec_id');
 						$join_r_bio->join('m_geo_kab_kpu', 'm_geo_kab_kpu.geo_kab_id', '=', 'r_bio_' . $type . '.geo_kab_id');
 						$join_r_bio->join('m_geo_prov_kpu', 'm_geo_prov_kpu.geo_prov_id', '=', 'r_bio_' . $type . '.geo_prov_id');
@@ -1011,7 +1011,7 @@ class PengurusController extends Controller
 						$join_r_bio->join('m_geo_prov_kpu', 'm_geo_prov_kpu.geo_prov_id', '=', 'r_bio_' . $type . '.geo_prov_id');
 					}
 
-					if ($type == "dpp") {
+					if ($type == "pimnas") {
 						$based_on = Input::get('based_on');
 						$keyword = Input::get('keyword');
 
@@ -1053,7 +1053,7 @@ class PengurusController extends Controller
 						$join_r_bio->addselect('m_geo_prov_kpu.geo_prov_nama', 'm_geo_prov_kpu.geo_prov_id');
 					}
 
-					/* if($type != 'dpp') {
+					/* if($type != 'pimnas') {
 				$join_r_bio->where('m_struk_'.$type.'.struk_'.$type.'_nama','=',"Ketua");		
 			} */
 
@@ -1069,12 +1069,12 @@ class PengurusController extends Controller
 
 					$breadcrumb = ['Pendaftaran Anggota', 'Daftar Pengurus Organisasi', strtoupper($type)];
 
-					if ($type == "dpp") {
+					if ($type == "pimnas") {
 						$SK_Baru = '-';
 					}
 
-					if ($type == "dpd") {
-						if ($type == "dpd" && $prov != "") {
+					if ($type == "pimda") {
+						if ($type == "pimda" && $prov != "") {
 							$getSK = DB::table('ref_sk_cek')
 								->where('tingkatan_pengurus', $type)
 								->where('tingkat_provinsi', $prov)
@@ -1089,8 +1089,8 @@ class PengurusController extends Controller
 						}
 					}
 
-					if ($type == "dpc") {
-						if ($type == "dpc" && $kab != "") {
+					if ($type == "pimcab") {
+						if ($type == "pimcab" && $kab != "") {
 							$getSK = DB::table('ref_sk_cek')
 								->where('tingkatan_pengurus', $type)
 								->where('tingkat_provinsi', $prov)
@@ -1106,8 +1106,8 @@ class PengurusController extends Controller
 						}
 					}
 
-					if ($type == "pac") {
-						if ($type == "pac" && $kec != "") {
+					if ($type == "pimcam") {
+						if ($type == "pimcam" && $kec != "") {
 							$getSK = DB::table('ref_sk_cek')
 								->where('tingkatan_pengurus', $type)
 								->where('tingkat_provinsi', $prov)
@@ -1124,8 +1124,8 @@ class PengurusController extends Controller
 						}
 					}
 
-					if ($type == "pr") {
-						if ($type == "pr" && $deskel != "") {
+					if ($type == "pimran") {
+						if ($type == "pimran" && $deskel != "") {
 							$getSK = DB::table('ref_sk_cek')
 								->where('tingkatan_pengurus', $type)
 								->where('tingkat_provinsi', $prov)
@@ -1239,20 +1239,20 @@ class PengurusController extends Controller
 
 					$masterData['test'] = [];
 					foreach ($provinsi as $row) {
-						$masterData['kabn'][] = DB::table('r_bio_dpc')
-							->select(DB::raw('geo_kab_nama,count(bio_dpc_id) as jml_dpc'))
-							->leftJoin('m_geo_kab', 'm_geo_kab.geo_kab_id', '=', 'r_bio_dpc.geo_kab_id')
-							->groupBy('r_bio_dpc.geo_kab_id')
-							->where('r_bio_dpc.geo_prov_id', '=', $row->geo_prov_id)
+						$masterData['kabn'][] = DB::table('r_bio_pimcab')
+							->select(DB::raw('geo_kab_nama,count(bio_pimcab_id) as jml_pimcab'))
+							->leftJoin('m_geo_kab', 'm_geo_kab.geo_kab_id', '=', 'r_bio_pimcab.geo_kab_id')
+							->groupBy('r_bio_pimcab.geo_kab_id')
+							->where('r_bio_pimcab.geo_prov_id', '=', $row->geo_prov_id)
 							->get();
 					}
-					$masterData['test'] = DB::table('r_bio_dpc')
+					$masterData['test'] = DB::table('r_bio_pimcab')
 						->select(DB::raw('COALESCE(count(*),0) as jml'))
-						->rightJoin('m_geo_prov', 'm_geo_prov.geo_prov_id', '=', 'r_bio_dpc.geo_prov_id')
+						->rightJoin('m_geo_prov', 'm_geo_prov.geo_prov_id', '=', 'r_bio_pimcab.geo_prov_id')
 						->groupBy('m_geo_prov.geo_prov_id')
 						//->where('m_geo_prov.geo_prov_id','=',$row->geo_prov_id)
 						->get();
-					$masterData['countstruktot'] = DB::table('m_struk_dpc')
+					$masterData['countstruktot'] = DB::table('m_struk_pimcab')
 						->select(DB::raw('count(*) as jml'))
 						->groupBy('geo_prov_id')
 						//->where('geo_prov_id','=',$row->geo_prov_id)
@@ -1263,16 +1263,16 @@ class PengurusController extends Controller
 						->groupBy('geo_prov_id')
 						//->where('geo_prov_id','=',$row->geo_prov_id)
 						->get();
-					$masterData['countstrukav'] = DB::table('m_struk_dpc')
-						->select(DB::raw('count(m_struk_dpc.struk_dpc_id) as jml'))
+					$masterData['countstrukav'] = DB::table('m_struk_pimcab')
+						->select(DB::raw('count(m_struk_pimcab.struk_pimcab_id) as jml'))
 						->rightJoin('m_geo_prov', function ($join) {
-							$join->on('m_geo_prov.geo_prov_id', '=', 'm_struk_dpc.geo_prov_id');
+							$join->on('m_geo_prov.geo_prov_id', '=', 'm_struk_pimcab.geo_prov_id');
 							$join->whereNull('dijabat');
 						})->groupBy('m_geo_prov.geo_prov_id')
 						->get();
 
 
-					if ($type == 'dpp' || $type == "par" || $type == "kpa" || $type == "pr" || $type == "dpd") {
+					if ($type == 'pimnas' || $type == "par" || $type == "kpa" || $type == "pimran" || $type == "pimda") {
 						return view('main.anggota.organisasis.' . $type, $masterData);
 					} else {
 						return view('main.anggota.organisasi.index_' . $type, $masterData);

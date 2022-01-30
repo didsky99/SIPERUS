@@ -36,7 +36,7 @@ class AjaxController extends Controller
 				'm_bio.bio_id as val',
 				DB::raw('CONCAT(m_bio.bio_nama_depan," ",m_bio.bio_nama_tengah," ",m_bio.bio_nama_belakang) as text')
 			)
-			->join('r_bio_dpd','r_bio_dpd.bio_id','=','m_bio.bio_id')
+			->join('r_bio_pimda','r_bio_pimda.bio_id','=','m_bio.bio_id')
 			->where("m_bio.bio_nama_depan","like","%$search%")
 			->where("geo_prov_id",$idProvinsi)
 			->where("status_akses","=",null)
@@ -585,16 +585,16 @@ class AjaxController extends Controller
 		foreach ($getData as $get) {
 		$arr = array(
 			"geo_prov_nama" => $get->geo_prov_nama,
-			"pengurus_dpc_ada" => $get->pengurus_dpc_ada,
-			"pengurus_dpc" => $get->pengurus_dpc,
-			"pengurus_pac_ada" => $get->pengurus_pac_ada,
+			"pengurus_pimcab_ada" => $get->pengurus_pimcab_ada,
+			"pengurus_pimcab" => $get->pengurus_pimcab,
+			"pengurus_pimcam_ada" => $get->pengurus_pimcam_ada,
 			"pengurus_ranting_ada" => $get->pengurus_ranting_ada,
 			"pengurus_ranting" => $get->pengurus_ranting,
 			"pengurus_anak_ranting_ada" => $get->pengurus_anak_ranting_ada,
 			"pengurus_anak_ranting" => $get->pengurus_anak_ranting,
 			"pengurus_kpa_ada" => $get->pengurus_kpa_ada,
 			"pengurus_kpa" => $get->pengurus_kpa,
-			"pengurus_pac" => $get->pengurus_pac,
+			"pengurus_pimcam" => $get->pengurus_pimcam,
 				);
 		}
 		$hasil = "";

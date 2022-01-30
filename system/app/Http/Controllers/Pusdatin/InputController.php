@@ -255,21 +255,21 @@ class InputController extends Controller
 		if($showIndex){
 			$masterData['test']=[];
 			foreach($provinsi as $row){	
-				$masterData['kabn'][]=DB::table('r_bio_dpc')
-					->select(DB::raw('geo_kab_nama,count(bio_dpc_id) as jml_dpc'))
-						->leftJoin('m_geo_kab','m_geo_kab.geo_kab_id','=','r_bio_dpc.geo_kab_id')
-							->groupBy('r_bio_dpc.geo_kab_id')
-								->where('r_bio_dpc.geo_prov_id','=',$row->geo_prov_id)
+				$masterData['kabn'][]=DB::table('r_bio_pimcab')
+					->select(DB::raw('geo_kab_nama,count(bio_pimcab_id) as jml_dpc'))
+						->leftJoin('m_geo_kab','m_geo_kab.geo_kab_id','=','r_bio_pimcab.geo_kab_id')
+							->groupBy('r_bio_pimcab.geo_kab_id')
+								->where('r_bio_pimcab.geo_prov_id','=',$row->geo_prov_id)
 									->get();
 
 			}
-			$masterData['test']=DB::table('r_bio_dpc')
+			$masterData['test']=DB::table('r_bio_pimcab')
 				->select(DB::raw('COALESCE(count(*),0) as jml'))
-					->rightJoin('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id')
+					->rightJoin('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id')
 						->groupBy('m_geo_prov.geo_prov_id')
 							//->where('m_geo_prov.geo_prov_id','=',$row->geo_prov_id)
 							->get();
-				$masterData['countstruktot']=DB::table('m_struk_dpc')
+				$masterData['countstruktot']=DB::table('m_struk_pimcab')
 					->select(DB::raw('count(*) as jml'))
 						->groupBy('geo_prov_id')
 							//->where('geo_prov_id','=',$row->geo_prov_id)
@@ -280,10 +280,10 @@ class InputController extends Controller
 						->groupBy('geo_prov_id')
 							//->where('geo_prov_id','=',$row->geo_prov_id)
 							->get();
-				$masterData['countstrukav']=DB::table('m_struk_dpc')
-					->select(DB::raw('count(m_struk_dpc.struk_dpc_id) as jml'))
+				$masterData['countstrukav']=DB::table('m_struk_pimcab')
+					->select(DB::raw('count(m_struk_pimcab.struk_pimcab_id) as jml'))
 						->rightJoin('m_geo_prov',function($join){
-							$join->on('m_geo_prov.geo_prov_id','=','m_struk_dpc.geo_prov_id');
+							$join->on('m_geo_prov.geo_prov_id','=','m_struk_pimcab.geo_prov_id');
 							$join->whereNull('dijabat');
 						})->groupBy('m_geo_prov.geo_prov_id')		
 							->get();
@@ -307,25 +307,25 @@ class InputController extends Controller
 	{	
 		$query=DB::table('m_bio')
 				->select(DB::raw('count(m_bio.bio_jenis_kelamin) as jml'))
-				->join('r_bio_dpc',function($join){
-					$join->on('r_bio_dpc.bio_id','=','m_bio.bio_id');
+				->join('r_bio_pimcab',function($join){
+					$join->on('r_bio_pimcab.bio_id','=','m_bio.bio_id');
 				});
 		switch($type){
 			case 'l':
 				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id');
+					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->where('m_bio.bio_jenis_kelamin','=','1');
 				});
 				break;
 			case 'p':
 				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id');
+					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->where('m_bio.bio_jenis_kelamin','=','0');
 				});
 				break;
 			case 'a':
 				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_dpc.geo_prov_id');
+					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->whereNull('m_bio.bio_jenis_kelamin');
 				});
 				break;

@@ -39,10 +39,10 @@
 						<div class="form-group col-md-12">
 							<label for="nama" class="col-md-4">DPC (jumlah/ada)</label>
 							<div class="col-md-4">
-								<input type="text" name="pengurus_dpc" id="pengurus_dpc" class="form-control" placeholder="Pengurus DPC">
+								<input type="text" name="pengurus_pimcab" id="pengurus_pimcab" class="form-control" placeholder="Pengurus DPC">
 							</div>
 							<div class="col-md-4">
-								<input type="text" name="pengurus_dpc_ada" id="pengurus_dpc_ada" class="form-control" placeholder="Pengurus DPC">
+								<input type="text" name="pengurus_pimcab_ada" id="pengurus_pimcab_ada" class="form-control" placeholder="Pengurus DPC">
 							</div>
 						</div>
 						<div class="form-group col-md-12">
@@ -123,10 +123,10 @@
 							<label for="nama" class="col-md-4">DPC (jumlah/ada)</label>
 							<div class="col-md-4">
 								<input type="hidden" name="edit_pengurus" id="edit_pengurus" class="form-control" placeholder="Pengurus DPC">
-								<input type="text" name="edit_pengurus_dpc" id="edit_pengurus_dpc" class="form-control" placeholder="Pengurus DPC">
+								<input type="text" name="edit_pengurus_pimcab" id="edit_pengurus_pimcab" class="form-control" placeholder="Pengurus DPC">
 							</div>
 							<div class="col-md-4">
-								<input type="text" name="edit_pengurus_dpc_ada" id="edit_pengurus_dpc_ada" class="form-control" placeholder="Pengurus DPC">
+								<input type="text" name="edit_pengurus_pimcab_ada" id="edit_pengurus_pimcab_ada" class="form-control" placeholder="Pengurus DPC">
 							</div>
 						</div>
 						<div class="form-group col-md-12">
@@ -226,12 +226,12 @@
 							  <?php $no =1; ?>
 							  <?php foreach($data as $tmp): ?>
 							  <?php
-								$dataEdit = "'".$tmp->pengurus_id."','".$tmp->geo_prov_id."','".$tmp->pengurus_dpc."','".$tmp->pengurus_pac."','".$tmp->pengurus_ranting."','".$tmp->pengurus_anak_ranting."','".$tmp->pengurus_kpa."','".$tmp->pengurus_dpc_ada."','".$tmp->pengurus_pac_ada."','".$tmp->pengurus_ranting_ada."','".$tmp->pengurus_anak_ranting_ada."','".$tmp->pengurus_kpa_ada."'";
+								$dataEdit = "'".$tmp->pengurus_id."','".$tmp->geo_prov_id."','".$tmp->pengurus_pimcab."','".$tmp->pengurus_pac."','".$tmp->pengurus_ranting."','".$tmp->pengurus_anak_ranting."','".$tmp->pengurus_kpa."','".$tmp->pengurus_pimcab_ada."','".$tmp->pengurus_pac_ada."','".$tmp->pengurus_ranting_ada."','".$tmp->pengurus_anak_ranting_ada."','".$tmp->pengurus_kpa_ada."'";
 							  ?>
 							  <tr>
 								<td><?php echo e($no++); ?></td>
 								<td><?php echo e($tmp->geo_prov_nama); ?></td>
-								<td><?php echo e($tmp->pengurus_dpc_ada); ?> / <?php echo e($tmp->pengurus_dpc); ?></td>
+								<td><?php echo e($tmp->pengurus_pimcab_ada); ?> / <?php echo e($tmp->pengurus_pimcab); ?></td>
 								<td><?php echo e($tmp->pengurus_pac_ada); ?> / <?php echo e($tmp->pengurus_pac); ?></td>
 								<td><?php echo e($tmp->pengurus_ranting_ada); ?> / <?php echo e($tmp->pengurus_ranting); ?></td>
 								<td><?php echo e($tmp->pengurus_anak_ranting_ada); ?> / <?php echo e($tmp->pengurus_anak_ranting); ?></td>
@@ -259,12 +259,12 @@
 function editStatistik(pengurus,prov,dpc,pac,ranting,anak_ranting,kpa,dpc_ada,pac_ada,ranting_ada,anak_ranting_ada,kpa_ada){
 	$('#edit_pengurus').val(pengurus);
 	$('#edit_provinsi').val(prov);
-	$('#edit_pengurus_dpc').val(dpc);
+	$('#edit_pengurus_pimcab').val(dpc);
 	$('#edit_pengurus_pac').val(pac);
 	$('#edit_pengurus_ranting').val(ranting);
 	$('#edit_pengurus_anak_ranting').val(anak_ranting);
 	$('#edit_pengurus_kpa').val(kpa);
-	$('#edit_pengurus_dpc_ada').val(dpc_ada);
+	$('#edit_pengurus_pimcab_ada').val(dpc_ada);
 	$('#edit_pengurus_pac_ada').val(pac_ada);
 	$('#edit_pengurus_ranting_ada').val(ranting_ada);
 	$('#edit_pengurus_anak_ranting_ada').val(anak_ranting_ada);

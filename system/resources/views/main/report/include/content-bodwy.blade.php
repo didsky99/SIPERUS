@@ -48,7 +48,7 @@
 												</div>
 												<div class="col-md-9">
 													<h4 class="no-margin"><b>{{ $namaKetuaDPD }}</b></h4>
-													<small>Ketua DPD {{ @$namaDaerah }}</small> <br>
+													<small>Ketua PIMDA {{ @$namaDaerah }}</small> <br>
 													<small>{{ $SkepKet }}</small>
 												</div>
 											</div>
@@ -60,7 +60,7 @@
 												</div>
 												<div class="col-md-9">
 													<h4 class="no-margin"><b>{{ $namaSekDPD }}</b></h4>
-													<small>Sekertaris DPD {{ @$namaDaerah }}</small><br>
+													<small>Sekertaris PIMDA {{ @$namaDaerah }}</small><br>
 													<small>{{ @$SkepSek }}</small>
 												</div>
 											</div>
@@ -86,7 +86,7 @@
 										<div class="panel-heading">
 											<label>PIMCAB Belum Terbentuk</label>
 										</div>
-										<div class="panel-body" id="area-nf-dpc" style="padding: 0; height: 500px; overflow-x: hidden;">
+										<div class="panel-body" id="area-nf-pimcab" style="padding: 0; height: 500px; overflow-x: hidden;">
 											<table class="table table-bordered table-striped">
 												<thead>
 													<tr>
@@ -98,7 +98,7 @@
 													if($prov != null){
 													$a = 1;
 														?>
-													@foreach($dpc_null as $get)
+													@foreach($pimcab_null as $get)
 													<tr>
 														<td>{{ $get->geo_kab_nama }}</td>
 													</tr>
@@ -109,7 +109,7 @@
 												</tbody>
 											</table>
 										<?php
-										/*echo str_replace("/?", "?", $pac_null->render());*/
+										/*echo str_replace("/?", "?", $pimcam_null->render());*/
 										?>
 										</div>
 									</div>
@@ -119,7 +119,7 @@
 										<div class="panel-heading">
 											<label>PIMCAM Belum Terbentuk</label>
 										</div>
-										<div class="panel-body" id="area-nf-pac" style="padding: 0; height: 500px; overflow-x: hidden;">
+										<div class="panel-body" id="area-nf-pimcam" style="padding: 0; height: 500px; overflow-x: hidden;">
 											<table class="table table-bordered table-striped">
 												<thead>
 													<tr>
@@ -132,7 +132,7 @@
 													if($prov != null){
 													$a = 1;
 														?>
-													@foreach($pac_null as $get)
+													@foreach($pimcam_null as $get)
 													<tr>
 														<td>{{ $get->geo_kab_nama }}</td>
 														<td>{{ $get->geo_kec_nama }}</td>
@@ -144,7 +144,7 @@
 												</tbody>
 											</table>
 										<?php
-										/*echo str_replace("/?", "?", $pac_null->render());*/
+										/*echo str_replace("/?", "?", $pimcam_null->render());*/
 										?>
 										</div>
 									</div>
@@ -164,7 +164,7 @@
 												</thead>
 												<tbody>
 													@if($prov)
-														@foreach($pr_null as $get)
+														@foreach($pimran_null as $get)
 														<tr>
 															<td>{{ $get->geo_kec_nama }}</td>
 															<td>{{ $get->geo_deskel_nama }}</td>
@@ -202,40 +202,40 @@
 	
 	$('document').ready(function(){
 		if(provId != ''){
-			if('{{ $type }}' == 'dpd'){			
-				getGrafik('pie','#canvasPie','dpd','/'+provId);
+			if('{{ $type }}' == 'pimda'){			
+				getGrafik('pie','#canvasPie','pimda','/'+provId);
 				/* getGrafik('ketua','#canvasKetua','/'+provId); */
-				getGrafik('kabupaten','#canvasKabupaten','dpd','/'+provId);
-				getGrafik('kecamatan','#canvasKecamatan','dpd','/'+provId);
-				getGrafik('kelurahan','#canvasKelurahan','dpd','/'+provId);
-				getGrafik('rw','#canvasRW','dpd','/'+provId);
-				getGrafik('rt','#canvasRT','dpd','/'+provId);
-			} else if('{{ $type }}' == 'dpc'){	
+				getGrafik('kabupaten','#canvasKabupaten','pimda','/'+provId);
+				getGrafik('kecamatan','#canvasKecamatan','pimda','/'+provId);
+				getGrafik('kelurahan','#canvasKelurahan','pimda','/'+provId);
+				getGrafik('rw','#canvasRW','pimda','/'+provId);
+				getGrafik('rt','#canvasRT','pimda','/'+provId);
+			} else if('{{ $type }}' == 'pimcab'){	
 				hideElement('#canvasKabupaten');
-				getGrafik('pie','#canvasPie','dpc','/'+provId);
+				getGrafik('pie','#canvasPie','pimcab','/'+provId);
 				/* getGrafik('ketua','#canvasKetua','/'+provId); */
-				getGrafik('kecamatan','#canvasKecamatan','dpc','/'+provId);
-				getGrafik('kelurahan','#canvasKelurahan','dpc','/'+provId);
-				getGrafik('rw','#canvasRW','dpc','/'+provId);
-				getGrafik('rt','#canvasRT','dpc','/'+provId);
-				getGrafik('dprdi','#canvasDprdi','dpc','/'+provId);
-				getGrafik('dprdii','#canvasDprdii','dpc','/'+provId);
-			} else if('{{ $type }}' == 'pac'){
+				getGrafik('kecamatan','#canvasKecamatan','pimcab','/'+provId);
+				getGrafik('kelurahan','#canvasKelurahan','pimcab','/'+provId);
+				getGrafik('rw','#canvasRW','pimcab','/'+provId);
+				getGrafik('rt','#canvasRT','pimcab','/'+provId);
+				getGrafik('dprdi','#canvasDprdi','pimcab','/'+provId);
+				getGrafik('dprdii','#canvasDprdii','pimcab','/'+provId);
+			} else if('{{ $type }}' == 'pimcam'){
 				hideElement('#canvasKabupaten');	
 				hideElement('#canvasKecamatan');
-				getGrafik('pie','#canvasPie','pac','/'+provId);
+				getGrafik('pie','#canvasPie','pimcam','/'+provId);
 				/* getGrafik('ketua','#canvasKetua','/'+provId); */
-				getGrafik('kelurahan','#canvasKelurahan','pac','/'+provId);
-				getGrafik('rw','#canvasRW','pac','/'+provId);
-				getGrafik('rt','#canvasRT','pac','/'+provId);
-			} else if('{{ $type }}' == 'pr'){	
+				getGrafik('kelurahan','#canvasKelurahan','pimcam','/'+provId);
+				getGrafik('rw','#canvasRW','pimcam','/'+provId);
+				getGrafik('rt','#canvasRT','pimcam','/'+provId);
+			} else if('{{ $type }}' == 'pimran'){	
 				hideElement('#canvasKabupaten');	
 				hideElement('#canvasKecamatan');
 				hideElement('#canvasKelurahan');
-				getGrafik('pie','#canvasPie','pr','/'+provId);
+				getGrafik('pie','#canvasPie','pimran','/'+provId);
 				/* getGrafik('ketua','#canvasKetua','/'+provId); */
-				getGrafik('rw','#canvasRW','pr','/'+provId);
-				getGrafik('rt','#canvasRT','pr','/'+provId);
+				getGrafik('rw','#canvasRW','pimran','/'+provId);
+				getGrafik('rt','#canvasRT','pimran','/'+provId);
 			} else if('{{ $type }}' == 'par'){	
 				hideElement('#canvasKabupaten');	
 				hideElement('#canvasKecamatan');

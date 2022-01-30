@@ -51,7 +51,7 @@
 		
 		<?php $__env->startSection('content_table_body'); ?>
 			<?php /**/$no =1/**/ ?>
-			<?php /**/$bio_xxx_id='bio_pac_id'/**/ ?>
+			<?php /**/$bio_xxx_id='bio_pimcam_id'/**/ ?>
 			<?php /**/$type='pac'/**/ ?>
 			  <?php foreach($data as $val): ?>
 			  <?php /**/

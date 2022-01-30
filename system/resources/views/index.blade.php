@@ -39,8 +39,8 @@
 						<li id="data">
 							<a href="#data" onclick="showDPDDPC('getData')">Data PIMDA & PIMCAB PKN</a>
 							<ul class="sub-menu">						
-								<li><a href="#data" id="kontakDPD" onclick="showDPD('kontakDPD')" ><em>01</em>PIMDA ( {{ count($dataDPDAll) }} )</a></li>						
-								<li><a href="#data" id="kontakDPC" onclick="showDPC('kontakDPC')" ><em>02</em>PIMCAB ( {{ count($dataDPCAll) }} )</a></li>
+								<li><a href="#data" id="kontakDPD" onclick="showDPD('kontakDPD')" ><em>01</em>PIMDA ( {{ count($datapimdaAll) }} )</a></li>						
+								<li><a href="#data" id="kontakDPC" onclick="showDPC('kontakDPC')" ><em>02</em>PIMCAB ( {{ count($datapimcabAll) }} )</a></li>
 							</ul>
 						</li>				
 						<li id="penduduk" class="mail">

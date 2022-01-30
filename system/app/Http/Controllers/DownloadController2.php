@@ -321,9 +321,9 @@ class DownloadController extends Controller
 				$pdf::Row([
 					$no++,
 					strtoupper($tmp->geo_prov_nama),
-					number_format($tmp->pengurus_dpc,0, "," , "."),
-					number_format($tmp->pengurus_dpc_ada,0, "," , "."),
-					number_format($tmp->pengurus_dpc-$tmp->pengurus_dpc_ada,0, "," , "."),
+					number_format($tmp->pengurus_pimcab,0, "," , "."),
+					number_format($tmp->pengurus_pimcab_ada,0, "," , "."),
+					number_format($tmp->pengurus_pimcab-$tmp->pengurus_pimcab_ada,0, "," , "."),
 					number_format($tmp->pengurus_pac,0, "," , "."),
 					number_format($tmp->pengurus_pac_ada,0, "," , "."),
 					number_format($tmp->pengurus_pac-$tmp->pengurus_pac_ada,0, "," , "."),

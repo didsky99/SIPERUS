@@ -47,7 +47,7 @@
 	
 	@section('content_table_body')
 		{{--*/$no =1/*--}}
-		{{--*/$bio_xxx_id='bio_pac_id'/*--}}
+		{{--*/$bio_xxx_id='bio_pimcam_id'/*--}}
 		{{--*/$type='pac'/*--}}
 		  @foreach($data as $val)
 		  @include('main.input.section_generik_content')

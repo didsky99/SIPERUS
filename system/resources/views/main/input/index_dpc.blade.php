@@ -71,7 +71,7 @@
 	
 	@section('content_table_body')
 		{{--*/$no =1/*--}}
-		{{--*/$bio_xxx_id='bio_dpc_id'/*--}}
+		{{--*/$bio_xxx_id='bio_pimcab_id'/*--}}
 		{{--*/$type='dpc'/*--}}
 		  @foreach($data as $val)
 		  {{--*/

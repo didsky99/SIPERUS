@@ -5,8 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 class BioDPC extends Model {
 
 	//
-	private $table = 'r_bio_dpc';
-	private $primary_key = 'bio_dpc_id';
+	private $table = 'r_bio_pimcab';
+	private $primary_key = 'bio_pimcab_id';
 	const CREATED_AT = 'create_date';
 	const UPDATED_AT = 'update_date';
 }

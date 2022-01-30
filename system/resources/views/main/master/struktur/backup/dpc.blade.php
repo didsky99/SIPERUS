@@ -176,12 +176,12 @@
 							  @foreach($data as $tmp)
 							  <tr>
 								<td>{{ $no++ }}</td>
-								<td>{{ $tmp->struk_dpc_nama }}</td>
+								<td>{{ $tmp->struk_pimcab_nama }}</td>
 								<td>
-								  <div onclick="detailUser('{{ $tmp->struk_dpc_id }}')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>
-								  <div onclick='editDPC("{{ $tmp->geo_prov_id }}","{{ $tmp->geo_kab_id }}","{{ $tmp->struk_dpc_id }}","{{ $tmp->struk_dpc_nama }}")' class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
-								  <a href="{{ asset('proses/delete/struktur/dpc/'.$tmp->geo_prov_id.'/'.$tmp->geo_kab_id.'/'.$tmp->struk_dpc_id) }}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-								  <div onclick="printUser('{{ $tmp->struk_dpc_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+								  <div onclick="detailUser('{{ $tmp->struk_pimcab_id }}')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>
+								  <div onclick='editDPC("{{ $tmp->geo_prov_id }}","{{ $tmp->geo_kab_id }}","{{ $tmp->struk_pimcab_id }}","{{ $tmp->struk_pimcab_nama }}")' class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
+								  <a href="{{ asset('proses/delete/struktur/dpc/'.$tmp->geo_prov_id.'/'.$tmp->geo_kab_id.'/'.$tmp->struk_pimcab_id) }}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+								  <div onclick="printUser('{{ $tmp->struk_pimcab_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
 								</td>
 							  </tr>
 							  @endforeach

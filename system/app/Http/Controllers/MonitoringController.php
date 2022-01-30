@@ -18,11 +18,11 @@ class MonitoringController extends Controller{
 								    SELECT
 										COUNT(*)
 									FROM
-										m_struk_dpd
+										m_struk_pimda
 									WHERE
-										m_struk_dpd.dijabat = 1
+										m_struk_pimda.dijabat = 1
 									GROUP BY 
-										m_struk_dpd.geo_prov_id
+										m_struk_pimda.geo_prov_id
 								    ) as FR");
 			foreach ($getDPD as $key) {
 				$dpd = $key->DPD;
@@ -36,11 +36,11 @@ class MonitoringController extends Controller{
 								    SELECT
 										COUNT(*)
 									FROM
-										m_struk_dpc
+										m_struk_pimcab
 									WHERE
-										m_struk_dpc.dijabat = 1
+										m_struk_pimcab.dijabat = 1
 									GROUP BY 
-										m_struk_dpc.geo_kab_id
+										m_struk_pimcab.geo_kab_id
 								    ) as FR");
 			foreach ($getDPC as $key) {
 				$dpc = $key->DPC;
@@ -72,11 +72,11 @@ class MonitoringController extends Controller{
 								    SELECT
 										COUNT(*)
 									FROM
-										m_struk_pr
+										m_struk_pimran
 									WHERE
-										m_struk_pr.dijabat = 1
+										m_struk_pimran.dijabat = 1
 									GROUP BY 
-										m_struk_pr.geo_deskel_id
+										m_struk_pimran.geo_deskel_id
 								    ) as FR");
 			foreach ($getPR as $key) {
 				$pr = $key->PR;

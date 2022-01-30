@@ -25,21 +25,21 @@
 							</div>
 						</div>
 						<div class="form-group col-md-12">
-							<label for="nama" class="col-md-4">DPC (Kabupaten/Ada)</label>
+							<label for="nama" class="col-md-4">PIMCAB (Kabupaten/Ada)</label>
 							<div class="col-md-4">
-								<input type="text" name="pengurus_dpc" id="pengurus_dpc" class="form-control" placeholder="Pengurus DPC">
+								<input type="text" name="pengurus_pimcab" id="pengurus_pimcab" class="form-control" placeholder="Pengurus DPC">
 							</div>
 							<div class="col-md-4">
-								<input type="text" name="pengurus_dpc_ada" id="pengurus_dpc_ada" class="form-control" placeholder="Pengurus DPC Ada">
+								<input type="text" name="pengurus_pimcab_ada" id="pengurus_pimcab_ada" class="form-control" placeholder="Pengurus DPC Ada">
 							</div>
 						</div>
 						<div class="form-group col-md-12">
-							<label for="nama" class="col-md-4">PAC (Kecamatan/Ada)</label>
+							<label for="nama" class="col-md-4">PIMCAM (Kecamatan/Ada)</label>
 							<div class="col-md-4">
-								<input type="text" name="pengurus_pac" id="pengurus_pac" class="form-control" placeholder="Pengurus PAC">
+								<input type="text" name="pengurus_pimcam" id="pengurus_pimcam" class="form-control" placeholder="Pengurus pimcam">
 							</div>
 							<div class="col-md-4">
-								<input type="text" name="pengurus_pac_ada" id="pengurus_pac_ada" class="form-control" placeholder="Pengurus PAC Ada">
+								<input type="text" name="pengurus_pimcam_ada" id="pengurus_pimcam_ada" class="form-control" placeholder="Pengurus pimcam Ada">
 							</div>
 						</div>
 						<div class="form-group col-md-12">

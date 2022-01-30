@@ -86,9 +86,9 @@
 			<tr>
 				<td class="orange center"><?php echo e($no++); ?></td>
 				<td class="black"><?php echo e(strtoupper($tmp->geo_prov_nama)); ?></td>
-				<td class="yellow center"><?php echo e(number_format($tmp->pengurus_dpc,0, "." , ",")); ?></td>
-				<td class="center"><?php echo e(number_format($tmp->pengurus_dpc_ada,0, "." , ",")); ?></td>
-				<td class="center red-text" style="color: #FF0000;"><?php echo e(number_format($tmp->pengurus_dpc-$tmp->pengurus_dpc_ada,0, "." , ",")); ?></td>
+				<td class="yellow center"><?php echo e(number_format($tmp->pengurus_pimcab,0, "." , ",")); ?></td>
+				<td class="center"><?php echo e(number_format($tmp->pengurus_pimcab_ada,0, "." , ",")); ?></td>
+				<td class="center red-text" style="color: #FF0000;"><?php echo e(number_format($tmp->pengurus_pimcab-$tmp->pengurus_pimcab_ada,0, "." , ",")); ?></td>
 				<td class="yellow center"><?php echo e(number_format($tmp->pengurus_pac,0, "." , ",")); ?></td>
 				<td class="center"><?php echo e(number_format($tmp->pengurus_pac_ada,0, "." , ",")); ?></td>
 				<td class="center red-text" style="color: #FF0000;"><?php echo e(number_format($tmp->pengurus_pac-$tmp->pengurus_pac_ada,0, "." , ",")); ?></td>
@@ -103,9 +103,9 @@
 				<td class="center red-text" style="color: #FF0000;"><?php echo e(number_format($tmp->pengurus_kpa-$tmp->pengurus_kpa_ada,0, "." , ",")); ?></td>
 			</tr>
 			<?php
-				$t_dpc = $t_dpc+$tmp->pengurus_dpc;
-				$ta_dpc = $ta_dpc+$tmp->pengurus_dpc_ada;
-				$tb_dpc = $tb_dpc+$tmp->pengurus_dpc-$tmp->pengurus_dpc_ada;
+				$t_dpc = $t_dpc+$tmp->pengurus_pimcab;
+				$ta_dpc = $ta_dpc+$tmp->pengurus_pimcab_ada;
+				$tb_dpc = $tb_dpc+$tmp->pengurus_pimcab-$tmp->pengurus_pimcab_ada;
 				
 				$t_pac = $t_pac+$tmp->pengurus_pac;
 				$ta_pac = $ta_pac+$tmp->pengurus_pac_ada;

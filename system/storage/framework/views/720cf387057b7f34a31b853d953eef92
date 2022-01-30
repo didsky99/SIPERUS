@@ -18,7 +18,7 @@
 
 <?php $__env->startSection('table_data'); ?>
 	<td><?php echo e($tmp->geo_prov_nama); ?></td>
-	<td><?php echo e(number_format($tmp->pengurus_dpc_ada,0,',','.')); ?> / <?php echo e(number_format($tmp->pengurus_dpc,0,',','.')); ?></td>
+	<td><?php echo e(number_format($tmp->pengurus_pimcab_ada,0,',','.')); ?> / <?php echo e(number_format($tmp->pengurus_pimcab,0,',','.')); ?></td>
 	<td><?php echo e(number_format($tmp->pengurus_pac_ada,0,',','.')); ?> / <?php echo e(number_format($tmp->pengurus_pac,0,',','.')); ?></td>
 	<td><?php echo e(number_format($tmp->pengurus_ranting_ada,0,',','.')); ?> / <?php echo e(number_format($tmp->pengurus_ranting,0,',','.')); ?></td>
 	<td><?php echo e(number_format($tmp->pengurus_anak_ranting_ada,0,',','.')); ?> / <?php echo e(number_format($tmp->pengurus_anak_ranting,0,',','.')); ?></td>

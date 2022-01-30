@@ -265,10 +265,10 @@ $dataStatistik = mysqli_query($koneksi,$dataStatistikSQL) or die(mysqli_error($k
 	
 		$objPHPExcel->getActiveSheet()->SetCellValue('A'.$nextLine, $no);
 		$objPHPExcel->getActiveSheet()->SetCellValue('B'.$nextLine, strtoupper($tmp->geo_prov_nama));
-		$objPHPExcel->getActiveSheet()->SetCellValue('C'.$nextLine, number_format($tmp->pengurus_dpc,0, "," , "."));
-		$objPHPExcel->getActiveSheet()->SetCellValue('D'.$nextLine, number_format($tmp->pengurus_dpc_ada,0, "," , "."));
-		$objPHPExcel->getActiveSheet()->SetCellValue('E'.$nextLine, number_format($tmp->pengurus_dpc-$tmp->pengurus_dpc_ada,0, "," , "."));
-		if($tmp->pengurus_dpc_ada == 0){
+		$objPHPExcel->getActiveSheet()->SetCellValue('C'.$nextLine, number_format($tmp->pengurus_pimcab,0, "," , "."));
+		$objPHPExcel->getActiveSheet()->SetCellValue('D'.$nextLine, number_format($tmp->pengurus_pimcab_ada,0, "," , "."));
+		$objPHPExcel->getActiveSheet()->SetCellValue('E'.$nextLine, number_format($tmp->pengurus_pimcab-$tmp->pengurus_pimcab_ada,0, "," , "."));
+		if($tmp->pengurus_pimcab_ada == 0){
 			textColor('D'.$nextLine, 'FF0000','12',true,'center');
 		}
 		
@@ -301,9 +301,9 @@ $dataStatistik = mysqli_query($koneksi,$dataStatistikSQL) or die(mysqli_error($k
 		}
 
 		$objPHPExcel->getActiveSheet()->getStyle('B'.$nextLine)->getAlignment()->setWrapText(true);
-		$t_dpc = $t_dpc+$tmp->pengurus_dpc;
-		$ta_dpc = $ta_dpc+$tmp->pengurus_dpc_ada;
-		$tb_dpc = $tb_dpc+$tmp->pengurus_dpc-$tmp->pengurus_dpc_ada;
+		$t_dpc = $t_dpc+$tmp->pengurus_pimcab;
+		$ta_dpc = $ta_dpc+$tmp->pengurus_pimcab_ada;
+		$tb_dpc = $tb_dpc+$tmp->pengurus_pimcab-$tmp->pengurus_pimcab_ada;
 		
 		$t_pac = $t_pac+$tmp->pengurus_pac;
 		$ta_pac = $ta_pac+$tmp->pengurus_pac_ada;

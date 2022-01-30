@@ -18,7 +18,7 @@
 
 <?php $__env->startSection('table_data'); ?>
 	<td><?php echo e($tmp->geo_prov_nama); ?></td>
-	<td><?php echo e($tmp->pengurus_dpc_ada); ?> / <?php echo e($tmp->pengurus_dpc); ?></td>
+	<td><?php echo e($tmp->pengurus_pimcab_ada); ?> / <?php echo e($tmp->pengurus_pimcab); ?></td>
 	<td><?php echo e($tmp->pengurus_pac_ada); ?> / <?php echo e($tmp->pengurus_pac); ?></td>
 	<td><?php echo e($tmp->pengurus_ranting_ada); ?> / <?php echo e($tmp->pengurus_ranting); ?></td>
 	<td><?php echo e($tmp->pengurus_anak_ranting_ada); ?> / <?php echo e($tmp->pengurus_anak_ranting); ?></td>

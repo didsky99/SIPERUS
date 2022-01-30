@@ -502,33 +502,33 @@ class MasterController extends Controller
 			$dataTPS = DB::table('m_geo_tps')
 				->where('geo_deskel_id',$kel)
 				->get();	
-			if($jenis == 'dpp') {				
-				$data = DB::table('m_struk_dpp')
+			if($jenis == 'pimnas') {				
+				$data = DB::table('m_struk_pimnas')
 					->get();
-			} else if($jenis == 'dpd') {						
+			} else if($jenis == 'pimda') {						
 				if($prov != 0){					
-					$data = DB::table('m_struk_dpd')
+					$data = DB::table('m_struk_pimda')
 						->where('geo_prov_id',$prov)
 							->get();
 				} else {
-					$data = DB::table('m_struk_dpd')
+					$data = DB::table('m_struk_pimda')
 						->get();
 				}
-			} else if($jenis == 'dpc') {
+			} else if($jenis == 'pimcab') {
 				if($kab != 0){
-					$data = DB::table('m_struk_dpc')
+					$data = DB::table('m_struk_pimcab')
 						->where('geo_kab_id',$kab)
 							->get();
 				}
-			} else if($jenis == 'pac') {
+			} else if($jenis == 'pimcam') {
 				if($kec != 0){
-					$data = DB::table('m_struk_pac')
+					$data = DB::table('m_struk_pimcam')
 						->where('geo_kec_id',$kec)
 							->get();
 				}
-			} else if($jenis == 'pr') {
+			} else if($jenis == 'pimran') {
 				if($kel != 0){
-					$data = DB::table('m_struk_pr')
+					$data = DB::table('m_struk_pimran')
 						->where('geo_deskel_id',$kel)
 							->get();
 				}
@@ -574,86 +574,86 @@ class MasterController extends Controller
 	public function addStruktur($jenis)
 	{
 		$namaStruktur = @$_POST['nama_struktur'];
-		if($jenis == 'dpp') {		
-			$data = DB::table('m_struk_dpp')
+		if($jenis == 'pimnas') {		
+			$data = DB::table('m_struk_pimnas')
 				->insertGetId([
-					'struk_dpp_nama' => $namaStruktur,
-					'struk_dpp_created_date' => date('Y-m-d H:i:s'),
-					'struk_dpp_created_by' => session('idLogin'),
-					'struk_dpp_status' => 1
+					'struk_pimnas_nama' => $namaStruktur,
+					'struk_pimnas_created_date' => date('Y-m-d H:i:s'),
+					'struk_pimnas_created_by' => session('idLogin'),
+					'struk_pimnas_status' => 1
 				]);
-			return redirect('master/struktur/dpp');
-		} else if($jenis == 'dpd') {
-			$dppId = @$_POST['id_dpp'];
+			return redirect('master/struktur/pimnas');
+		} else if($jenis == 'pimda') {
+			$pimnasId = @$_POST['id_pimnas'];
 			$provId = @$_POST['id_prov'];
-			$dpdNama = @$_POST['nama_dpd'];
+			$pimdaNama = @$_POST['nama_pimda'];
 			
-			$data = DB::table('m_struk_dpd')
+			$data = DB::table('m_struk_pimda')
 				->insertGetId([
-					'struk_dpp_id' => $dppId,
+					'struk_pimnas_id' => $pimnasId,
 					'geo_prov_id' => $provId,
-					'struk_dpd_nama' => $namaStruktur,
-					'struk_dpd_created_date' => date('Y-m-d H:i:s'),
-					'struk_dpd_created_by' => session('idLogin'),
-					'struk_dpd_status' => 1
+					'struk_pimda_nama' => $namaStruktur,
+					'struk_pimda_created_date' => date('Y-m-d H:i:s'),
+					'struk_pimda_created_by' => session('idLogin'),
+					'struk_pimda_status' => 1
 				]);
-			return redirect('master/struktur/dpd/'.$provId);
-		} else if($jenis == 'dpc') {
-			$dpdId = @$_POST['id_dpd'];
+			return redirect('master/struktur/pimda/'.$provId);
+		} else if($jenis == 'pimcab') {
+			$pimdaId = @$_POST['id_pimda'];
 			$provId = @$_POST['id_prov'];
 			$kabId = @$_POST['id_kab'];
-			$dpcNama = @$_POST['nama_dpc'];
-			$data = DB::table('m_struk_dpc')
+			$pimcabNama = @$_POST['nama_pimcab'];
+			$data = DB::table('m_struk_pimcab')
 				->insertGetId([
-					'struk_dpd_id' => $dpdId,
+					'struk_pimda_id' => $pimdaId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
-					'struk_dpc_nama' => $namaStruktur,
-					'struk_dpc_created_date' => date('Y-m-d H:i:s'),
-					'struk_dpc_created_by' => session('idLogin'),
-					'struk_dpc_status' => 1
+					'struk_pimcab_nama' => $namaStruktur,
+					'struk_pimcab_created_date' => date('Y-m-d H:i:s'),
+					'struk_pimcab_created_by' => session('idLogin'),
+					'struk_pimcab_status' => 1
 				]);
-			return redirect('master/struktur/dpc/'.$provId.'/'.$kabId);
-		} else if($jenis == 'pac') {
-			$dpcId = @$_POST['id_dpc'];
+			return redirect('master/struktur/pimcab/'.$provId.'/'.$kabId);
+		} else if($jenis == 'pimcam') {
+			$pimcabId = @$_POST['id_pimcab'];
 			$provId = @$_POST['id_prov'];
 			$kabId = @$_POST['id_kab'];
 			$kecId = @$_POST['id_kec'];
-			$pacNama = @$_POST['nama_pac'];
+			$pimcamNama = @$_POST['nama_pimcam'];
 			
-			$data = DB::table('m_struk_pac')
+			$data = DB::table('m_struk_pimcam')
 				->insertGetId([
-					'struk_dpc_id' => $dpcId,
+					'struk_pimcab_id' => $pimcabId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
 					'geo_kec_id' => $kecId,
-					'struk_pac_nama' => $namaStruktur,
-					'struk_pac_created_date' => date('Y-m-d H:i:s'),
-					'struk_pac_created_by' => session('idLogin'),
-					'struk_pac_status' => 1
+					'struk_pimcam_nama' => $namaStruktur,
+					'struk_pimcam_created_date' => date('Y-m-d H:i:s'),
+					'struk_pimcam_created_by' => session('idLogin'),
+					'struk_pimcam_status' => 1
 				]);
-			return redirect('master/struktur/pac/'.$provId.'/'.$kabId.'/'.$kecId);
-		} else if($jenis == 'pr') {
-			$pacId = @$_POST['id_pac'];
+			return redirect('master/struktur/pimcam/'.$provId.'/'.$kabId.'/'.$kecId);
+		} else if($jenis == 'pimran') {
+			$pimcamId = @$_POST['id_pimcam'];
 			$provId = @$_POST['id_prov'];
 			$kabId = @$_POST['id_kab'];
 			$kecId = @$_POST['id_kec'];
 			$kelId = @$_POST['id_kel'];
-			$parNama = @$_POST['nama_pr'];
+			$parNama = @$_POST['nama_pimran'];
 			
-			$data = DB::table('m_struk_pr')
+			$data = DB::table('m_struk_pimran')
 				->insertGetId([
-					'struk_pac_id' => $pacId,
+					'struk_pimcam_id' => $pimcamId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
 					'geo_kec_id' => $kecId,
 					'geo_deskel_id' => $kelId,
-					'struk_pr_nama' => $namaStruktur,
-					'struk_pr_created_date' => date('Y-m-d H:i:s'),
-					'struk_pr_created_by' => session('idLogin'),
-					'struk_pr_status' => 1
+					'struk_pimran_nama' => $namaStruktur,
+					'struk_pimran_created_date' => date('Y-m-d H:i:s'),
+					'struk_pimran_created_by' => session('idLogin'),
+					'struk_pimran_status' => 1
 				]);
-			return redirect('master/struktur/pr/'.$provId.'/'.$kabId.'/'.$kecId.'/'.$kelId);
+			return redirect('master/struktur/pimran/'.$provId.'/'.$kabId.'/'.$kecId.'/'.$kelId);
 		} else if($jenis == 'par') {
 			$parId = @$_POST['id_par'];
 			$provId = @$_POST['id_prov'];
@@ -665,7 +665,7 @@ class MasterController extends Controller
 			
 			$data = DB::table('m_struk_par')
 				->insertGetId([
-					'struk_pr_id' => $parId,
+					'struk_pimran_id' => $parId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
 					'geo_kec_id' => $kecId,
@@ -708,84 +708,84 @@ class MasterController extends Controller
 	{
 		$idStruktur = @$_POST['edit_id_struk'];
 		$namaStruktur = @$_POST['edit_nama_struk'];
-		if($jenis == 'dpp') {		
+		if($jenis == 'pimnas') {		
 			
-			$data = DB::table('m_struk_dpp')
-				->where('struk_dpp_id',$idStruktur)
+			$data = DB::table('m_struk_pimnas')
+				->where('struk_pimnas_id',$idStruktur)
 				->update([
-					'struk_dpp_nama' => $namaStruktur
+					'struk_pimnas_nama' => $namaStruktur
 				]);
-			return redirect('master/struktur/dpp');
-		} else if($jenis == 'dpd') {
-			$dppId = @$_POST['edit_id_dpp'];
+			return redirect('master/struktur/pimnas');
+		} else if($jenis == 'pimda') {
+			$pimnasId = @$_POST['edit_id_pimnas'];
 			$provId = @$_POST['edit_id_prov'];
-			$dpdId = @$_POST['edit_id_dpd'];
-			$dpdNama = @$_POST['edit_nama_dpd'];
+			$pimdaId = @$_POST['edit_id_pimda'];
+			$pimdaNama = @$_POST['edit_nama_pimda'];
 			
-			$data = DB::table('m_struk_dpd')
-				->where('struk_dpd_id',$idStruktur)
+			$data = DB::table('m_struk_pimda')
+				->where('struk_pimda_id',$idStruktur)
 				->update([
-					'struk_dpp_id' => $dppId,
+					'struk_pimnas_id' => $pimnasId,
 					'geo_prov_id' => $provId,
-					'struk_dpd_nama' => $namaStruktur
+					'struk_pimda_nama' => $namaStruktur
 				]);
-			return redirect('master/struktur/dpd/'.$provId);
-		} else if($jenis == 'dpc') {
-			$dpdId = @$_POST['edit_id_dpd'];
+			return redirect('master/struktur/pimda/'.$provId);
+		} else if($jenis == 'pimcab') {
+			$pimdaId = @$_POST['edit_id_pimda'];
 			$provId = @$_POST['edit_id_prov'];
 			$kabId = @$_POST['edit_id_kab'];
-			$dpcId = @$_POST['edit_id_dpc'];
-			$dpcNama = @$_POST['edit_nama_dpc'];
+			$pimcabId = @$_POST['edit_id_pimcab'];
+			$pimcabNama = @$_POST['edit_nama_pimcab'];
 			
-			$data = DB::table('m_struk_dpc')
-				->where('struk_dpc_id',$idStruktur)
+			$data = DB::table('m_struk_pimcab')
+				->where('struk_pimcab_id',$idStruktur)
 				->update([
-					'struk_dpd_id' => $dpdId,
+					'struk_pimda_id' => $pimdaId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
-					'struk_dpc_nama' => $namaStruktur
+					'struk_pimcab_nama' => $namaStruktur
 				]);
-			return redirect('master/struktur/dpc/'.$provId.'/'.$kabId);
-		} else if($jenis == 'pac') {
-			$dpcId = @$_POST['edit_id_dpc'];
+			return redirect('master/struktur/pimcab/'.$provId.'/'.$kabId);
+		} else if($jenis == 'pimcam') {
+			$pimcabId = @$_POST['edit_id_pimcab'];
 			$provId = @$_POST['edit_id_prov'];
 			$kabId = @$_POST['edit_id_kab'];
 			$kecId = @$_POST['edit_id_kec'];
-			$pacId = @$_POST['edit_id_pac'];
-			$pacNama = @$_POST['edit_nama_pac'];
+			$pimcamId = @$_POST['edit_id_pimcam'];
+			$pimcamNama = @$_POST['edit_nama_pimcam'];
 			
-			$data = DB::table('m_struk_pac')
-				->where('struk_pac_id',$idStruktur)
+			$data = DB::table('m_struk_pimcam')
+				->where('struk_pimcam_id',$idStruktur)
 				->update([
-					'struk_dpc_id' => $dpcId,
+					'struk_pimcab_id' => $pimcabId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
 					'geo_kec_id' => $kecId,
-					'struk_pac_nama' => $namaStruktur
+					'struk_pimcam_nama' => $namaStruktur
 				]);
-			return redirect('master/struktur/pac/'.$provId.'/'.$kabId.'/'.$kecId);
-		} else if($jenis == 'pr') {
-			$pacId = @$_POST['edit_id_pac'];
+			return redirect('master/struktur/pimcam/'.$provId.'/'.$kabId.'/'.$kecId);
+		} else if($jenis == 'pimran') {
+			$pimcamId = @$_POST['edit_id_pimcam'];
 			$provId = @$_POST['edit_id_prov'];
 			$kabId = @$_POST['edit_id_kab'];
 			$kecId = @$_POST['edit_id_kec'];
 			$kelId = @$_POST['edit_id_kel'];
-			$prId = @$_POST['edit_id_pr'];
-			$prNama = @$_POST['edit_nama_pr'];
+			$pimranId = @$_POST['edit_id_pimran'];
+			$pimranNama = @$_POST['edit_nama_pimran'];
 			
-			$data = DB::table('m_struk_pr')
-				->where('struk_pr_id',$idStruktur)
+			$data = DB::table('m_struk_pimran')
+				->where('struk_pimran_id',$idStruktur)
 				->update([
-					'struk_pac_id' => $pacId,
+					'struk_pimcam_id' => $pimcamId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
 					'geo_kec_id' => $kecId,
 					'geo_deskel_id' => $kelId,
-					'struk_pr_nama' => $namaStruktur
+					'struk_pimran_nama' => $namaStruktur
 				]);
-			return redirect('master/struktur/pr/'.$provId.'/'.$kabId.'/'.$kecId.'/'.$kelId);
+			return redirect('master/struktur/pimram/'.$provId.'/'.$kabId.'/'.$kecId.'/'.$kelId);
 		} else if($jenis == 'par') {
-			$prId = @$_POST['edit_id_pr'];
+			$pimranId = @$_POST['edit_id_pimran'];
 			$provId = @$_POST['edit_id_prov'];
 			$kabId = @$_POST['edit_id_kab'];
 			$kecId = @$_POST['edit_id_kec'];
@@ -797,7 +797,7 @@ class MasterController extends Controller
 			$data = DB::table('m_struk_par')
 				->where('struk_par_id',$idStruktur)
 				->update([
-					'struk_pr_id' => $parId,
+					'struk_pimran_id' => $parId,
 					'geo_prov_id' => $provId,
 					'geo_kab_id' => $kabId,
 					'geo_kec_id' => $kecId,
@@ -834,31 +834,31 @@ class MasterController extends Controller
 	}
 	public function deleteStruktur($jenis,$prov=0,$kab=0,$kec=0,$kel=0,$rw=0,$rt=0,$id=0)
 	{
-		if($jenis == 'dpp'){
-			$prosesUpdate = DB::table('m_struk_dpp')
-				->where('struk_dpp_id',$prov)
+		if($jenis == 'pimnas'){
+			$prosesUpdate = DB::table('m_struk_pimnas')
+				->where('struk_pimnas_id',$prov)
 				->delete();
-			$redirect = 'master/struktur/dpp';
-		} else if($jenis == 'dpd'){
-			$prosesUpdate = DB::table('m_struk_dpd')
-				->where('struk_dpd_id',$kab)
+			$redirect = 'master/struktur/pimnas';
+		} else if($jenis == 'pimda'){
+			$prosesUpdate = DB::table('m_struk_pimda')
+				->where('struk_pimda_id',$kab)
 				->delete();
-			$redirect = 'master/struktur/dpd/'.$prov;	
-		} else if($jenis == 'dpc'){
-			$prosesUpdate = DB::table('m_struk_dpc')
-				->where('struk_dpc_id',$kec)
+			$redirect = 'master/struktur/pimda/'.$prov;	
+		} else if($jenis == 'pimcab'){
+			$prosesUpdate = DB::table('m_struk_pimcab')
+				->where('struk_pimcab_id',$kec)
 				->delete();
-			$redirect = 'master/struktur/dpc/'.$prov.'/'.$kab;	
-		} else if($jenis == 'pac'){
-			$prosesUpdate = DB::table('m_struk_pac')
-				->where('struk_pac_id',$kel)
+			$redirect = 'master/struktur/pimcab/'.$prov.'/'.$kab;	
+		} else if($jenis == 'pimcam'){
+			$prosesUpdate = DB::table('m_struk_pimcam')
+				->where('struk_pimcam_id',$kel)
 					->delete();
-			$redirect = 'master/struktur/pac/'.$prov.'/'.$kab.'/'.$kec;	
-		} else if($jenis == 'pr'){
-			$prosesUpdate = DB::table('m_struk_pr')
-				->where('struk_pr_id',$rw)
+			$redirect = 'master/struktur/pimcam/'.$prov.'/'.$kab.'/'.$kec;	
+		} else if($jenis == 'pimran'){
+			$prosesUpdate = DB::table('m_struk_pimran')
+				->where('struk_pimran_id',$rw)
 				->delete();
-			$redirect = 'master/struktur/pr/'.$prov.'/'.$kab.'/'.$kec.'/'.$kel;			
+			$redirect = 'master/struktur/pimran/'.$prov.'/'.$kab.'/'.$kec.'/'.$kel;			
 		} else if($jenis == 'par'){
 			$prosesUpdate = DB::table('m_struk_par')
 				->where('struk_par_id',$rt)
@@ -875,7 +875,7 @@ class MasterController extends Controller
 
 	public function detailStruktur($jenis, $id) {
 		$data = [];
-		if($jenis == 'dpp' || $jenis == 'dpd' || $jenis == 'dpc' || $jenis == 'pac' || $jenis == 'pr' || $jenis == 'par' || $jenis == 'kpa') {				
+		if($jenis == 'pimnas' || $jenis == 'pimda' || $jenis == 'pimcab' || $jenis == 'pimcam' || $jenis == 'pimran' || $jenis == 'par' || $jenis == 'kpa') {				
 			$strukturJoin = DB::table('m_struk_'.$jenis)
 				->select(
 					'*',
@@ -886,15 +886,15 @@ class MasterController extends Controller
 						$strukturJoin->join('m_geo_rt','m_geo_rt.geo_rt_id','=','m_struk_'.$jenis.'.geo_rt_id');
 					case 'par':
 						$strukturJoin->join('m_geo_rw','m_geo_rw.geo_rw_id','=','m_struk_'.$jenis.'.geo_rw_id');
-					case 'pr':
+					case 'pimran':
 						$strukturJoin->join('m_geo_deskel_kpu','m_geo_deskel_kpu.geo_deskel_id','=','m_struk_'.$jenis.'.geo_deskel_id');
-					case 'pac':
+					case 'pimcam':
 						$strukturJoin->join('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','m_struk_'.$jenis.'.geo_kec_id');
-					case 'dpc':
+					case 'pimcab':
 						$strukturJoin->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_struk_'.$jenis.'.geo_kab_id');
-					case 'dpd':
+					case 'pimda':
 						$strukturJoin->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_struk_'.$jenis.'.geo_prov_id');
-					case 'dpp':
+					case 'pimnas':
 					break;
 				}
 				$strukturJoin->leftJoin('r_bio_'.$jenis,'r_bio_'.$jenis.'.struk_'.$jenis.'_id','=','m_struk_'.$jenis.'.struk_'.$jenis.'_id');
@@ -936,19 +936,19 @@ class MasterController extends Controller
 			
 		$idProvinsi = @$_POST['provinsi'];
 		
-		$jumlahKab = $_POST['pengurus_dpc'];
-		$jumlahKec = $_POST['pengurus_pac'];
+		$jumlahKab = $_POST['pengurus_pimcab'];
+		$jumlahKec = $_POST['pengurus_pimcam'];
 		$jumlahDeskel = $_POST['pengurus_ranting'];
 		$jumlahRW = $_POST['pengurus_anak_ranting'];
 		$jumlahRT = $_POST['pengurus_kpa'];
 		
-		$dataPengurus['pengurus_dpc'] = @$jumlahKab;
-		$dataPengurus['pengurus_pac'] = @$jumlahKec;
+		$dataPengurus['pengurus_pimcab'] = @$jumlahKab;
+		$dataPengurus['pengurus_pimcam'] = @$jumlahKec;
 		$dataPengurus['pengurus_ranting'] = @$jumlahDeskel;
 		$dataPengurus['pengurus_anak_ranting'] = @$jumlahRW;
 		$dataPengurus['pengurus_kpa'] = @$jumlahRT;
-		$dataPengurus['pengurus_dpc_ada'] = @$_POST['pengurus_dpc_ada'];
-		$dataPengurus['pengurus_pac_ada'] = @$_POST['pengurus_pac_ada'];
+		$dataPengurus['pengurus_pimcab_ada'] = @$_POST['pengurus_pimcab_ada'];
+		$dataPengurus['pengurus_pimcam_ada'] = @$_POST['pengurus_pimcam_ada'];
 		$dataPengurus['pengurus_ranting_ada'] = @$_POST['pengurus_ranting_ada'];
 		$dataPengurus['pengurus_anak_ranting_ada'] = @$_POST['pengurus_anak_ranting_ada'];
 		$dataPengurus['pengurus_kpa_ada'] = @$_POST['pengurus_kpa_ada'];

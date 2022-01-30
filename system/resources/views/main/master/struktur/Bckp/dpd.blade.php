@@ -35,12 +35,12 @@
 		@foreach($data as $tmp)
 			<tr>
 				<td>{{ $no++ }}</td> 
-				<td>{{ $tmp->struk_dpd_nama }}</td>
+				<td>{{ $tmp->struk_pimda_nama }}</td>
 				<td>
-					<div onclick="detailStruktur('dpd','{{ $tmp->struk_dpd_id }}')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>
-					<div onclick='actionEdit("{{ $tmp->geo_prov_id }}","","","","","","{{ $tmp->struk_dpd_id }}","{{ $tmp->struk_dpd_nama }}")' class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
-					<a href="{{ asset('proses/delete/struktur/dpd/'.$tmp->geo_prov_id.'/'.$tmp->struk_dpd_id) }}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-					<div onclick="printUser('{{ $tmp->struk_dpd_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+					<div onclick="detailStruktur('dpd','{{ $tmp->struk_pimda_id }}')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>
+					<div onclick='actionEdit("{{ $tmp->geo_prov_id }}","","","","","","{{ $tmp->struk_pimda_id }}","{{ $tmp->struk_pimda_nama }}")' class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
+					<a href="{{ asset('proses/delete/struktur/dpd/'.$tmp->geo_prov_id.'/'.$tmp->struk_pimda_id) }}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+					<div onclick="printUser('{{ $tmp->struk_pimda_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
 				</td>
 			</tr>
 		@endforeach
