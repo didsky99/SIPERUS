@@ -292,7 +292,7 @@ class UserController extends Controller
 	public function viewAddUser()
 	{
 		if(session('idLogin')){
-			$dataProvinsi = DB::table('m_geo_prov')
+			$dataProvinsi = DB::table('m_geo_prov_kpu')
 				->get();
 			$dataIdentitas = DB::table('ref_identitas')
 				->get();
@@ -663,26 +663,26 @@ class UserController extends Controller
 		$dataKelurahan = array();
 		$dataRW = array();
 		$dataBio = DB::table('m_bio')
-			->select('m_bio.*','m_bio_doc.*','m_bio.bio_id as id_bio','m_geo_prov.geo_prov_id as prov_lahir','ref_status.status_value')
+			->select('m_bio.*','m_bio_doc.*','m_bio.bio_id as id_bio','m_geo_prov_kpu.geo_prov_id as prov_lahir','ref_status.status_value')
 				->leftjoin('ref_status','ref_status.status_id','=','m_bio.bio_status_kawin')
-				->leftjoin('m_geo_kab','m_geo_kab.geo_kab_id','=','m_bio.bio_tempat_lahir')
-				->leftjoin('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
+				->leftjoin('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_bio.bio_tempat_lahir')
+				->leftjoin('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
 				->leftjoin('m_bio_doc','m_bio_doc.bio_id','=','m_bio.bio_id')
 					->where('m_bio.bio_id',$bioId)
 						->get();
 		foreach($dataBio as $tmp){
-			$dataProvinsi = DB::table('m_geo_prov')
+			$dataProvinsi = DB::table('m_geo_prov_kpu')
 				->get();
-			$dataKabupatenLahir = DB::table('m_geo_kab')
+			$dataKabupatenLahir = DB::table('m_geo_kab_kpu')
 				->where('geo_prov_id',$tmp->prov_lahir)
 					->get();
-			$dataKabupaten = DB::table('m_geo_kab')
+			$dataKabupaten = DB::table('m_geo_kab_kpu')
 				->where('geo_prov_id',$tmp->bio_provinsi)
 					->get();
-			$dataKecamatan = DB::table('m_geo_kec')
+			$dataKecamatan = DB::table('m_geo_kec_kpu')
 				->where('geo_kab_id',$tmp->bio_kabupaten)
 					->get();
-			$dataKelurahan = DB::table('m_geo_deskel')
+			$dataKelurahan = DB::table('m_geo_deskel_kpu')
 				->where('geo_kec_id',$tmp->bio_kecamatan)
 					->get();
 			$dataRW = DB::table('m_geo_rw')
@@ -910,7 +910,7 @@ class UserController extends Controller
 					DB::raw('CONCAT(bio_nama_depan," ",bio_nama_tengah," ",bio_nama_belakang) as nama_lengkap')
 				)
 				->leftjoin('m_bio','m_bio.bio_id','=','m_users.bio_id')
-				->leftjoin('m_geo_prov','m_geo_prov.geo_prov_id','=','m_users.geo_prov_id')
+				->leftjoin('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_users.geo_prov_id')
 				->join('ref_akses','ref_akses.akses_id','=','m_users.role')
 					->get();
 			return view('main.user.user_login',array(

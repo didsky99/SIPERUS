@@ -349,9 +349,9 @@ class ReportController extends Controller
 			$dataGrafik = [['Provinsi',@$cProv],['DPD B.TBK',@$cProv-@$pimda_tbk],['PIMDA TBK', @$pimda_tbk]];
 		} else if($type == 'kabupaten'){
 			$return = 'main.report.line';
-			$dataKab = DB::table('m_geo_kab')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+			$dataKab = DB::table('m_geo_kab_kpu')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 
 			if($cKokab == 0){
 				$dataKabPer = 0;
@@ -366,9 +366,9 @@ class ReportController extends Controller
 			$dataKec = DB::table('m_geo_kec_kpu')
 				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec_kpu.geo_kab_id')
 				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 					if($kab){
-						$dataKec->where('m_geo_kab.geo_kab_id',$kab);
+						$dataKec->where('m_geo_kab_kpu.geo_kab_id',$kab);
 					}
 			if($pimcam_tbk == 0){
 				$dataKecPer = 0;
@@ -380,16 +380,16 @@ class ReportController extends Controller
 			$dataGrafik = [['Kecamatan',@$cKecam],['PAC B.TBK',@$cKecam-@$pimcam_tbk],['PIMCAM TBK',@$pimcam_tbk]];
 		} else if($type == 'kelurahan'){
 			$return = 'main.report.line';
-			$dataKel = DB::table('m_geo_deskel')
-				->join('m_geo_kec','m_geo_kec.geo_kec_id','=','m_geo_deskel.geo_kec_id')
-				->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_geo_kec.geo_kab_id')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+			$dataKel = DB::table('m_geo_deskel_kpu')
+				->join('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','m_geo_deskel_kpu.geo_kec_id')
+				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec_kpu.geo_kab_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 					if($kab){
-						$dataKel->where('m_geo_kab.geo_kab_id',$kab);
+						$dataKel->where('m_geo_kab_kpu.geo_kab_id',$kab);
 					}
 					if($kec){
-						$dataKel->where('m_geo_kec.geo_kec_id',$kec);
+						$dataKel->where('m_geo_kec_kpu.geo_kec_id',$kec);
 					}
 			if($pr_tbk == 0){
 				$dataKelPer = 0;
@@ -402,19 +402,19 @@ class ReportController extends Controller
 		} else if($type == 'rw'){
 			$return = 'main.report.line';
 			$dataRW = DB::table('m_geo_rw')
-				->join('m_geo_deskel','m_geo_deskel.geo_deskel_id','=','m_geo_rw.geo_deskel_id')
-				->join('m_geo_kec','m_geo_kec.geo_kec_id','=','m_geo_deskel.geo_kec_id')
-				->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_geo_kec.geo_kab_id')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+				->join('m_geo_deskel_kpu','m_geo_deskel_kpu.geo_deskel_id','=','m_geo_rw.geo_deskel_id')
+				->join('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','m_geo_deskel_kpu.geo_kec_id')
+				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec_kpu.geo_kab_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 					if($kab){
-						$dataRW->where('m_geo_kab.geo_kab_id',$kab);
+						$dataRW->where('m_geo_kab_kpu.geo_kab_id',$kab);
 					}
 					if($kec){
-						$dataRW->where('m_geo_kec.geo_kec_id',$kec);
+						$dataRW->where('m_geo_kec_kpu.geo_kec_id',$kec);
 					}
 					if($deskel){
-						$dataRW->where('m_geo_deskel.geo_deskel_id',$deskel);
+						$dataRW->where('m_geo_deskel_kpu.geo_deskel_id',$deskel);
 					}
 			$dataRwPer = number_format(@$pengurus->pengurus_anak_ranting_ada/@$pengurus->pengurus_anak_ranting*100,2);
 			$data['dataRwPer'] = $dataRwPer;			
@@ -424,19 +424,19 @@ class ReportController extends Controller
 			$return = 'main.report.line';
 			$dataRT = DB::table('m_geo_rt')
 				->join('m_geo_rw','m_geo_rw.geo_rw_id','=','m_geo_rt.geo_rw_id')
-				->join('m_geo_deskel','m_geo_deskel.geo_deskel_id','=','m_geo_rw.geo_deskel_id')
-				->join('m_geo_kec','m_geo_kec.geo_kec_id','=','m_geo_deskel.geo_kec_id')
-				->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_geo_kec.geo_kab_id')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+				->join('m_geo_deskel_kpu','m_geo_deskel_kpu.geo_deskel_id','=','m_geo_rw.geo_deskel_id')
+				->join('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','m_geo_deskel_kpu.geo_kec_id')
+				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec_kpu.geo_kab_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 					if($kab){
-						$dataRT->where('m_geo_kab.geo_kab_id',$kab);
+						$dataRT->where('m_geo_kab_kpu.geo_kab_id',$kab);
 					}
 					if($kec){
-						$dataRT->where('m_geo_kec.geo_kec_id',$kec);
+						$dataRT->where('m_geo_kec_kpu.geo_kec_id',$kec);
 					}
 					if($deskel){
-						$dataRT->where('m_geo_deskel.geo_deskel_id',$deskel);
+						$dataRT->where('m_geo_deskel_kpu.geo_deskel_id',$deskel);
 					}
 					if($rw){
 						$dataRT->where('m_geo_rw.geo_rw_id',$rw);
@@ -448,9 +448,9 @@ class ReportController extends Controller
 		} else if($type == 'dprri'){
 			$return = 'main.report.line';
 			$dataDprdi = DB::table('r_bio_dprri')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_dprri.geo_prov_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_dprri.geo_prov_id')
 				->join('m_bio','m_bio.bio_id','=','r_bio_dprri.bio_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 
 			/* $dataGrafik = [['Kabupaten',@$pengurus->pengurus_pimcab],['DPC B.TBK',@$pengurus->pengurus_pimcab-@$pengurus->pengurus_pimcab_ada],['DPC TBK',@$pengurus->pengurus_pimcab_ada]]; */
 			foreach ($performa as $d) {
@@ -460,9 +460,9 @@ class ReportController extends Controller
 		} else if($type == 'dprdi'){
 			$return = 'main.report.line';
 			$dataDprdi = DB::table('r_bio_dprdi')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_dprdi.geo_prov_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_dprdi.geo_prov_id')
 				->join('m_bio','m_bio.bio_id','=','r_bio_dprdi.bio_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 
 			/* $dataGrafik = [['Kabupaten',@$pengurus->pengurus_pimcab],['DPC B.TBK',@$pengurus->pengurus_pimcab-@$pengurus->pengurus_pimcab_ada],['DPC TBK',@$pengurus->pengurus_pimcab_ada]]; */
 			foreach ($performa as $d) {
@@ -472,9 +472,9 @@ class ReportController extends Controller
 		} else if($type == 'dprdii'){
 			$return = 'main.report.line';
 			$dataDprdii = DB::table('r_bio_dprdii')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_dprdii.geo_prov_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_dprdii.geo_prov_id')
 				->join('m_bio','m_bio.bio_id','=','r_bio_dprdii.bio_id')
-					->where('m_geo_prov.geo_prov_id',$prov);
+					->where('m_geo_prov_kpu.geo_prov_id',$prov);
 					
 			/* $dataGrafik = [['Kabupaten',@$pengurus->pengurus_pimcab],['DPC B',@$pengurus->pengurus_pimcab-@$pengurus->pengurus_pimcab_ada],['DPC',@$pengurus->pengurus_pimcab_ada]]; */
 			foreach ($performa as $d) {

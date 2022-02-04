@@ -107,12 +107,12 @@ class InputController extends Controller
 			case 'kpa':
 				$join_r_bio->leftjoin('m_geo_rw','m_geo_rw.geo_rw_id','=','r_bio_'.$type.'.geo_rw_id');
 			case 'par':
-				$join_r_bio->leftjoin('m_geo_deskel','m_geo_deskel.geo_deskel_id','=','r_bio_'.$type.'.geo_deskel_id');
+				$join_r_bio->leftjoin('m_geo_deskel_kpu','m_geo_deskel_kpu.geo_deskel_id','=','r_bio_'.$type.'.geo_deskel_id');
 			case 'pac':
-				$join_r_bio->leftjoin('m_geo_kec','m_geo_kec.geo_kec_id','=','r_bio_'.$type.'.geo_kec_id');
+				$join_r_bio->leftjoin('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','r_bio_'.$type.'.geo_kec_id');
 			case 'dpc':
 			case 'dprdii':
-				$join_r_bio->leftjoin('m_geo_kab','m_geo_kab.geo_kab_id','=','r_bio_'.$type.'.geo_kab_id');
+				$join_r_bio->leftjoin('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','r_bio_'.$type.'.geo_kab_id');
 			case 'dpd':
 			case 'dprdi':
 				$join_r_bio->leftjoin('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_'.$type.'.geo_prov_id');
@@ -144,7 +144,7 @@ class InputController extends Controller
 					$join_r_bio->where('r_bio_'.$type.'.geo_kec_id','=',$kec);
 				else{
 					$join_r_bio->addselect(
-						   	'm_geo_kec.geo_kec_nama','m_geo_kec.geo_kec_id');
+						   	'm_geo_kec_kpu.geo_kec_nama','m_geo_kec_kpu.geo_kec_id');
 					$join_r_bio->where('m_struk_'.$type.'.struk_'.$type.'_nama','=',"Ketua");
 					$showIndex=true;
 				} 
@@ -152,14 +152,14 @@ class InputController extends Controller
 				if(!$kab)
 					{	
 						$join_r_bio->addselect(
-						   	'm_geo_kab.geo_kab_nama','m_geo_kab.geo_kab_id');
+						   	'm_geo_kab_kpu.geo_kab_nama','m_geo_kab_kpu.geo_kab_id');
 						$join_r_bio->where('m_struk_'.$type.'.struk_'.$type.'_nama','=',"Ketua");
 						$showIndex=true;	
 					}
 			case 'dpd':
 				if(!$prov)
 					{	$join_r_bio->addselect(
-						   	'm_geo_prov.geo_prov_nama','m_geo_prov.geo_prov_id');
+						   	'm_geo_prov_kpu.geo_prov_nama','m_geo_prov_kpu.geo_prov_id');
 						$join_r_bio->where('m_struk_'.$type.'.struk_'.$type.'_nama','=',"Ketua");
 						$showIndex=true;
 					}
@@ -191,13 +191,13 @@ class InputController extends Controller
 		}		
 		$data=$join_r_bio->get(); 
 		//echo '<pre>' . var_export($data, true) . '</pre>';
-		$provinsi = DB::table('m_geo_prov')
+		$provinsi = DB::table('m_geo_prov_kpu')
 			->select('geo_prov_nama','geo_prov_id')
 			->get();
 
 		/*arif*/
 		$provnya = session()->get('idProvinsi');
-		$provsession = DB::table('m_geo_prov')
+		$provsession = DB::table('m_geo_prov_kpu')
 			->where('geo_prov_id', $provnya)
 			->get();
 		/*arif*/
@@ -231,17 +231,17 @@ class InputController extends Controller
 		];
 
 		if($kab)
-			$masterData['kabupaten'] = DB::table('m_geo_kab')
+			$masterData['kabupaten'] = DB::table('m_geo_kab_kpu_kpu')
 				->select('geo_kab_nama','geo_kab_id')
 					->where('geo_prov_id','=',$prov)
 						->get();
 		if($kec)
-			$masterData['kecamatan'] = DB::table('m_geo_kec')
+			$masterData['kecamatan'] = DB::table('m_geo_kec_kpu')
 				->select('geo_kec_nama','geo_kec_id')
 					->where('geo_kab_id','=',$kab)
 						->get();
 		if($deskel)
-			$masterData['kelurahan'] = DB::table('m_geo_deskel')
+			$masterData['kelurahan'] = DB::table('m_geo_deskel_kpu')
 				->select('geo_deskel_nama','geo_deskel_id')
 					->where('geo_kec_id','=',$kec)
 						->get();
@@ -257,7 +257,7 @@ class InputController extends Controller
 			foreach($provinsi as $row){	
 				$masterData['kabn'][]=DB::table('r_bio_pimcab')
 					->select(DB::raw('geo_kab_nama,count(bio_pimcab_id) as jml_dpc'))
-						->leftJoin('m_geo_kab','m_geo_kab.geo_kab_id','=','r_bio_pimcab.geo_kab_id')
+						->leftJoin('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','r_bio_pimcab.geo_kab_id')
 							->groupBy('r_bio_pimcab.geo_kab_id')
 								->where('r_bio_pimcab.geo_prov_id','=',$row->geo_prov_id)
 									->get();
@@ -265,9 +265,9 @@ class InputController extends Controller
 			}
 			$masterData['test']=DB::table('r_bio_pimcab')
 				->select(DB::raw('COALESCE(count(*),0) as jml'))
-					->rightJoin('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id')
-						->groupBy('m_geo_prov.geo_prov_id')
-							//->where('m_geo_prov.geo_prov_id','=',$row->geo_prov_id)
+					->rightJoin('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_pimcab.geo_prov_id')
+						->groupBy('m_geo_prov_kpu.geo_prov_id')
+							//->where('m_geo_prov_kpu.geo_prov_id','=',$row->geo_prov_id)
 							->get();
 				$masterData['countstruktot']=DB::table('m_struk_pimcab')
 					->select(DB::raw('count(*) as jml'))
@@ -275,17 +275,17 @@ class InputController extends Controller
 							//->where('geo_prov_id','=',$row->geo_prov_id)
 							->get();
 				
-				$masterData['countkab']=DB::table('m_geo_kab')
+				$masterData['countkab']=DB::table('m_geo_kab_kpu')
 					->select(DB::raw('count(*) as jml'))
 						->groupBy('geo_prov_id')
 							//->where('geo_prov_id','=',$row->geo_prov_id)
 							->get();
 				$masterData['countstrukav']=DB::table('m_struk_pimcab')
 					->select(DB::raw('count(m_struk_pimcab.struk_pimcab_id) as jml'))
-						->rightJoin('m_geo_prov',function($join){
-							$join->on('m_geo_prov.geo_prov_id','=','m_struk_pimcab.geo_prov_id');
+						->rightJoin('m_geo_prov_kpu',function($join){
+							$join->on('m_geo_prov_kpu.geo_prov_id','=','m_struk_pimcab.geo_prov_id');
 							$join->whereNull('dijabat');
-						})->groupBy('m_geo_prov.geo_prov_id')		
+						})->groupBy('m_geo_prov_kpu.geo_prov_id')		
 							->get();
 			//echo '<pre>' . var_export($data, true) . '</pre>';
 			
@@ -312,25 +312,25 @@ class InputController extends Controller
 				});
 		switch($type){
 			case 'l':
-				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
+				$query->rightJoin('m_geo_prov_kpu',function($join){
+					$join->on('m_geo_prov_kpu.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->where('m_bio.bio_jenis_kelamin','=','1');
 				});
 				break;
 			case 'p':
-				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
+				$query->rightJoin('m_geo_prov_kpu',function($join){
+					$join->on('m_geo_prov_kpu.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->where('m_bio.bio_jenis_kelamin','=','0');
 				});
 				break;
 			case 'a':
-				$query->rightJoin('m_geo_prov',function($join){
-					$join->on('m_geo_prov.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
+				$query->rightJoin('m_geo_prov_kpu',function($join){
+					$join->on('m_geo_prov_kpu.geo_prov_id','=','r_bio_pimcab.geo_prov_id');
 					$join->whereNull('m_bio.bio_jenis_kelamin');
 				});
 				break;
 		}
-		$data=$query->groupBy('m_geo_prov.geo_prov_id')		
+		$data=$query->groupBy('m_geo_prov_kpu.geo_prov_id')		
 			->get();
 		$data=array_map(
 			function($val){
@@ -343,8 +343,8 @@ class InputController extends Controller
 	{
 		$data=DB::table('r_bio_'.$type)
 				->select(DB::raw('count(r_bio_'.$type.'.bio_'.$type.'_id) as jml'))
-				->rightJoin('m_geo_prov','m_geo_prov.geo_prov_id','=','r_bio_'.$type.'.geo_prov_id')
-				->groupBy('m_geo_prov.geo_prov_id')
+				->rightJoin('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_'.$type.'.geo_prov_id')
+				->groupBy('m_geo_prov_kpu.geo_prov_id')
 				->get();
 		$data=array_map(
 			function($val){
@@ -358,7 +358,7 @@ class InputController extends Controller
 		$data=DB::select('select count(bio_'.$type.'_sk) as jml from (
 			select bio_'.$type.'_sk,'.$type.'.geo_prov_id from r_bio_'.$type.' '.$type.'
 			group by '.$type.'.bio_'.$type.'_sk ) as tb
-			right join m_geo_prov prov on prov.geo_prov_id = tb.geo_prov_id 
+			right join m_geo_prov_kpu prov on prov.geo_prov_id = tb.geo_prov_id 
 			group by  prov.geo_prov_id ');
 		$data=array_map(
 			function($val){
@@ -372,7 +372,7 @@ class InputController extends Controller
 		$data=DB::select('select count(bio_'.$type.'_kta) as jml from (
 			select bio_'.$type.'_kta,'.$type.'.geo_prov_id from r_bio_'.$type.' '.$type.'
 			group by '.$type.'.bio_'.$type.'_kta ) as tb
-			right join m_geo_prov prov on prov.geo_prov_id = tb.geo_prov_id 
+			right join m_geo_prov_kpu prov on prov.geo_prov_id = tb.geo_prov_id 
 			group by  prov.geo_prov_id ');
 		$data=array_map(
 			function($val){

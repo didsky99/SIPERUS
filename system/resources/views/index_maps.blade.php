@@ -840,7 +840,7 @@
 		addOptionActive(jenis);
     }
 
-	function showpimcab(jenis) {
+	function showDPC(jenis) {
     	setStatistikOrganisasi(null);
     	setStatistikKursi(null);
     	setDPD(null);
@@ -920,7 +920,7 @@
 		}
 	}
 
-    function showDPDpimcab(jenis) {
+    function showDPDDPC(jenis) {
     	setStatistikOrganisasi(null);
     	setStatistikKursi(null);
     	setDPD(map);

@@ -72,7 +72,7 @@ class AuthController extends Controller
 	}
 	
 	public function viewRegisterForm(){
-		$dataProvinsi = DB::table('m_geo_prov')
+		$dataProvinsi = DB::table('m_geo_prov_kpu')
 			->get();
 		$dataIdentitas = DB::table('ref_identitas')
 			->get();

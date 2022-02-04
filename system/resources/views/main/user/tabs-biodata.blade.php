@@ -24,7 +24,7 @@
 			<div class="row">
 				<label for="bio" class="col-md-2 col-sm-6 col-xs-12">Nama Anggota</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" class="form-control" id="nama_anggota" name="nama_anggota">
+					<input type="text" class="form-control" id="bio_id" name="bio_id">
 				</div>
 			</div>
 		</div>
@@ -91,7 +91,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">No. Telp</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="telp" id="telp" class="form-control" placeholder="No. Telp">				
+					<input type="text" name="hp" id="hp" class="form-control" placeholder="No. Telp">				
 				</div>
 			</div>
 		</div>
@@ -99,7 +99,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Jabatan</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan">				
+					<input type="text" name="menjabat" id="menjabat" class="form-control" placeholder="Jabatan">				
 				</div>
 			</div>
 		</div>
@@ -115,7 +115,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Date SK Mandat</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="date" name="date_sk_mandat" id="date_sk_mandat" class="form-control" placeholder="Date SK Mandat">				
+					<input type="date" name="sk_tgl" id="sk_tgl" class="form-control" placeholder="Date SK Mandat">				
 				</div>
 			</div>
 		</div>	
@@ -123,7 +123,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">File SK Mandat</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="file" name="file_sk_mandat" id="file_sk_mandat" class="form-control" placeholder="File SK Mandat">				
+					<input type="file" name="sk_foto" id="sk_foto" class="form-control" placeholder="File SK Mandat">				
 					<h6>(Max 10MB, /pdf)</h6>
 				</div>
 			</div>

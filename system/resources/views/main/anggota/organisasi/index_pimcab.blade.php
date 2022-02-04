@@ -37,7 +37,7 @@
 	<script type="text/javascript">
 	$(function(){
 		jQuery.ajax({
-			url:'{{url()}}/data_ajx/get/bio_menjabat/pac',
+			url:'{{url()}}/data_ajx/get/bio_menjabat/pimcam',
 			success:function(res,sts,xhr){
 				var newData={
 		     		label:'Jumlah PAC',

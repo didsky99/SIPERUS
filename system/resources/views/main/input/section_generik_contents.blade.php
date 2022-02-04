@@ -4,7 +4,7 @@
 	<div onclick="actionEdit({{$val->r_bio_id}},'{{$val->nama or ''}}',{{$val->bio_id or 'null'}},'{{@$val->nama_jabatan?:'-'}}',{{$val->jabatan_id or 'null'}},{{'{'.(@$obj?:'').'}'}})" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
 	<?php
 	if($type == "par"){
-		$tp = "pr";
+		$tp = "pimran";
 	}else{
 		$tp = $type;
 	}

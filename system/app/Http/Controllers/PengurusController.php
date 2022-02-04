@@ -991,7 +991,7 @@ class PengurusController extends Controller
 						$join_r_bio->join('m_geo_kec_kpu', 'm_geo_kec_kpu.geo_kec_id', '=', 'r_bio_' . $type . '.geo_kec_id');
 						$join_r_bio->join('m_geo_kab_kpu', 'm_geo_kab_kpu.geo_kab_id', '=', 'r_bio_' . $type . '.geo_kab_id');
 						$join_r_bio->join('m_geo_prov_kpu', 'm_geo_prov_kpu.geo_prov_id', '=', 'r_bio_' . $type . '.geo_prov_id');
-					} else if ($type == 'pr') {
+					} else if ($type == 'pimran') {
 						$join_r_bio->join('m_geo_deskel_kpu', 'm_geo_deskel_kpu.geo_deskel_id', '=', 'r_bio_' . $type . '.geo_deskel_id');
 						$join_r_bio->join('m_geo_kec_kpu', 'm_geo_kec_kpu.geo_kec_id', '=', 'r_bio_' . $type . '.geo_kec_id');
 						$join_r_bio->join('m_geo_kab_kpu', 'm_geo_kab_kpu.geo_kab_id', '=', 'r_bio_' . $type . '.geo_kab_id');
@@ -1248,9 +1248,9 @@ class PengurusController extends Controller
 					}
 					$masterData['test'] = DB::table('r_bio_pimcab')
 						->select(DB::raw('COALESCE(count(*),0) as jml'))
-						->rightJoin('m_geo_prov', 'm_geo_prov.geo_prov_id', '=', 'r_bio_pimcab.geo_prov_id')
-						->groupBy('m_geo_prov.geo_prov_id')
-						//->where('m_geo_prov.geo_prov_id','=',$row->geo_prov_id)
+						->rightJoin('m_geo_prov_kpu', 'm_geo_prov_kpu.geo_prov_id', '=', 'r_bio_pimcab.geo_prov_id')
+						->groupBy('m_geo_prov_kpu.geo_prov_id')
+						//->where('m_geo_prov_kpu.geo_prov_id','=',$row->geo_prov_id)
 						->get();
 					$masterData['countstruktot'] = DB::table('m_struk_pimcab')
 						->select(DB::raw('count(*) as jml'))
@@ -1265,10 +1265,10 @@ class PengurusController extends Controller
 						->get();
 					$masterData['countstrukav'] = DB::table('m_struk_pimcab')
 						->select(DB::raw('count(m_struk_pimcab.struk_pimcab_id) as jml'))
-						->rightJoin('m_geo_prov', function ($join) {
-							$join->on('m_geo_prov.geo_prov_id', '=', 'm_struk_pimcab.geo_prov_id');
+						->rightJoin('m_geo_prov_kpu', function ($join) {
+							$join->on('m_geo_prov_kpu.geo_prov_id', '=', 'm_struk_pimcab.geo_prov_id');
 							$join->whereNull('dijabat');
-						})->groupBy('m_geo_prov.geo_prov_id')
+						})->groupBy('m_geo_prov_kpu.geo_prov_id')
 						->get();
 
 

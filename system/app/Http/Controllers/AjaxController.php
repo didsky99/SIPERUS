@@ -103,28 +103,28 @@ class AjaxController extends Controller
 		$data = @$_GET['data'];
 		
 		if($jenis == 'prov'){
-			$check = DB::table('m_geo_prov')
+			$check = DB::table('m_geo_prov_kpu')
 				->where('geo_prov_nama','like','%'.$data.'%')
 					->groupBy('geo_prov_id')
 						->get();			
 		} else if($jenis == 'kab'){
-			$check = DB::table('m_geo_kab')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_prov.geo_prov_id')
+			$check = DB::table('m_geo_kab_kpu')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_prov_kpu.geo_prov_id')
 					->where('geo_deskel_nama','like','%'.$data.'%')
 						->groupBy('geo_kab_id')
 							->get();			
 		} else if($jenis == 'kec'){
-			$check = DB::table('m_geo_kec')
-				->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_geo_kec.geo_kab_id')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_prov.geo_prov_id')
+			$check = DB::table('m_geo_kec_kpu')
+				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec_kpu.geo_kab_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_prov_kpu.geo_prov_id')
 					->where('geo_kec_nama','like','%'.$data.'%')
 						->groupBy('geo_deskel_id')
 							->get();			
 		} else if($jenis == 'kel'){
 			$check = DB::table('m_geo_deskel')
-				->join('m_geo_kec','m_geo_kec.geo_kec_id','=','m_geo_deskel.geo_kec_id')
-				->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_geo_kec.geo_kab_id')
-				->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_prov.geo_prov_id')
+				->join('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','m_geo_deskel.geo_kec_id')
+				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec_kpu.geo_kab_id')
+				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_prov_kpu.geo_prov_id')
 					->where('geo_deskel_nama','like','%'.$data.'%')
 						->groupBy('geo_deskel_id')
 							->get();			
@@ -167,7 +167,7 @@ class AjaxController extends Controller
 		$kec = @$_GET['kec'];
 		$kel = @$_GET['kel'];
 		if($jenis == 'kab') {
-			$data = DB::table('m_geo_kab')
+			$data = DB::table('m_geo_kab_kpu')
 				->where('geo_prov_id',$prov)
 					->get();
 			echo '<option value="0" disabled selected="selected">--- Kabupaten ---</option>';
@@ -175,7 +175,7 @@ class AjaxController extends Controller
 				echo '<option value="'.$tmp->geo_kab_id.'">'.$tmp->geo_kab_nama.'</option>';
 			}
 		} else if($jenis == 'kec') {
-			$data = DB::table('m_geo_kec')
+			$data = DB::table('m_geo_kec_kpu')
 				->where('geo_kab_id',$kab)
 					->get();
 			echo '<option value="">--- Kecamatan ---</option>';

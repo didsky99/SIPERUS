@@ -46,7 +46,7 @@
 					  {{--*/ $no=1 /*--}}
 						<div class="box-body"> 
 							<div class="row">
-								@if($type != 'dpd' && $type != 'dprri' && $type != 'dprdi' && $type != 'dprdii')
+								@if($type != 'pimda' && $type != 'dprri' && $type != 'dprdi' && $type != 'dprdii')
 									<div class="col-md-2 col-sm-4 col-xs-6" style="display:{{ ($prov)?'initial':'initial' }}">
 										<select class="form-control custom-field-litle" id="prov" name="prov" onchange="changeProv(this.value)">
 											<option value="" selected >--- Provinsi ---</option>
@@ -123,16 +123,16 @@
 									<table class="table table-striped table-hover">
 										<thead>
 											<th>No</th>
-											@if($type == 'dpd')
+											@if($type == 'pimda')
 												<th>Provinsi</th>
-											@elseif($type == 'dpc')
+											@elseif($type == 'pimcab')
 												<th>Provinsi</th>
 												<th>Kabupaten</th>
-											@elseif($type == 'pac')
+											@elseif($type == 'pimcam')
 												<th>Provinsi</th>
 												<th>Kabupaten</th>
 												<th>Kecamatan</th>
-											@elseif($type == 'pr')
+											@elseif($type == 'pimran')
 												<th>Provinsi</th>
 												<th>Kabupaten</th>
 												<th>Kecamatan</th>
@@ -160,24 +160,24 @@
 											@foreach($data as $tmp)
 												<tr>
 													<td>{{ $page++ }}</td>
-													@if($type == 'dpd')
+													@if($type == 'pimda')
 														<td>{{ (@$provName)?@$provName:$tmp->geo_prov_nama }}</td>
-														{{--*/ $link = "data_pengurus/dpd/".$tmp->geo_prov_id /*--}}
-													@elseif($type == 'dpc')
+														{{--*/ $link = "data_pengurus/pimda/".$tmp->geo_prov_id /*--}}
+													@elseif($type == 'pimcab')
 														<td>{{ (@$provName)?@$provName:$tmp->geo_prov_nama }}</td>
 														<td>{{ $tmp->geo_kab_nama }}</td>
-														{{--*/ $link = "data_pengurus/dpc/".$tmp->geo_prov_id."/".$tmp->geo_kab_id /*--}}
-													@elseif($type == 'pac')
+														{{--*/ $link = "data_pengurus/pimcab/".$tmp->geo_prov_id."/".$tmp->geo_kab_id /*--}}
+													@elseif($type == 'pimcam')
 														<td>{{ (@$provName)?@$provName:$tmp->geo_prov_nama }}</td>
 														<td>{{ $tmp->geo_kab_nama }}</td>
 														<td>{{ $tmp->geo_kec_nama }}</td>
-														{{--*/ $link = "data_pengurus/pac/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id /*--}}
-													@elseif($type == 'pr')
+														{{--*/ $link = "data_pengurus/pimcam/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id /*--}}
+													@elseif($type == 'pimran')
 														<td>{{ (@$provName)?@$provName:$tmp->geo_prov_nama }}</td>
 														<td>{{ $tmp->geo_kab_nama }}</td>
 														<td>{{ $tmp->geo_kec_nama }}</td>
 														<td>{{ $tmp->geo_deskel_nama }}</td>
-														{{--*/ $link = "data_pengurus/pr/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id."/".$tmp->geo_deskel_id /*--}}
+														{{--*/ $link = "data_pengurus/pimran/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id."/".$tmp->geo_deskel_id /*--}}
 													@elseif($type == 'par')
 														<td>{{ (@$provName)?@$provName:$tmp->geo_prov_nama }}</td>
 														<td>{{ $tmp->geo_kab_nama }}</td>
@@ -225,7 +225,7 @@
 <script src="{{ asset('asset/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <script type="text/javascript">
 	function changeProv(val) {
-		if('{{ $type }}' == 'dpc') {
+		if('{{ $type }}' == 'pimcab') {
 			window.location.href = '{{ asset("dashboard/table") }}/{{ $table }}/'+val;
 		} else {
 			changeKabupatenOptionKPU(null,'#kab',val);
@@ -233,7 +233,7 @@
 	}
 	function changeKab(val) {
 		var prov = $('#prov').val();
-		if('{{ $type }}' == 'pac') {
+		if('{{ $type }}' == 'pimcam') {
 			window.location.href = '{{ asset("dashboard/table") }}/{{ $table }}/'+prov+'/'+val;
 		} else {
 			changeKecamatanOptionKPU(null,'#kec',prov,val);
@@ -242,7 +242,7 @@
 	function changeKec(val) {
 		var prov = $('#prov').val();
 		var kab = $('#kab').val();
-		if('{{ $type }}' == 'pr') {
+		if('{{ $type }}' == 'pimran') {
 			window.location.href = '{{ asset("dashboard/table") }}/{{ $table }}/'+prov+'/'+kab+'/'+val;
 		} else {
 			changeKelurahanOptionKPU(null,'#kel',prov,kab,val);

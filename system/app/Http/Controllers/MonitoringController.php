@@ -54,11 +54,11 @@ class MonitoringController extends Controller{
 								    SELECT
 										COUNT(*)
 									FROM
-										m_struk_pac
+										m_struk_pimcam
 									WHERE
-										m_struk_pac.dijabat = 1
+										m_struk_pimcam.dijabat = 1
 									GROUP BY 
-										m_struk_pac.geo_kec_id
+										m_struk_pimcam.geo_kec_id
 								    ) as FR");
 			foreach ($getPAC as $key) {
 				$pac = $key->PAC;
