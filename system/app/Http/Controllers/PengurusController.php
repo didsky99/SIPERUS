@@ -166,8 +166,9 @@ class PengurusController extends Controller
 		}
 	}
 
-	public function saveUser()
+	public function saveUser(Request $req)
 	{
+		//dd($_POST);
 		$allowed = array('png', 'jpg', 'jpeg', 'docx', 'pdf', 'doc', 'xlsx', 'xls');
 		$statusKader = @$_POST['statusKader'];
 		$nomerAnggota = @$_POST['nomerAnggota'];
@@ -222,9 +223,8 @@ class PengurusController extends Controller
 		
 
 				// $bio_id = @$_POST['bio_id'];
-				$bio_val = @$_POST['bio_id'];
-				$bio_id = (int)$bio_val;
-				
+				$bio_id = @$_POST['bio_num'];
+			
 					if (Input::hasFile('foto')) {
 						$file 	= Input::file('foto');
 						if ($file->getSize() <= 2097152) {
@@ -235,9 +235,14 @@ class PengurusController extends Controller
 								$file->move('asset/img/doc-sk/' . $bio_id . '/doc/', $file->getClientOriginalName());
 								$namaFoto = $file->getClientOriginalName();
 								$savePendaftaran = DB::table('m_bio_sk')
-									->where('bio_id', $bio_id)
+									//->where('bio_id', $bio_id)
 									->insert([
-										'bio_sk_foto' => $namaFoto
+										'bio_sk_foto' => $namaFoto,
+										'bio_id' => $bio_id,
+										'bio_sk_no' => $noSK,
+										'bio_sk_tgl' => $dateSK,
+										'bio_sk_created_date' => $createDate,
+						'bio_sk_created_by' => session('idLogin')
 									]);
 							}
 						} else {
@@ -245,17 +250,19 @@ class PengurusController extends Controller
 								alert("File Anda Terlalu Besar");
 							</script><?php
 						}
-					}	
-
-					$saveSK = DB::table('m_bio_sk')
+					} else {
+							$saveSK = DB::table('m_bio_sk')
 					->insertGetId([
 						'bio_id' => $bio_id,
 						'bio_sk_no' => $noSK,
 						'bio_sk_tgl' => $dateSK,
-						//'bio_sk_foto' => $fileSK,
+						// 'bio_sk_foto' => $namaFoto,
 						'bio_sk_created_date' => $createDate,
 						'bio_sk_created_by' => session('idLogin')
 					]);
+					}
+					
+					
 
 					if (session('idRole') == 3) {
 						$prov = session('idProvinsi2');

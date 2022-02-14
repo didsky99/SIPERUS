@@ -182,7 +182,7 @@
 		type : "POST",
 		selToInput:true,
 		placeholder:"Cari berdasarkan Nama / No. KTP",
-		inputName:"bio_id",
+		inputName:"bio_num",
 		onSelectedItem:function(item){
 			
 		}
