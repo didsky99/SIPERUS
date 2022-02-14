@@ -16,14 +16,14 @@
 					</div>
 					<div class="row">
 						<div class="form-group col-md-12">
-							<label for="nama" class="col-md-3">DPC (Kabupaten/Ada)</label>
+							<label for="nama" class="col-md-3">PIMCAB (Kabupaten/Ada)</label>
 							<label for="nama" class="col-md-1">:</label>
 							<div class="col-md-3" id="kabupaten"></div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-12" id="ddpc">
-							<label for="nama" class="col-md-3">PAC (Kecamatan/Ada)</label>
+							<label for="nama" class="col-md-3">PIMCAM (Kecamatan/Ada)</label>
 							<label for="nama" class="col-md-1">:</label>
 							<div class="col-md-3" id="kecamatan"></div>
 						</div>

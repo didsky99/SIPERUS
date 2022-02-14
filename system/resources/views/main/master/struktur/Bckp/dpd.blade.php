@@ -39,7 +39,7 @@
 				<td>
 					<div onclick="detailStruktur('dpd','{{ $tmp->struk_pimda_id }}')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>
 					<div onclick='actionEdit("{{ $tmp->geo_prov_id }}","","","","","","{{ $tmp->struk_pimda_id }}","{{ $tmp->struk_pimda_nama }}")' class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
-					<a href="{{ asset('proses/delete/struktur/dpd/'.$tmp->geo_prov_id.'/'.$tmp->struk_pimda_id) }}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+					<a href="{{ asset('proses/delete/struktur/dpd/'.$tmp->geo_prov_id.'/'.$tmp->struk_pimda_id) }}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
 					<div onclick="printUser('{{ $tmp->struk_pimda_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
 				</td>
 			</tr>

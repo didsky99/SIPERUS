@@ -231,7 +231,7 @@ class InputController extends Controller
 		];
 
 		if($kab)
-			$masterData['kabupaten'] = DB::table('m_geo_kab_kpu_kpu')
+			$masterData['kabupaten'] = DB::table('m_geo_kab_kpu')
 				->select('geo_kab_nama','geo_kab_id')
 					->where('geo_prov_id','=',$prov)
 						->get();

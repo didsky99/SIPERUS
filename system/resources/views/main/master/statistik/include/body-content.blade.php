@@ -24,12 +24,12 @@
 								<div class="@yield('add-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
 									<div class="@yield('add-button','show') btn-danger btn-block btn" data-toggle="modal" data-target="#modal-input-struk" onclick="actionTambah()"><i class="fa fa-plus"></i> Tambah</div>
 								</div>
-								<div class="@yield('download-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
+								<!-- <div class="@yield('download-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
 									<div class="btn-danger btn-block btn" onclick="actionDownload('excel','statistik','all')"><i class="fa fa-print"></i> Excel</div>
 								</div>
 								<div class="@yield('download-button','show') col-md-2 col-sm-3 col-xs-6 pull-right">
 									<div class="btn-danger btn-block btn" onclick="actionDownload('pdf','statistik','all')"><i class="fa fa-print"></i> PDF</div>
-								</div>
+								</div> -->
 							</div>
 						</div>
 			 

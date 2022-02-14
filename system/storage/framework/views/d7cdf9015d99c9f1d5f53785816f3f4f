@@ -298,7 +298,7 @@ $(document).ready(function(){
 					$($($("#detailNameKel").parent('div')).parent('div')).hide();
 					$($($("#detailNameRW").parent('div')).parent('div')).hide();
 					$($($("#detailNameRT").parent('div')).parent('div')).hide();
-					$("#detailNameStruk").text(resp['struk_pac_nama']);
+					$("#detailNameStruk").text(resp['struk_pimcam_nama']);
 					$("#detailNameBio").text(resp['fullName']);
 				} else if(jenis == 'pr') {
 					$("#detailNameProv").text(resp['geo_prov_nama']);
@@ -307,7 +307,7 @@ $(document).ready(function(){
 					$("#detailNameKel").text(resp['geo_deskel_nama']);
 					$($($("#detailNameRW").parent('div')).parent('div')).hide();
 					$($($("#detailNameRT").parent('div')).parent('div')).hide();
-					$("#detailNameStruk").text(resp['struk_pr_nama']);
+					$("#detailNameStruk").text(resp['struk_pimran_nama']);
 					$("#detailNameBio").text(resp['fullName']);
 				} else if(jenis == 'par') {
 					$("#detailNameProv").text(resp['geo_prov_nama']);

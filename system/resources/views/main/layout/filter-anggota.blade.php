@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-6 col-sm-6 col-xs-12">
 		<div class="form-group">
-			<label>Filter Berdasarkan</label>
+			<label>No. KTP / NIK</label>
 			<input type="text" name="nik" id="nik" class="form-control">
 		</div>
 		<!-- <div class="form-group">

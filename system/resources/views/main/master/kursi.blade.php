@@ -255,7 +255,7 @@
 			<div onclick='actionEdit(<%= JSON.stringify(row) %>)' class="{{ @$btnStatus }} btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit">
 				<i class="fa fa-edit"></i>
 			</div>
-			<a href="{{url().'/master/hapus_kursi/'}}<%= row.kursi_id %>'" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="{{ @$btnStatus }} btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">
+			<a href="{{url().'/master/hapus_kursi/'}}<%= row.kursi_id %>'" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="{{ @$btnStatus }} btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">
 				<i class="fa fa-trash">
 
 				</i>
@@ -264,7 +264,7 @@
 		<% } %>
 		
 		
-		<div onclick="printUser('')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+		<!-- <div onclick="printUser('')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div> -->
 	</script>
 <script type="text/template">
 	/* 	<tr>
@@ -290,12 +290,12 @@
 				<div onclick="actionEdit({{json_encode($val)}})" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit">
 					<i class="fa fa-edit"></i>
 				</div>
-				<a href="{{url().'/master/hapus_kursi/'.$val->kursi_id}}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">
+				<a href="{{url().'/master/hapus_kursi/'.$val->kursi_id}}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">
 					<i class="fa fa-trash">
 
 					</i>
 				</a>
-			  <div onclick="printUser('{{ @$tmp->struk_pac_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+			  <!-- <div onclick="printUser('{{ @$tmp->struk_pac_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div> -->
 			</td>
 		  </tr>
 		  @endforeach*/

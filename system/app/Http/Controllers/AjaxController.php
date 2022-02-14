@@ -166,6 +166,7 @@ class AjaxController extends Controller
 		$kab = @$_GET['kab'];
 		$kec = @$_GET['kec'];
 		$kel = @$_GET['kel'];
+		$rw = @$_GET['rw'];
 		if($jenis == 'kab') {
 			$data = DB::table('m_geo_kab_kpu')
 				->where('geo_prov_id',$prov)
@@ -197,6 +198,14 @@ class AjaxController extends Controller
 			echo '<option value="">--- RW ---</option>';
 			foreach ($data as $tmp) {
 				echo '<option value="'.$tmp->geo_rw_id.'">'.$tmp->geo_rw_nama.'</option>';
+			}
+		} else if($jenis == 'rt') {
+			$data = DB::table('m_geo_rt')
+				->where('geo_rw_id',$rw)
+					->get();
+			echo '<option value="">--- RT ---</option>';
+			foreach ($data as $tmp) {
+				echo '<option value="'.$tmp->geo_rt_id.'">'.$tmp->geo_rt_nama.'</option>';
 			}
 		}
 		
@@ -617,6 +626,7 @@ class AjaxController extends Controller
 			<tr>
 				<td><?php echo $no++; ?></td>
 				<td><?php echo join(' ',$namaLengkap); ?></td>
+				<td><?php echo ($tmp->bio_nomer_identitas != '')?$tmp->bio_nomer_identitas:'-'; ?></td>
 				<td><?php echo ($tmp->jk_alias != '')?$tmp->jk_alias:'-'; ?></td>
 				<td><?php echo ($tmp->bio_tanggal_lahir != '')?date('d-m-Y',strtotime($tmp->bio_tanggal_lahir)):'-' ?></td>
 				<td><?php echo ($tmp->bio_telephone != '')?$tmp->bio_telephone:'-'; ?></td>
@@ -625,8 +635,8 @@ class AjaxController extends Controller
 				<td>
 				  <div onclick="detailUser('<?php echo $tmp->bio_id ?>')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>								
 				  <div onclick="editUser('<?php echo $tmp->bio_id ?>')" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
-				  <a href="<?php echo asset('input/hapus/user_management/'.$tmp->bio_id)?>" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-				  <div onclick="printUser('<?php echo $tmp->bio_id ?>')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+				  <a href="<?php echo asset('input/hapus/user_management/'.$tmp->bio_id)?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+				  <!-- <div onclick="printUser('<?php echo $tmp->bio_id ?>')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div> -->
 				</td>
 			</tr>
 			<?php
@@ -647,14 +657,16 @@ class AjaxController extends Controller
 		}else{
 			$data = DB::table('m_bio')
 			->select(
+				'm_bio.*',
 				'm_bio.bio_id as val',
-				DB::raw('CONCAT_WS(" ",bio_nama_depan,bio_nama_tengah,bio_nama_belakang) as text')
+				DB::raw('CONCAT_WS(" ",bio_id,bio_nama_depan,bio_nama_tengah,bio_nama_belakang) as text')
 			)
 			->where(DB::raw('CONCAT_WS(" ",bio_nama_depan,bio_nama_tengah,bio_nama_belakang)'),"like","%$search%")
 			->where("menjabat","=",null)
 			->orWhere("menjabat","=",0)
 			->get();
 		}
+
 		echo json_encode($data);
 	}
 

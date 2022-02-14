@@ -87,6 +87,7 @@ date_default_timezone_set('Asia/Jakarta');
 		Route::get('data_ajx/get/bio/{daerah}/{search}','AjaxController@getBioDaerah');
 
 		Route::get('data_ajx/get/ktp/{search}', 'AjaxController@getKtpBio');
+		Route::get('data_ajx/get/ktp/data', 'AjaxController@getData');
 
 		Route::get('data_ajx/get/bio/{search}','AjaxController@getBio');
 		Route::get('data_ajx/get/bioAll/{search}','AjaxController@getBioAll');

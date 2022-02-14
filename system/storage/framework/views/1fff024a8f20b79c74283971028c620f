@@ -1,5 +1,4 @@
 <div class="row">
-	<?php echo $__env->yieldContent('modal_struk_input_tambahan'); ?>
 	<div class="col-md-12">
 		<div class="form-group" style="display:<?php echo $__env->yieldContent('use_jabatan','initial'); ?>">
 			<div class="row" style="margin-left: 150px;" >
@@ -16,7 +15,7 @@
 		<div class="form-group el el-no-ktp">
 			<div class="row">
 				<label for="bio" class="col-md-2 col-sm-6 col-xs-12">Data Anggota</label>
-				<div class="col-md-8 col-sm-8 col-xs-9" id="search-bio">
+				<div class="col-md-8 col-sm-8 col-xs-9" id="search-bio" name="search-bio">
 				</div>
 			</div>
 		</div>
@@ -24,7 +23,7 @@
 			<div class="row">
 				<label for="bio" class="col-md-2 col-sm-6 col-xs-12">Nama Anggota</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" class="form-control" id="nama_anggota" name="nama_anggota">
+					<input type="text" class="form-control" id="bio_id" name="bio_id">
 				</div>
 			</div>
 		</div>
@@ -91,7 +90,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">No. Telp</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="telp" id="telp" class="form-control" placeholder="No. Telp">				
+					<input type="text" name="hp" id="hp" class="form-control" placeholder="No. Telp">				
 				</div>
 			</div>
 		</div>
@@ -99,7 +98,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Jabatan</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="jabatan" id="jabatan" class="form-control" placeholder="Jabatan">				
+					<input type="text" name="menjabat" id="menjabat" class="form-control" placeholder="Jabatan">				
 				</div>
 			</div>
 		</div>
@@ -107,7 +106,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">No SK Mandat</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="number" name="no_sk_mandat" id="no_sk_mandat" class="form-control" placeholder="No SK Mandat">				
+					<input type="text" name="noSK" id="noSK" class="form-control" placeholder="No SK Mandat">				
 				</div>
 			</div>
 		</div>
@@ -115,7 +114,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Date SK Mandat</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="date" name="date_sk_mandat" id="date_sk_mandat" class="form-control" placeholder="Date SK Mandat">				
+					<input type="date" name="dateSK" id="dateSK" class="form-control" placeholder="Date SK Mandat">				
 				</div>
 			</div>
 		</div>	
@@ -123,7 +122,7 @@
 			<div class="row">
 				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">File SK Mandat</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="file" name="file_sk_mandat" id="file_sk_mandat" class="form-control" placeholder="File SK Mandat">				
+					<input type="file" name="foto" id="foto" class="form-control" placeholder="File SK Mandat">				
 					<h6>(Max 10MB, /pdf)</h6>
 				</div>
 			</div>
@@ -142,7 +141,6 @@
 		</div>
 	</div>
 </div>
-
 
 <script type="text/javascript">	
 	
@@ -170,7 +168,7 @@
 	})
 
 	var searchKta=jQuery("#search-kta").AhmTextAsyncData({
-		ajaxUrl:"<?php echo e(url().'/data_ajx/get/kta'); ?>",
+		Url:"<?php echo e(url().'/data_ajx/get/kta'); ?>",
 		selToInput:true,
 		placeholder:"cari kta...",
 		inputName:"kta",
@@ -181,14 +179,49 @@
 
 	var searchBio=jQuery("#search-bio").AhmTextAsyncData({
 		ajaxUrl:"<?php echo e(url().'/data_ajx/get/ktp'); ?>",
+		type : "POST",
 		selToInput:true,
 		placeholder:"Cari berdasarkan Nama / No. KTP",
-		inputName:"bio",
+		inputName:"bio_id",
 		onSelectedItem:function(item){
 			
 		}
 	})
-	
+	// function datas() {
+	// var tes = document.getElementById("search-bio").value;
+    //     document.getElementById("abProv").value=abProv;
+	// 	document.getElementById("abKab").value=abKab;
+    //     document.getElementById("abKec").value=abKec;
+	// 	document.getElementById("abKel").value=abKel;
+    //     document.getElementById("emailBalon").value=emailBalon;
+	// 	document.getElementById("hp").value=hp;
+    //     document.getElementById("menjabat").value=menjabat;
+		
+	// }
+	// function datas(){ 
+	// 	var abProv = $('#search_bio option:selected').data('abProv');
+	// 	var abKab = $('#search_bio option:selected').data('abKab');
+	// 	var abKec = $('#search_bio option:selected').data('abKec');
+	// 	var abKel = $('#search_bio option:selected').data('abKel');
+
+	// 	$('[name=abProv]').val(abProv);
+	// 	var id=$(this).val();
+	// 	$.ajax({
+	// 		ajaxUrl:"<?php echo e(url().'/data_ajx/get/ktp'); ?>",
+	// 		method : "POST",
+	// 		data : {id: id},
+	// 		async : true,
+	// 		dataType : 'json',
+	// 		success: function(data){
+				
+	// 			var html = '';
+	// 			var i;
+			
+	// 		}
+	// 	});
+	// 	return false;
+	// };
+
 	// var searchStruk=jQuery("#search-struk").AhmTextAsyncData({
 	// 	ajaxUrl:"<?php echo e(url().'/data_ajx/get/struk/'); ?><?php echo $__env->yieldContent('modal_struk_tipe'); ?>/"+ind.getUrl(),
 	// 	selToInput:true,

@@ -12,7 +12,7 @@
 	<?php $__env->startSection('content_action_edit','user_management/user'); ?>
 
 	<?php $__env->startSection('goto_prov'); ?>
-		location.href="<?php echo e(url()); ?>/data_pengurus/dpd/"+provId;
+		location.href="<?php echo e(url()); ?>/data_pengurus/pimda/"+provId;
 	<?php $__env->stopSection(); ?>
 	 
 	<?php $__env->startSection('content_table_header'); ?>
@@ -29,8 +29,8 @@
 
 	<?php $__env->startSection('content_table_body'); ?>
 		<?php /**/$no =1/**/ ?>
-		<?php /**/$bio_xxx_id='bio_dpd_id'/**/ ?>
-		<?php /**/$type='dpd'/**/ ?>
+		<?php /**/$bio_xxx_id='bio_pimda_id'/**/ ?>
+		<?php /**/$type='pimda'/**/ ?>
 		  <?php foreach($dataUser as $val): ?>
 		   <?php /**/
 

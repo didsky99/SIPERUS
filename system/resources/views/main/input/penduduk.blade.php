@@ -60,7 +60,7 @@
 				<div onclick="actionEdit({{json_encode($val)}})" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit">
 					<i class="fa fa-edit"></i>
 				</div>
-				<a href="{{url().'/master/hapus_penduduk/'.$val->penduduk_id}}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">
+				<a href="{{url().'/master/hapus_penduduk/'.$val->penduduk_id}}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete">
 					<i class="fa fa-trash">
 
 					</i>

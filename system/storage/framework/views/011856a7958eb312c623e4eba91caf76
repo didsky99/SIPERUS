@@ -177,6 +177,17 @@ $(document).ready(function(){
 		var kec = $(this).val();
 		changeKelurahanOptionKPU('#abKec','#abKel',prov,kab,kec);
 	});
+
+	// $('#search-bio').change(function(){
+	// 	var prov = $(this).val();
+	// 	var kab = $('#abKab').val();
+	// 	var kec = $('#abKec').val();
+	// 	var kel = $('#abKel').val();
+	// 	var email = $(this).val();
+	// 	var hp = $(this).val();
+	// 	var jabatan = $(this).val();
+	// 	changeKabupatenOptionKPU('#search-bio','#abKab',prov);
+	// });
 	
 	$('.window').click(function() {
 		$('.popup').fadeOut(500);

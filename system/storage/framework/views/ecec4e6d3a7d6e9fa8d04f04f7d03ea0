@@ -44,7 +44,7 @@
 					  <?php /**/ $no=1 /**/ ?>
 						<div class="box-body"> 
 							<div class="row">
-								<?php if($type != 'dpd' && $type != 'dprri' && $type != 'dprdi' && $type != 'dprdii'): ?>
+								<?php if($type != 'pimda' && $type != 'dprri' && $type != 'dprdi' && $type != 'dprdii'): ?>
 									<div class="col-md-2 col-sm-4 col-xs-6" style="display:<?php echo e(($prov)?'initial':'initial'); ?>">
 										<select class="form-control custom-field-litle" id="prov" name="prov" onchange="changeProv(this.value)">
 											<option value="" selected >--- Provinsi ---</option>
@@ -121,16 +121,16 @@
 									<table class="table table-striped table-hover">
 										<thead>
 											<th>No</th>
-											<?php if($type == 'dpd'): ?>
+											<?php if($type == 'pimda'): ?>
 												<th>Provinsi</th>
-											<?php elseif($type == 'dpc'): ?>
+											<?php elseif($type == 'pimcab'): ?>
 												<th>Provinsi</th>
 												<th>Kabupaten</th>
-											<?php elseif($type == 'pac'): ?>
+											<?php elseif($type == 'pimcam'): ?>
 												<th>Provinsi</th>
 												<th>Kabupaten</th>
 												<th>Kecamatan</th>
-											<?php elseif($type == 'pr'): ?>
+											<?php elseif($type == 'pimran'): ?>
 												<th>Provinsi</th>
 												<th>Kabupaten</th>
 												<th>Kecamatan</th>
@@ -158,24 +158,24 @@
 											<?php foreach($data as $tmp): ?>
 												<tr>
 													<td><?php echo e($page++); ?></td>
-													<?php if($type == 'dpd'): ?>
+													<?php if($type == 'pimda'): ?>
 														<td><?php echo e((@$provName)?@$provName:$tmp->geo_prov_nama); ?></td>
-														<?php /**/ $link = "data_pengurus/dpd/".$tmp->geo_prov_id /**/ ?>
-													<?php elseif($type == 'dpc'): ?>
+														<?php /**/ $link = "data_pengurus/pimda/".$tmp->geo_prov_id /**/ ?>
+													<?php elseif($type == 'pimcab'): ?>
 														<td><?php echo e((@$provName)?@$provName:$tmp->geo_prov_nama); ?></td>
 														<td><?php echo e($tmp->geo_kab_nama); ?></td>
-														<?php /**/ $link = "data_pengurus/dpc/".$tmp->geo_prov_id."/".$tmp->geo_kab_id /**/ ?>
-													<?php elseif($type == 'pac'): ?>
+														<?php /**/ $link = "data_pengurus/pimcab/".$tmp->geo_prov_id."/".$tmp->geo_kab_id /**/ ?>
+													<?php elseif($type == 'pimcam'): ?>
 														<td><?php echo e((@$provName)?@$provName:$tmp->geo_prov_nama); ?></td>
 														<td><?php echo e($tmp->geo_kab_nama); ?></td>
 														<td><?php echo e($tmp->geo_kec_nama); ?></td>
-														<?php /**/ $link = "data_pengurus/pac/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id /**/ ?>
-													<?php elseif($type == 'pr'): ?>
+														<?php /**/ $link = "data_pengurus/pimcam/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id /**/ ?>
+													<?php elseif($type == 'pimran'): ?>
 														<td><?php echo e((@$provName)?@$provName:$tmp->geo_prov_nama); ?></td>
 														<td><?php echo e($tmp->geo_kab_nama); ?></td>
 														<td><?php echo e($tmp->geo_kec_nama); ?></td>
 														<td><?php echo e($tmp->geo_deskel_nama); ?></td>
-														<?php /**/ $link = "data_pengurus/pr/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id."/".$tmp->geo_deskel_id /**/ ?>
+														<?php /**/ $link = "data_pengurus/pimran/".$tmp->geo_prov_id."/".$tmp->geo_kab_id."/".$tmp->geo_kec_id."/".$tmp->geo_deskel_id /**/ ?>
 													<?php elseif($type == 'par'): ?>
 														<td><?php echo e((@$provName)?@$provName:$tmp->geo_prov_nama); ?></td>
 														<td><?php echo e($tmp->geo_kab_nama); ?></td>
@@ -224,7 +224,7 @@
 <script src="<?php echo e(asset('asset/plugins/jQuery/jquery-2.2.3.min.js')); ?>"></script>
 <script type="text/javascript">
 	function changeProv(val) {
-		if('<?php echo e($type); ?>' == 'dpc') {
+		if('<?php echo e($type); ?>' == 'pimcab') {
 			window.location.href = '<?php echo e(asset("dashboard/table")); ?>/<?php echo e($table); ?>/'+val;
 		} else {
 			changeKabupatenOptionKPU(null,'#kab',val);
@@ -232,7 +232,7 @@
 	}
 	function changeKab(val) {
 		var prov = $('#prov').val();
-		if('<?php echo e($type); ?>' == 'pac') {
+		if('<?php echo e($type); ?>' == 'pimcam') {
 			window.location.href = '<?php echo e(asset("dashboard/table")); ?>/<?php echo e($table); ?>/'+prov+'/'+val;
 		} else {
 			changeKecamatanOptionKPU(null,'#kec',prov,val);
@@ -241,7 +241,7 @@
 	function changeKec(val) {
 		var prov = $('#prov').val();
 		var kab = $('#kab').val();
-		if('<?php echo e($type); ?>' == 'pr') {
+		if('<?php echo e($type); ?>' == 'pimran') {
 			window.location.href = '<?php echo e(asset("dashboard/table")); ?>/<?php echo e($table); ?>/'+prov+'/'+kab+'/'+val;
 		} else {
 			changeKelurahanOptionKPU(null,'#kel',prov,kab,val);

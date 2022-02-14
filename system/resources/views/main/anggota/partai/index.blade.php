@@ -50,6 +50,7 @@
 							<tr>
 							  <th>No</th>
 							  <th>Nama</th>
+							  <th>NIK</th>
 							  <th>JK</th>
 							  <th>TTL</th>
 							  <th>No.Telp</th>
@@ -67,6 +68,7 @@
 							  <tr>
 								<td>{{ $no++ }}</td>
 								<td>{{ join(' ',$namaLengkap) }}</td>
+								<td>{{ ($tmp->bio_nomer_identitas != '')?$tmp->bio_nomer_identitas:'-' }}</td>
 								<td>{{ ($tmp->jk_alias != '')?$tmp->jk_alias:'-' }}</td>
 								<td>{{ ($tmp->bio_tanggal_lahir != '')?date('d-m-Y',strtotime($tmp->bio_tanggal_lahir)):'-' }}</td>
 								<td>{{ ($tmp->bio_handphone != '')?$tmp->bio_handphone:'-' }}</td>
@@ -75,8 +77,8 @@
 								<td>
 								  <div onclick="detailUser('{{ $tmp->id_bio }}')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>								
 								  <div onclick="editUser('{{ $tmp->id_bio }}')" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
-								  <a href="{{asset('input/hapus/user_management/'.$tmp->id_bio)}}" onclick="return confirm('Apakah anda yakin ingin menhapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-								  <div onclick="printUser('{{ $tmp->id_bio }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+								  <a href="{{asset('input/hapus/user_management/'.$tmp->id_bio)}}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
+								  <!-- <div onclick="printUser('{{ $tmp->id_bio }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div> -->
 								</td>
 							  </tr>
 						  @endforeach

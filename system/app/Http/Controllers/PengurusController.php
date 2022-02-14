@@ -6,6 +6,7 @@ use DB;
 use Input;
 use Redirect;
 use Illuminate\Http\Request;
+use Throwable;
 
 /**
  * 
@@ -184,6 +185,9 @@ class PengurusController extends Controller
 		$komitmen = '';
 		$bertaqwa = '';
 		$tinggal = '';
+		$noSK =  @$_POST['noSK'];
+		$dateSK =  @$_POST['dateSK'];
+		$fileSK =  @$_POST['fileSK'];
 
 		$namaDepan = @$_POST['namaDepan'];
 		$namaTengah = @$_POST['namaTengah'];
@@ -215,387 +219,43 @@ class PengurusController extends Controller
 		$kab_ar = @$_POST['s_kab'];
 		$kec_ar = @$_POST['s_kec'];
 		$kel_ar = @$_POST['s_kel'];
+		
 
-		/* Insert Table Biodata */
-		$savePendaftaran = DB::table('m_bio')
-			->insertGetId([
-				'bio_nama_depan' => $namaDepan,
-				'bio_nama_tengah' => $namaTengah,
-				'bio_nama_belakang' => $namaBelakang,
-				'bio_jenis_identitas' => $identitas,
-				'bio_nomer_identitas' => $noIdentitas,
-				'bio_tempat_lahir' => $tempatLahir,
-				'bio_tanggal_lahir' => date('Y-m-d', strtotime($tanggalLahir)),
-				'bio_jenis_kelamin' => $jenisKelamin,
-				'bio_agama' => $agama,
-				'bio_alamat' => $alamat,
-				'bio_provinsi' => $abProv,
-				'bio_kabupaten' => $abKab,
-				'bio_kecamatan' => $abKec,
-				'bio_kelurahan' => $abKel,
-				'bio_telephone' => $telp,
-				'bio_handphone' => $hp,
-				'bio_email' => $emailBalon,
-				'bio_twitter' => $twitter,
-				'bio_facebook' => $facebook,
-				'bio_status_kawin' => $statusPernikahan,
-				'bio_nama_pasangan' => $namaPasangan,
-				'bio_anak' => $jumlahAnak,
-				'bio_created_date' => $createDate,
-
-				'bio_area_prov' => $prov_ar,
-				'bio_area_kab'  => $kab_ar,
-				'bio_area_kec'  => $kec_ar,
-				'bio_area_kel'  => $kel_ar,
-
-				'bio_created_by' => session('idLogin')
-			]);
-
-		if (Input::hasFile('foto')) {
-			$file 	= Input::file('foto');
-			if ($file->getSize() <= 2097152) {
-				$f_name = $file->getClientOriginalName();
-				$exp = explode(".", $f_name);
-				$ext = $exp[1];
-				if (array_search($ext, $allowed) !== false) {
-					$file->move('asset/img/dokumen/' . $savePendaftaran . '/foto/', $file->getClientOriginalName());
-					$namaFoto = $file->getClientOriginalName();
-					$savePendaftaran = DB::table('m_bio')
-						->where('bio_id', $savePendaftaran)
-						->update([
-							'bio_foto' => $namaFoto
-						]);
-				}
-			} else {
-?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php
-						}
-					}
-
-					if (session('status') == 'facebook' || session('status') == 'google' || session('status') == 'quest') {
-						if (session('status') == 'quest') {
-							$savePendaftaran = DB::table('m_bio')
-								->where('bio_id', $savePendaftaran)
-								->update([
-									'bio_status' => session('status'),
-									'bio_flag' => 0
-								]);
+				// $bio_id = @$_POST['bio_id'];
+				$bio_val = @$_POST['bio_id'];
+				$bio_id = (int)$bio_val;
+				
+					if (Input::hasFile('foto')) {
+						$file 	= Input::file('foto');
+						if ($file->getSize() <= 2097152) {
+							$f_name = $file->getClientOriginalName();
+							$exp = explode(".", $f_name);
+							$ext = $exp[1];
+							if (array_search($ext, $allowed) !== false) {
+								$file->move('asset/img/doc-sk/' . $bio_id . '/doc/', $file->getClientOriginalName());
+								$namaFoto = $file->getClientOriginalName();
+								$savePendaftaran = DB::table('m_bio_sk')
+									->where('bio_id', $bio_id)
+									->insert([
+										'bio_sk_foto' => $namaFoto
+									]);
+							}
 						} else {
-							$savePendaftaran = DB::table('m_bio')
-								->where('bio_id', $savePendaftaran)
-								->update([
-									'bio_' . session('status') . '_id' => session('id'),
-									'bio_status' => session('status'),
-									'bio_flag' => 0
-								]);
+							?><script>
+								alert("File Anda Terlalu Besar");
+							</script><?php
 						}
-					}
+					}	
 
-					/*Script Save Data Pendidikan*/
-					$jml_pendidikan = Input::get('jml_pendidikan');
-					for ($i = 1; $i <= $jml_pendidikan; $i++) {
-						$tahun_pendidikan[$i] = Input::get('pendidikan_tahun' . $i);
-						$keterangan_pendidikan[$i] = Input::get('pendidikan_keterangan' . $i);
-
-						if ($tahun_pendidikan[$i] != '') {
-							$savePendidikan = DB::table('m_bio_pendidikan')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'bio_pendidikan_tahun' => $tahun_pendidikan[$i],
-									'bio_pendidikan_keterangan' => $keterangan_pendidikan[$i],
-									'bio_pendidikan_created_date' => date('Y-m-d H:i:s'),
-									'bio_pendidikan_created_by' => session('idLogin')
-								]);
-						}
-					}
-					/*End Script*/
-
-					/*Script Save Data Organisasi*/
-					$jml_organisasi = Input::get('jml_organisasi');
-					for ($j = 0; $j <= $jml_organisasi; $j++) {
-						$tahun_organisasi[$j] = Input::get('organisasi_tahun' . $j);
-						$keterangan_organisasi[$j] = Input::get('organisasi_keterangan' . $j);
-
-						if ($tahun_organisasi[$j] != "") {
-							$saveOrganisasi = DB::table('m_bio_organisasi')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'bio_organisasi_tahun' => $tahun_organisasi[$j],
-									'bio_organisasi_keterangan' => $keterangan_organisasi[$j],
-									'bio_organisasi_created_date' => date('Y-m-d H:i:s'),
-									'bio_organisasi_created_by' => session('idLogin')
-								]);
-						}
-					}
-					/*End Script*/
-
-					/*Script Save Data Pekerjaan*/
-					$jml_pekerjaan = Input::get('jml_pekerjaan');
-					for ($k = 0; $k <= $jml_pekerjaan; $k++) {
-						$tahun_pekerjaan[$k] = Input::get('pekerjaan_tahun' . $k);
-						$keterangan_pekerjaan[$k] = Input::get('pekerjaan_keterangan' . $k);
-
-						if ($tahun_pekerjaan[$k] != '') {
-							$savePekerjaan = DB::table('m_bio_pekerjaan')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'bio_pekerjaan_tahun' => $tahun_pekerjaan[$k],
-									'bio_pekerjaan_keterangan' => $keterangan_pekerjaan[$k],
-									'bio_pekerjaan_created_date' => date('Y-m-d H:i:s'),
-									'bio_pekerjaan_created_by' => session('idLogin')
-								]);
-						}
-					}
-					/*End Script*/
-
-					/*Script Save Data Diklat*/
-					$jml_diklat = Input::get('jml_diklat');
-					for ($l = 0; $l <= $jml_diklat; $l++) {
-						$tahun_diklat[$l] = Input::get('diklat_tahun' . $l);
-						$keterangan_diklat[$l] = Input::get('diklat_keterangan' . $l);
-
-						if ($tahun_diklat[$l] != "") {
-							$saveDiklat = DB::table('m_bio_diklat')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'bio_diklat_tahun' => $tahun_diklat[$l],
-									'bio_diklat_keterangan' => $keterangan_diklat[$l],
-									'bio_diklat_created_date' => date('Y-m-d H:i:s'),
-									'bio_diklat_created_by' => session('idLogin')
-								]);
-						}
-					}
-					/*End Script*/
-
-					/*Script Save Data Perjuangan*/
-					$jml_perjuangan = Input::get('jml_perjuangan');
-					for ($x = 0; $x <= $jml_perjuangan; $x++) {
-						$tahun_perjuangan[$x] = Input::get('perjuangan_tahun' . $x);
-						$keterangan_perjuangan[$x] = Input::get('perjuangan_keterangan' . $x);
-
-						if ($tahun_perjuangan[$x] != "") {
-							$savePerjuangan = DB::table('m_bio_perjuangan')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'bio_perjuangan_tahun' => $tahun_perjuangan[$x],
-									'bio_perjuangan_keterangan' => $keterangan_perjuangan[$x],
-									'bio_perjuangan_created_date' => date('Y-m-d H:i:s'),
-									'bio_perjuangan_created_by' => session('idLogin')
-								]);
-						}
-					}
-					/*End Script*/
-
-					/*Script Save Penghargaan*/
-					$jml_penghargaan = Input::get('jml_penghargaan');
-					for ($y = 0; $y <= $jml_penghargaan; $y++) {
-						$tahun_penghargaan[$y] = Input::get('penghargaan_tahun' . $y);
-						$keterangan_penghargaan[$y] = Input::get('penghargaan_keterangan' . $y);
-
-						if ($tahun_penghargaan[$y] != "") {
-							$savePenghargaan = DB::table('m_bio_penghargaan')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'bio_penghargaan_tahun' => $tahun_penghargaan[$y],
-									'bio_penghargaan_keterangan' => $keterangan_penghargaan[$y],
-									'bio_penghargaan_created_date' => date('Y-m-d H:i:s'),
-									'bio_penghargaan_created_by' => session('idLogin')
-								]);
-						}
-					}
-					/*End Script*/
-
-
-					/* Insert Dokumen Pendukung */
-					if (Input::hasFile('filedaftarRiwayatHidup')) {
-						$file1 	= Input::file('filedaftarRiwayatHidup');
-						if ($file1->getSize() <= 2097152) {
-							$f_name = $file1->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file1->move('asset/img/dokumen/' . $savePendaftaran . '/riwayat/', $file1->getClientOriginalName());
-								$riwayatHidup = $file1->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filevisiMisi')) {
-						$file2 	= Input::file('filevisiMisi');
-						if ($file2->getSize() <= 2097152) {
-							$f_name = $file2->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file2->move('asset/img/dokumen/' . $savePendaftaran . '/vm/', $file2->getClientOriginalName());
-								$visiMisi = $file2->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filefotoCopyKtp')) {
-						$file3 	= Input::file('filefotoCopyKtp');
-						if ($file3->getSize() <= 2097152) {
-							$f_name = $file3->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file3->move('asset/img/dokumen/' . $savePendaftaran . '/ktp/', $file3->getClientOriginalName());
-								$fotoCopyKtp = $file3->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filefotoCopyKk')) {
-						$file4 	= Input::file('filefotoCopyKk');
-						if ($file4->getSize() <= 2097152) {
-							$f_name = $file4->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file4->move('asset/img/dokumen/' . $savePendaftaran . '/kk/', $file4->getClientOriginalName());
-								$fotoCopyKk = $file4->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filefotoCopyNpwp')) {
-						$file5 	= Input::file('filefotoCopyNpwp');
-						if ($file5->getSize() <= 2097152) {
-							$f_name = $file5->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file5->move('asset/img/dokumen/' . $savePendaftaran . '/npwp/', $file5->getClientOriginalName());
-								$fotoCopyNpwp = $file5->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filefotoCopyIjazah')) {
-						$file6 	= Input::file('filefotoCopyIjazah');
-						if ($file6->getSize() <= 2097152) {
-							$f_name = $file6->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file6->move('asset/img/dokumen/' . $savePendaftaran . '/ijazah/', $file6->getClientOriginalName());
-								$fotoCopyIjazah = $file6->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('fileskcs')) {
-						$file7 	= Input::file('fileskcs');
-						if ($file7->getSize() <= 2097152) {
-							$f_name = $file7->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file7->move('asset/img/dokumen/' . $savePendaftaran . '/skcs/', $file7->getClientOriginalName());
-								$skcs = $file7->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filektaPartaiHanura')) {
-						$file8 	= Input::file('filektaPartaiHanura');
-						if ($file8->getSize() <= 2097152) {
-							$f_name = $file8->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file8->move('asset/img/dokumen/' . $savePendaftaran . '/kta/', $file8->getClientOriginalName());
-								$ktaPartaiHanura = $file8->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('fileformPendaftaranCalon')) {
-						$file9 	= Input::file('fileformPendaftaranCalon');
-						if ($file9->getSize() <= 2097152) {
-							$f_name = $file9->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file9->move('asset/img/dokumen/' . $savePendaftaran . '/form/', $file9->getClientOriginalName());
-								$formPendaftaranCalon = $file9->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filekomitmen')) {
-						$file10 	= Input::file('filekomitmen');
-						if ($file10->getSize() <= 2097152) {
-							$f_name = $file10->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file10->move('asset/img/dokumen/' . $savePendaftaran . '/komitmen/', $file10->getClientOriginalName());
-								$komitmen = $file10->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filebertaqwa')) {
-						$file11 	= Input::file('filebertaqwa');
-						if ($file11->getSize() <= 2097152) {
-							$f_name = $file11->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file11->move('asset/img/dokumen/' . $savePendaftaran . '/bertaqwa/', $file11->getClientOriginalName());
-								$bertaqwa = $file11->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-					if (Input::hasFile('filetinggal')) {
-						$file12 	= Input::file('filetinggal');
-						if ($file12->getSize() <= 2097152) {
-							$f_name = $file12->getClientOriginalName();
-							$exp = explode(".", $f_name);
-							$ext = $exp[1];
-							if (array_search($ext, $allowed) !== false) {
-								$file12->move('asset/img/dokumen/' . $savePendaftaran . '/tinggal/', $file12->getClientOriginalName());
-								$tinggal = $file12->getClientOriginalName();
-							}
-						} else { ?><script>
-					alert("File Anda Terlalu Besar");
-				</script><?php }
-					}
-
-					$saveDokumen = DB::table('m_bio_doc')
-						->insertGetId([
-							'bio_id' => $savePendaftaran,
-							'bio_doc_riwayat' => $riwayatHidup,
-							'bio_doc_visi' => $visiMisi,
-							'bio_doc_ktp' => $fotoCopyKtp,
-							'bio_doc_kk' => $fotoCopyKk,
-							'bio_doc_npwp' => $fotoCopyNpwp,
-							'bio_doc_ijazah' => $fotoCopyIjazah,
-							'bio_doc_skck' => $skcs,
-							'bio_doc_kta' => $ktaPartaiHanura,
-							'bio_doc_pendaftaran' => $formPendaftaranCalon,
-							'bio_doc_komitmen' => $komitmen,
-							'bio_doc_pernyataan' => $bertaqwa,
-							'bio_doc_nkri' => $tinggal,
-							'bio_doc_note' => $note,
-							'bio_doc_created_date' => $createDate,
-							'bio_doc_created_date' => session('idLogin')
-						]);
+					$saveSK = DB::table('m_bio_sk')
+					->insertGetId([
+						'bio_id' => $bio_id,
+						'bio_sk_no' => $noSK,
+						'bio_sk_tgl' => $dateSK,
+						//'bio_sk_foto' => $fileSK,
+						'bio_sk_created_date' => $createDate,
+						'bio_sk_created_by' => session('idLogin')
+					]);
 
 					if (session('idRole') == 3) {
 						$prov = session('idProvinsi2');
@@ -604,24 +264,7 @@ class PengurusController extends Controller
 						$prov = session('idProvinsi2');
 						$kab = session('idKabupaten');
 					}
-
-					if (session('idRole') >= 3) {
-						if (session('idRole') == 3) {
-							DB::table('ref_bio')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'geo_prov_id' => $prov
-								]);
-						} elseif (session('idRole') == 4) {
-							DB::table('ref_bio')
-								->insertGetId([
-									'bio_id' => $savePendaftaran,
-									'geo_prov_id' => $prov,
-									'geo_kab_id' => $kab
-								]);
-						}
-					}
-
+					
 					return redirect('anggota/partai/list');
 				}
 
@@ -734,6 +377,7 @@ class PengurusController extends Controller
 					$komitmen = '';
 					$bertaqwa = '';
 					$tinggal = '';
+					
 
 					$namaDepan = @$_POST['namaDepan'];
 					$namaTengah = @$_POST['namaTengah'];
@@ -837,7 +481,6 @@ class PengurusController extends Controller
 						}
 					}
 					/*End Script*/
-
 
 					/* Insert Dokumen Pendukung */
 					$jenisDokumenFile = ['filedaftarRiwayatHidup', 'filevisiMisi', 'filefotoCopyKtp', 'filefotoCopyKk', 'filefotoCopyNpwp', 'filefotoCopyIjazah', 'fileskcs', 'filektaPartaiHanura', 'fileformPendaftaranCalon', 'filekomitmen', 'filebertaqwa', 'filetinggal'];
@@ -1230,7 +873,7 @@ class PengurusController extends Controller
 					}
 
 					if ($rw) {
-						$masterData['rukunwarga'] = DB::table('m_geo_rw_kpu')
+						$masterData['rukunwarga'] = DB::table('m_geo_rw')
 							->select('geo_rw_nama', 'geo_rw_id')
 							->where('geo_deskel_id', '=', $deskel)
 							->get();
