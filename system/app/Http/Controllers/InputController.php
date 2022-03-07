@@ -265,7 +265,7 @@ class InputController extends Controller
 		];
 
 		if($kab)
-			$masterData['kabupaten'] = DB::table('m_geo_kab_kpu'.$tbDaerah)
+			$masterData['kabupaten'] = DB::table('m_geo_kab'.$tbDaerah)
 				->select('geo_kab_nama','geo_kab_id')
 					->where('geo_prov_id','=',$prov)
 						->get();
@@ -671,6 +671,10 @@ class InputController extends Controller
 			DB::table('m_bio')
 				->where('bio_id', $target_id)
 				->delete();
+		}else if ($type == 'user'){
+			DB::table('m_users')
+				->where('id', $target_id)
+				->delete();
 		} else {
 		$data=$this->getInput($request,$type);
 		$url=join(array_reverse($data),"/");
@@ -711,6 +715,8 @@ class InputController extends Controller
 		}
 		if ($type == 'user_management'){
 			return redirect('anggota/partai/list');
+		}else if ($type == 'user'){
+			return redirect('user_management/user');
 		} else {
 			return redirect('data_pengurus/'.$type.'/'.$url);
 		}

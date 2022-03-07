@@ -1,44 +1,91 @@
 <div class="row">
-	<div class="col-md-12">
-		<div class="form-group" style="display:@yield('use_jabatan','initial')">
-			<div class="row" style="margin-left: 150px;" >
-				<div class="col-md-9 col-sm-9 col-xs-12">
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" name="with_ktp" value="1" id="with-ktp" />
-							Input Manual
-						</label>
-					</div>
+	<div class="col-md-12 col-sm-12 col-xs-12">
+		<input type="hidden" name="_token" value="{{csrf_token()}}">
+		<div class="form-group">
+			<div class="row">
+				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Identitas</label>
+				<div class="col-md-3 col-sm-6 col-xs-12">
+					<select class="form-control" id="identitas" name="identitas" required onchange="cekIdentitas()">
+						<option value="">--- Pilih Identitas ---</option>
+						<?php foreach($dataIdentitas as $dataidentitas){?>
+							<option value="{{ $dataidentitas->identitas_id }}">{{ $dataidentitas->identitas_value }}</option>
+						<?php }?>
+					</select>
+				</div>	
+				<div class="col-md-3 col-sm-6 col-xs-12 multi-row">
+					<input type="text" class="form-control" id="noIdentitas" name="noIdentitas" placeholder="Nomer Identitas" disabled onkeyup="cekIdentitas()" />
 				</div>
+				<div class="col-md-3 col-sm-6 col-xs-12 multi-row" id="responseCheck"></div>
 			</div>
 		</div>
-		<div class="form-group el el-no-ktp">
+		<div class="form-group">
 			<div class="row">
-				<label for="bio" class="col-md-2 col-sm-6 col-xs-12">Data Anggota</label>
-				<div class="col-md-8 col-sm-8 col-xs-9" id="search-bio" name="search-bio">
+				<label for="inputEmail3" class="col-md-2 col-sm-2 col-xs-12">Nama</label>
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<input type="text" name="namaDepan" class="form-control" id="namaDepan" placeholder="Nama Depan" required>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<input type="text" name="namaTengah" class="form-control multi-row" id="namaTengah" placeholder="Nama Tengah">
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<input type="text" name="namaBelakang" class="form-control multi-row" id="namaBelakang" placeholder="Nama Belakang">
 				</div>
 			</div>
-		</div>
-		<div class="form-group el el-ktp">
+		</div> 
+		<div class="form-group">
 			<div class="row">
-				<label for="bio" class="col-md-2 col-sm-6 col-xs-12">Nama Anggota</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" class="form-control" id="bio_id" name="bio_id">
+				<div class="col-md-2 col-sm-2 col-xs-12"><label for="inputPassword3">Tempat/Tanggal Lahir</label></div>
+				<div class="col-md-3 col-sm-3 col-xs-12 multi-row">
+					<select class="form-control" id="tlProv" name="tlProv" required>
+						<option value="0">--- Pilih Provinsi ---</option>
+						<?php foreach($dataProvinsi as $tmpprop){?>
+							<option value="{{ $tmpprop->geo_prov_id }}">{{ $tmpprop->geo_prov_nama }}</option>
+						<?php }?>
+					</select>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 multi-row">
+					<select class="form-control" id="tlKab" name="tempatLahir" required>
+						<option value="0" >--- Pilih Kota/Kabupaten ---</option>
+					</select>
+				</div>
+				<div class="col-md-3 col-sm-3 col-xs-12 multi-row">
+					<input type="input" name="tanggalLahir" class="form-control" id="datepicker" placeholder="dd-mm-yyyy" required>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-2 col-xs-12">Alamat Domisili</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="alamat" id="alamat" class="form-control" placeholder="Alamat Domisili" >
+				<label for="inputPassword3" class="col-md-2 col-sm-4 col-xs-12">Agama</label>
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<select class="form-control" id="agama" name="agama" required>
+						<option value="">--- Pilih ---</option>
+						<?php foreach($dataAgama as $dataAgama){?>
+							<option value="{{ $dataAgama->agama_id }}">{{ $dataAgama->agama_value }}</option>
+						<?php }?>
+					</select>
+				</div>
+				<label for="inputPassword3" class="col-md-3 col-sm-3 col-xs-12">Jenis Kelamin</label>
+				<div class="col-md-3 col-sm-3 col-xs-12">
+					<?php foreach($dataJk as $tmp){?>
+						<input type="radio" name="jenisKelamin" value="{{ $tmp->jk_id }}">{{ $tmp->jk_value }}</input>
+					<?php }?>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-2 col-xs-12">Provinsi</label>
+				<label for="inputPassword3" class="col-md-2 col-sm-2 col-xs-12">Alamat</label>
 				<div class="col-md-8 col-sm-8 col-xs-9">
+					<input type="text" name="alamat" id="alamat" class="form-control" placeholder="Pilih Lokasi Pada Maps">
+				</div>
+				<div class="col-md-1 col-sm-1 col-xs-1 multi-row">
+					<div class="btn btn-default btn-custom" id="google_maps_balon" data-toggle="modal" data-target="#modal_maps_balon"><span class="glyphicon glyphicon-search" style="padding:3px;" aria-hidden="true"></span></div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-3 col-sm-3 col-xs-12 multi-row col-md-offset-2 col-sm-offset-2 col-xs-offset-12">
 					<select class="form-control" id="abProv" name="abProv" required>
 						<option value="">--- Pilih Provinsi ---</option>
 						<?php foreach($dataProvinsi as $tmpprop){?>
@@ -46,189 +93,59 @@
 						<?php }?>
 					</select>
 				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-2 col-xs-12">Kabupaten/Kota</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
+				<div class="col-md-2 col-sm-2 col-xs-12 multi-row">
 					<select class="form-control" id="abKab" name="abKab" required>
-						<option value="">--- Pilih Kabupaten/Kota ---</option>
+						<option value="" >--- Pilih Kota/Kabupaten ---</option>
 					</select>
 				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-2 col-xs-12">Kecamatan</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
+				<div class="col-md-2 col-sm-2 col-xs-12 multi-row">
 					<select class="form-control" id="abKec" name="abKec" required>
 						<option value="">--- Pilih Kecamatan ---</option>
 					</select>
 				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-2 col-xs-12">Kelurahan/Desa</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
+				<div class="col-md-2 col-sm-2 col-xs-12 multi-row">
 					<select class="form-control" id="abKel" name="abKel" required>
-						<option value="">--- Pilih Kelurahan/Desa ---</option>
+						<option value="">--- Pilih Kelurahan ---</option>
 					</select>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Email</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="email" class="form-control" id="emailBalon" placeholder="Email" required>
-				</div>
-			</div>
-		</div>	
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">No. Telp</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="hp" id="hp" class="form-control" placeholder="No. Telp">				
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Jabatan</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="menjabat" id="menjabat" class="form-control" placeholder="Jabatan">				
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">No SK Mandat</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="text" name="noSK" id="noSK" class="form-control" placeholder="No SK Mandat">				
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">Date SK Mandat</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="date" name="dateSK" id="dateSK" class="form-control" placeholder="Date SK Mandat">				
-				</div>
-			</div>
-		</div>	
-		<div class="form-group">
-			<div class="row">
-				<label for="inputPassword3" class="col-md-2 col-sm-6 col-xs-12">File SK Mandat</label>
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<input type="file" name="foto" id="foto" class="form-control" placeholder="File SK Mandat">				
-					<h6>(Max 10MB, /pdf)</h6>
-				</div>
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="row">
-				<div class="col-md-8 col-sm-8 col-xs-9">
-					<div class="checkbox">
-						<label>
-							<input type="checkbox" name="with_ktp" value="1" id="with-ktp" />
-							Dengan ini saya menyatakan bahwa data yang saya isi adalah benar
-						</label>
+				<div class="col-md-12 col-sm-12 col-xs-12" style="padding:0;">
+					<label for="inputEmail3" class="col-md-2 col-sm-6 col-xs-12">Status Pernikahan</label>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<select name="statusPernikahan" id="statusPernikahan" class="form-control" required>
+							<option value="">--- Pilih ---</option>
+							<?php foreach($dataStatus as $tmp){?>
+								<option value="{{ $tmp->status_id }}">{{ $tmp->status_value }}</option>
+							<?php }?>
+						</select>
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<input type="text" class="form-control" name="namaPasangan" id="namaPasangan" placeholder="Nama Pasangan" disabled />
+					</div>
+					<div class="col-md-3 col-sm-6 col-xs-12">
+						<input type="text" class="form-control" name="jumlahAnak" id="jumlahAnak" placeholder="Jumlah Anak" disabled />
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-2 col-sm-2 col-xs-12"><label for="inputPassword3">Kontak</label></div>
+				<div class="col-md-3 col-sm-3 col-xs-12"><input type="text" name="telp" id="telp" class="form-control" placeholder="No. Telp"></div>
+				<div class="col-md-3 col-sm-3 col-xs-12"><input type="text" name="hp" id="hp" class="form-control" placeholder="Handphone"></div>
+				<div class="col-md-3 col-sm-3 col-xs-12"><input type="email" name="emailBalon" id="emailBalon" class="form-control" placeholder="Email"></div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-md-2 col-sm-2"></div>
+				<div class="col-md-3 col-sm-3 col-xs-12"><input type="text" name="twitter" id="twitter" class="form-control" placeholder="Twitter"></div>
+				<div class="col-md-3 col-sm-3 col-xs-12"><input type="text" name="facebook" id="facebook" class="form-control" placeholder="Facebook"></div>
+				<div class="col-md-3 col-sm-3 col-xs-12"><input type="file" name="foto" id="foto" class="form-control"></div>
+			</div>
+		</div>
 	</div>
 </div>
-
-<script type="text/javascript">	
-	
-	$(".el").hide();
-	$(".el-no-ktp").show();
-
-	$("#with-ktp").on('change', function(){
-		if(this.checked){
-			$(".el").hide();
-			$(".el-ktp").show();
-		}else{
-			$(".el").hide();
-			$(".el-no-ktp").show();
-		}
-	});
-
-	var searchSk=jQuery("#search-sk").AhmTextAsyncData({
-		ajaxUrl:"{{url().'/data_ajx/get/sk'}}",
-		selToInput:true,
-		placeholder:"cari sk...",
-		inputName:"sk",
-		onSelectedItem:function(item){
-			
-		}
-	})
-
-	var searchKta=jQuery("#search-kta").AhmTextAsyncData({
-		Url:"{{url().'/data_ajx/get/kta'}}",
-		selToInput:true,
-		placeholder:"cari kta...",
-		inputName:"kta",
-		onSelectedItem:function(item){
-			
-		}
-	})
-
-	var searchBio=jQuery("#search-bio").AhmTextAsyncData({
-		ajaxUrl:"{{url().'/data_ajx/get/ktp'}}",
-		type : "POST",
-		selToInput:true,
-		placeholder:"Cari berdasarkan Nama / No. KTP",
-		inputName:"bio_num",
-		onSelectedItem:function(item){
-			
-		}
-	})
-	// function datas() {
-	// var tes = document.getElementById("search-bio").value;
-    //     document.getElementById("abProv").value=abProv;
-	// 	document.getElementById("abKab").value=abKab;
-    //     document.getElementById("abKec").value=abKec;
-	// 	document.getElementById("abKel").value=abKel;
-    //     document.getElementById("emailBalon").value=emailBalon;
-	// 	document.getElementById("hp").value=hp;
-    //     document.getElementById("menjabat").value=menjabat;
-		
-	// }
-	// function datas(){ 
-	// 	var abProv = $('#search_bio option:selected').data('abProv');
-	// 	var abKab = $('#search_bio option:selected').data('abKab');
-	// 	var abKec = $('#search_bio option:selected').data('abKec');
-	// 	var abKel = $('#search_bio option:selected').data('abKel');
-
-	// 	$('[name=abProv]').val(abProv);
-	// 	var id=$(this).val();
-	// 	$.ajax({
-	// 		ajaxUrl:"{{url().'/data_ajx/get/ktp'}}",
-	// 		method : "POST",
-	// 		data : {id: id},
-	// 		async : true,
-	// 		dataType : 'json',
-	// 		success: function(data){
-				
-	// 			var html = '';
-	// 			var i;
-			
-	// 		}
-	// 	});
-	// 	return false;
-	// };
-
-	// var searchStruk=jQuery("#search-struk").AhmTextAsyncData({
-	// 	ajaxUrl:"{{url().'/data_ajx/get/struk/'}}@yield('modal_struk_tipe')/"+ind.getUrl(),
-	// 	selToInput:true,
-	// 	inputName:"jabatan",
-	// 	placeholder:'cari struktur @yield('modal_struk_tipe')...',
-	// 	onSelectedItem:function(item){
-	// 		//jQuery("#jabatan").val(item.val);
-	// 	}
-	// })
-</script>

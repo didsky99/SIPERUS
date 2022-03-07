@@ -232,7 +232,7 @@ class PengurusController extends Controller
 							$exp = explode(".", $f_name);
 							$ext = $exp[1];
 							if (array_search($ext, $allowed) !== false) {
-								$file->move('asset/img/doc-sk/' . $bio_id . '/doc/', $file->getClientOriginalName());
+								$file->move('asset/img/doc-sk/' . $bio_id, $file->getClientOriginalName());
 								$namaFoto = $file->getClientOriginalName();
 								$savePendaftaran = DB::table('m_bio_sk')
 									//->where('bio_id', $bio_id)
@@ -242,7 +242,7 @@ class PengurusController extends Controller
 										'bio_sk_no' => $noSK,
 										'bio_sk_tgl' => $dateSK,
 										'bio_sk_created_date' => $createDate,
-						'bio_sk_created_by' => session('idLogin')
+										'bio_sk_created_by' => session('idLogin')
 									]);
 							}
 						} else {
@@ -891,7 +891,7 @@ class PengurusController extends Controller
 					foreach ($provinsi as $row) {
 						$masterData['kabn'][] = DB::table('r_bio_pimcab')
 							->select(DB::raw('geo_kab_nama,count(bio_pimcab_id) as jml_pimcab'))
-							->leftJoin('m_geo_kab', 'm_geo_kab.geo_kab_id', '=', 'r_bio_pimcab.geo_kab_id')
+							->leftJoin('m_geo_kab_kpu', 'm_geo_kab_kpu.geo_kab_id', '=', 'r_bio_pimcab.geo_kab_id')
 							->groupBy('r_bio_pimcab.geo_kab_id')
 							->where('r_bio_pimcab.geo_prov_id', '=', $row->geo_prov_id)
 							->get();
@@ -908,7 +908,7 @@ class PengurusController extends Controller
 						//->where('geo_prov_id','=',$row->geo_prov_id)
 						->get();
 
-					$masterData['countkab'] = DB::table('m_geo_kab')
+					$masterData['countkab'] = DB::table('m_geo_kab_kpu')
 						->select(DB::raw('count(*) as jml'))
 						->groupBy('geo_prov_id')
 						//->where('geo_prov_id','=',$row->geo_prov_id)

@@ -155,20 +155,20 @@
 		$(document).ready(function(){
 			for(var a=0; a < DPD.length; a++)
 			{
-				addMarkerDPD(DPD[a][0],"{{ asset('asset/icon/user-black-orange2.png') }}",DPD[a][1],DPD[a][3],DPD[a][2],a,"DPD",DPD[a][4],DPD[a][5],DPD[a][6], DPD[a][7]);
+				addMarkerDPD(DPD[a][0],"{{ asset('asset/icon/user-red.png') }}",DPD[a][1],DPD[a][3],DPD[a][2],a,"DPD",DPD[a][4],DPD[a][5],DPD[a][6], DPD[a][7]);
 			}
 			for(var b=0; b < pimcab.length; b++)
 			{
-				addMarkerpimcab(pimcab[b][0],"{{ asset('asset/icon/user-red-orange.png') }}",pimcab[b][1],pimcab[b][3],pimcab[b][2],b,pimcab[b][4],"pimcab",pimcab[b][5],pimcab[b][6],pimcab[b][7], pimcab[b][8], pimcab[b][9]);
+				addMarkerpimcab(pimcab[b][0],"{{ asset('asset/icon/user-red.png') }}",pimcab[b][1],pimcab[b][3],pimcab[b][2],b,pimcab[b][4],"pimcab",pimcab[b][5],pimcab[b][6],pimcab[b][7], pimcab[b][8], pimcab[b][9]);
 			}
 			for(var b=0; b < statistikOrganisasi.length; b++)
 			{
-				addMarkerStatistikOrganisasi(statistikOrganisasi[b][0],"{{ asset('asset/icon/user-black-orange.png') }}",statistikOrganisasi[b][1],statistikOrganisasi[b][2],statistikOrganisasi[b][3],statistikOrganisasi[b][4],statistikOrganisasi[b][5],statistikOrganisasi[b][6],statistikOrganisasi[b][7],statistikOrganisasi[b][8],statistikOrganisasi[b][9],statistikOrganisasi[b][10],statistikOrganisasi[b][11],statistikOrganisasi[b][12]);
+				addMarkerStatistikOrganisasi(statistikOrganisasi[b][0],"{{ asset('asset/icon/user-red.png') }}",statistikOrganisasi[b][1],statistikOrganisasi[b][2],statistikOrganisasi[b][3],statistikOrganisasi[b][4],statistikOrganisasi[b][5],statistikOrganisasi[b][6],statistikOrganisasi[b][7],statistikOrganisasi[b][8],statistikOrganisasi[b][9],statistikOrganisasi[b][10],statistikOrganisasi[b][11],statistikOrganisasi[b][12]);
 			}
 			for(var b=0; b < statistikKursi.length; b++)
 			{
 				// prov_nama, icon, lat, lng, dapil_t1, dapil_t2, dapil_t3, kursi_t1, kursi_t2, kursi_t3, kursi_t1_ada, kursi_t2_ada, kursi_t3_ada
-				addMarkerStatistikKursi(statistikKursi[b][0],"{{ asset('asset/icon/user-black-orange2.png') }}",statistikKursi[b][1],statistikKursi[b][2],statistikKursi[b][3],statistikKursi[b][4],statistikKursi[b][5],statistikKursi[b][6],statistikKursi[b][7],statistikKursi[b][8],statistikKursi[b][9],statistikKursi[b][10],statistikKursi[b][11]);
+				addMarkerStatistikKursi(statistikKursi[b][0],"{{ asset('asset/icon/user-red.png') }}",statistikKursi[b][1],statistikKursi[b][2],statistikKursi[b][3],statistikKursi[b][4],statistikKursi[b][5],statistikKursi[b][6],statistikKursi[b][7],statistikKursi[b][8],statistikKursi[b][9],statistikKursi[b][10],statistikKursi[b][11]);
 			}
 		});
 
@@ -188,7 +188,7 @@
 		'<div id="content">'+
 		'</div>'+
 		'<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-		'<div class="top" style="border-bottom:2px solid #f39c12;">'+address+'</div>'+
+		'<div class="top" style="border-bottom:2px solid #f82425;">'+address+'</div>'+
 		'<table style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
 			'<tr>'+
 			'<td>PIMCAB</td>'+
@@ -238,7 +238,7 @@
 		'<div id="content">'+
 		'</div>'+
 		'<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-		'<div class="top" style="border-bottom:2px solid #f39c12;">'+address+'</div>'+
+		'<div class="top" style="border-bottom:2px solid #f82425;">'+address+'</div>'+
 		'<table style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
 			'<tr>'+
 				'<td>DPR-RI</td>'+
@@ -301,7 +301,7 @@
 		'<div id="content">'+
 		'</div>'+
 		'<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-		'<div class="top" style="border-bottom:2px solid #f39c12;">'+address+'</div>'+
+		'<div class="top" style="border-bottom:2px solid #f82425;">'+address+'</div>'+
 		'<table style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
 			'<tr>'+
 			'<td>Nama</td>'+
@@ -318,9 +318,9 @@
 			'<td  style="width:10px; text-align:center;">:</td>'+
 			'<td>'+telp+'</td>'+
 			'</tr>'+
-			'<tr>'+
-				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`DPD`,`'+address+'`)"><i class="fa fa-info-circle"></i></div></td>'+
-			'</tr>'+
+			// '<tr>'+
+			// 	'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`DPD`,`'+address+'`)"><i class="fa fa-info-circle"></i></div></td>'+
+			// '</tr>'+
 		'</table>'+
 		'</div>'+
 		'</div>';
@@ -350,7 +350,7 @@
 		  '<div id="content">'+
 		  '</div>'+
 		  '<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-		  '<div class="top" style="border-bottom:2px solid #f39c12;">'+lokasi+'</div>'+
+		  '<div class="top" style="border-bottom:2px solid #f82425;">'+lokasi+'</div>'+
 		  '<table style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
 			'<tr>'+
 			'<td>Nama</td>'+
@@ -367,9 +367,9 @@
 			'<td  style="width:10px; text-align:center;">:</td>'+
 			'<td>'+telp+'</td>'+
 			'</tr>'+
-			'<tr>'+
-				'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`pimcab`,`'+provinsi+'`,`'+lokasi+'`)"><i class="fa fa-info-circle"></i></div></td>'+
-			'</tr>'+
+			// '<tr>'+
+			// 	'<td colspan="3"><div data-toggle="tooltip" data-placement="top" title="Lihat SK" class="btn btn-danger pull-right" onclick="goToData(`pimcab`,`'+provinsi+'`,`'+lokasi+'`)"><i class="fa fa-info-circle"></i></div></td>'+
+			// '</tr>'+
 		  '</table>'+
 		  '</div>'+
 		  '</div>';
@@ -393,7 +393,7 @@
 			  '<div id="content">'+
 			  '</div>'+
 			  '<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-			  '<div class="top" style="border-bottom:2px solid #f39c12;">'+name+'</div>'+
+			  '<div class="top" style="border-bottom:2px solid #f82425;">'+name+'</div>'+
 			  '<table style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
 				'<tr>'+
 				'<td>Penduduk</td>'+
@@ -422,7 +422,7 @@
 			  '<div id="content">'+
 			  '</div>'+
 			  '<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-			  '<div class="top" style="border-bottom:2px solid #f39c12;">'+name+'</div>'+
+			  '<div class="top" style="border-bottom:2px solid #f82425;">'+name+'</div>'+
 			  '<table style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
 				'<tr>'+
 				'<td>Penduduk</td>'+
@@ -450,7 +450,7 @@
 		function addMarkerKursi(icon, name, lats , lngs, jenis, dataAnggota){
 			var over =
 			  '<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-				'<div class="top" style="border-bottom:2px solid #f39c12;">'+name+' ('+dataAnggota.length+')</div>'+
+				'<div class="top" style="border-bottom:2px solid #f82425;">'+name+' ('+dataAnggota.length+')</div>'+
 				'<table style="font-weight: 300; line-height: 20px; font-size: 13px;">';
 					for(var a=0; a < dataAnggota.length; a++)
 					{
@@ -486,7 +486,7 @@
 
 			var over =
 			  '<div id="bodyContent" style="font-weight: 300; line-height: 20px; font-size: 13px;">'+
-				'<div class="top" style="border-bottom:2px solid #f39c12;">'+jenis2+' '+name+' ('+dataAnggota.length+')</div>'+
+				'<div class="top" style="border-bottom:2px solid #f82425;">'+jenis2+' '+name+' ('+dataAnggota.length+')</div>'+
 				'<table style="font-weight: 300; line-height: 20px; font-size: 13px;">';
 					for(var a=0; a < dataAnggota.length; a++)
 					{
@@ -678,7 +678,7 @@
 					gubernur = JSON.parse(res);
 					for(var a=0; a < gubernur.length; a++)
 					{
-						addMarkerPilkada("{{ asset('asset/icon/user-red-orange.png') }}",gubernur[a][0],gubernur[a][1],gubernur[a][2],"gubernur","Pilkada Gubernur",gubernur[a][3]);
+						addMarkerPilkada("{{ asset('asset/icon/user-red.png') }}",gubernur[a][0],gubernur[a][1],gubernur[a][2],"gubernur","Pilkada Gubernur",gubernur[a][3]);
 
 					}
 				}
@@ -695,7 +695,7 @@
 					bupati = JSON.parse(res);
 					for(var a=0; a < bupati.length; a++)
 					{
-						addMarkerPilkada("{{ asset('asset/icon/user-purple-orange.png') }}",bupati[a][0],bupati[a][1],bupati[a][2],"bupati","Pilkada Bupati",bupati[a][3]);
+						addMarkerPilkada("{{ asset('asset/icon/user-red.png') }}",bupati[a][0],bupati[a][1],bupati[a][2],"bupati","Pilkada Bupati",bupati[a][3]);
 					}
 				}
 			}).done(function(){
@@ -711,7 +711,7 @@
 					walikota = JSON.parse(res);
 					for(var a=0; a < walikota.length; a++)
 					{
-						addMarkerPilkada("{{ asset('asset/icon/user-orange.png') }}",walikota[a][0],walikota[a][1],walikota[a][2],"walikota","Pilkada Walikota",walikota[a][3]);
+						addMarkerPilkada("{{ asset('asset/icon/user-red.png') }}",walikota[a][0],walikota[a][1],walikota[a][2],"walikota","Pilkada Walikota",walikota[a][3]);
 					}
 				}
 			}).done(function(){
@@ -728,25 +728,25 @@
 		$('.responseKursi'+jenis).addClass('activeKursiLi');
 		hideAllMarker();
 		var status = 'tidak_ada';
-		var icon = '{{ asset("asset/icon/user-yellow.png") }}';
+		var icon = '{{ asset("asset/icon/user-red.png") }}';
 		if(jenis == 'dprri') {
 			if(marker_kursi_dprri.length != 0){
 				setKursiDPRRI(map);
 				status = 'ada';
 			}
-			icon = '{{ asset("asset/icon/user-red-orange.png") }}';
+			icon = '{{ asset("asset/icon/user-red.png") }}';
 		} else if(jenis == 'dprdi') {
 			if(marker_kursi_dprdi.length != 0){
 				setKursiDPRDI(map);
 				status = 'ada';
 			}
-			icon = '{{ asset("asset/icon/user-purple-orange.png") }}';
+			icon = '{{ asset("asset/icon/user-red.png") }}';
 		} else if(jenis == 'dprdii') {
 			if(marker_kursi_dprdii.length != 0){
 				setKursiDPRDII(map);
 				status = 'ada';
 			}
-			icon = '{{ asset("asset/icon/user-orange.png") }}';
+			icon = '{{ asset("asset/icon/user-red.png") }}';
 		}
 
 		if(status == 'tidak_ada') {
@@ -775,7 +775,7 @@
 		$('.responsePilkada'+jenis).addClass('activeKursiLi');
 		hideAllMarker();
 		var status = 'tidak_ada';
-		var icon = '{{ asset("asset/icon/user-yellow.png") }}';
+		var icon = '{{ asset("asset/icon/user-red.png") }}';
 		var jenis2 = 'Pilkada'
 		if(jenis == 'gubernur') {
 			if(marker_pilkada_gubernur.length != 0){
@@ -784,7 +784,7 @@
 				setPilkadaWal(null);
 				status = 'ada';
 			}
-			icon = '{{ asset("asset/icon/user-red-orange.png") }}';
+			icon = '{{ asset("asset/icon/user-red.png") }}';
 			jenis2 = 'Pilkada Gubernur';
 		} else if(jenis == 'bupati') {
 			if(marker_pilkada_bupati.length != 0){
@@ -793,7 +793,7 @@
 				setPilkadaWal(null);
 				status = 'ada';
 			}
-			icon = '{{ asset("asset/icon/user-purple-orange.png") }}';
+			icon = '{{ asset("asset/icon/user-red.png") }}';
 			jenis2 = 'Pilkada Bupati';
 		} else if(jenis == 'walikota') {
 			if(marker_pilkada_walikota.length != 0){
@@ -802,7 +802,7 @@
 				setPilkadaWal(map);
 				status = 'ada';
 			}
-			icon = '{{ asset("asset/icon/user-orange.png") }}';
+			icon = '{{ asset("asset/icon/user-red.png") }}';
 			jenis2 = 'Pilkada Walikota';
 		}
 
@@ -879,8 +879,8 @@
 						provinsi = JSON.parse(res);
 						for(var a=0; a < provinsi.length; a++)
 						{
-							addMarkerPenduduk("{{ asset('asset/icon/user-orange.png') }}",provinsi[a][0],provinsi[a][1],provinsi[a][2],"Provinsi",provinsi[a][3]);
-							console.log("{{ asset('asset/icon/user-orange.png') }}",provinsi[a][0],provinsi[a][1],provinsi[a][2],"Provinsi",provinsi[a][3]);
+							addMarkerPenduduk("{{ asset('asset/icon/user-red.png') }}",provinsi[a][0],provinsi[a][1],provinsi[a][2],"Provinsi",provinsi[a][3]);
+							console.log("{{ asset('asset/icon/user-red.png') }}",provinsi[a][0],provinsi[a][1],provinsi[a][2],"Provinsi",provinsi[a][3]);
 						}
 						/* $('#legend .box-body').html(provinsi); */
 					}
@@ -898,8 +898,8 @@
 						kabupaten = JSON.parse(res);
 						for(var a=0; a < kabupaten.length; a++)
 						{
-							addMarkerKabupaten("{{ asset('asset/icon/user-yellow.png') }}",kabupaten[a][0]+','+kabupaten[a][1],kabupaten[a][2],kabupaten[a][3],"Kabupaten",kabupaten[a][4]);
-							console.log("{{ asset('asset/icon/user-yellow.png') }}",kabupaten[a][0]+','+kabupaten[a][1],kabupaten[a][2],kabupaten[a][3],"Kabupaten",kabupaten[a][4]);
+							addMarkerKabupaten("{{ asset('asset/icon/user-red.png') }}",kabupaten[a][0]+','+kabupaten[a][1],kabupaten[a][2],kabupaten[a][3],"Kabupaten",kabupaten[a][4]);
+							console.log("{{ asset('asset/icon/user-red.png') }}",kabupaten[a][0]+','+kabupaten[a][1],kabupaten[a][2],kabupaten[a][3],"Kabupaten",kabupaten[a][4]);
 						}
 						/* $('#legend .box-body').html(provinsi); */
 					}

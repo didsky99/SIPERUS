@@ -57,7 +57,7 @@
 <div class="form-group col-md-12" style="display:@yield('indo_combo_rw','none')">
 	<label for="rukunwarga" class="col-md-3 col-sm-12 col-xs-12 col-sm-12 col-xs-12">Rukun Warga</label>
 	<div class="col-md-9 col-sm-12 col-xs-12">
-		<select name="rukunwarga" id="kel2" class="form-control custom-field-litle" >
+		<select name="rukunwarga" id="rw2" class="form-control custom-field-litle" >
 				<option selected disabled class="text-hide">--- rw ---</option>
 				@if($selected[4])
 					@foreach($rukunwarga as $tmp)
@@ -68,9 +68,9 @@
 	</div>
 </div>
 <div class="form-group col-md-12" style="display:@yield('indo_combo_rt','none')">
-	<label for="rukunwarga" class="col-md-3 col-sm-12 col-xs-12 col-sm-12 col-xs-12">Rukun Tetangga</label>
+	<label for="rukuntetangga" class="col-md-3 col-sm-12 col-xs-12 col-sm-12 col-xs-12">Rukun Tetangga</label>
 	<div class="col-md-9 col-sm-12 col-xs-12">
-		<select name="rukunwarga" id="kel2" class="form-control custom-field-litle" >
+		<select name="rukuntetangga" id="rt" class="form-control custom-field-litle" >
 				<option selected disabled class="text-hide">--- rt ---</option>
 				@if(@$selected[5])
 					@foreach($rukuntetangga as $tmp)

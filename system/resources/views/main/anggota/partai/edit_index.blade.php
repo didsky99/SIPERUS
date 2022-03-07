@@ -31,7 +31,7 @@
 			<div class="col-md-12">
 			  <div class="panel">
 				<div class="box-header with-border">
-					Add User
+					Edit User
 					<button id="closeFromAdd" type="button" class="btn btn-box-tool" data-widget="remove" style="float:right; color:white;"><i class="fa fa-remove"></i></button>
 				</div>
 				<div class="box-body formInput">

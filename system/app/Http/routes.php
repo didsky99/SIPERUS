@@ -157,6 +157,12 @@ Route::group(["middleware" => 'login'],function(){ // If you need session login 
 
 			Route::get('ajax/anggota/partai', 'AjaxController@getDataDetail');
 		/* /. User */
+
+		/* Setting */
+			Route::post('proses/tambah/setting/{jenis}','SettingController@addSetting');
+			Route::post('proses/edit/setting/{jenis}','SettingController@editSetting');
+		/* /. Setting */
+
 		
 		/* Daftar Anggota Partai */
 			Route::get('anggota/partai/list','PengurusController@viewUser');

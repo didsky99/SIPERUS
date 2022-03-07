@@ -147,7 +147,7 @@
 			</tr>
 		@stop
 	@endif
-
+	
 	<script src="{{asset('asset/js/moment.js')}}"></script>
 	@section('content_action_edit_func')
 		$('#prov2').val(obj.provId)

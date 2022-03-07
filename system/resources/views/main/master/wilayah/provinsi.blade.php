@@ -113,7 +113,7 @@
 								  <div onclick="getDataDetailWilayah('prov','{{ $tmp->geo_prov_id }}')" class="btn btn-primary" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Detail"><i class="fa fa-search"></i></div>
 								  <div class="btn btn-warning" onclick='editProvinsi("{{ $tmp->geo_prov_id }}","{{ $tmp->geo_prov_nama }}")'><span class="glyphicon glyphicon-edit" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"></span></div></a>
 								  <a href="{{ asset('proses/delete/wilayah/provinsi/'.$tmp->geo_prov_id) }}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><div class="btn-danger btn"><span class="glyphicon glyphicon-trash"></span></div></a>
-								  <div onclick="printProvinsi('{{ $tmp->geo_prov_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+								  <!-- <div onclick="printProvinsi('{{ $tmp->geo_prov_id }}')" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div> -->
 								</td>
 							  </tr>
 							  @endforeach

@@ -921,7 +921,7 @@
  * ---------
  */
 .skin-red .main-header .navbar {
-  background-color: #dd4b39;
+  background-color: #f82425;
 }
 .skin-red .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -947,7 +947,7 @@
   color: #fff;
 }
 .skin-red .main-header .navbar .sidebar-toggle:hover {
-  background-color: #d73925;
+  background-color: #f82425;
 }
 @media (max-width: 767px) {
   .skin-red .main-header .navbar .dropdown-menu li.divider {
@@ -957,11 +957,11 @@
     color: #fff;
   }
   .skin-red .main-header .navbar .dropdown-menu li a:hover {
-    background: #d73925;
+    background: #f82425;
   }
 }
 .skin-red .main-header .logo {
-  background-color: #d73925;
+  background-color: #f82425;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
@@ -969,7 +969,7 @@
   background-color: #d33724;
 }
 .skin-red .main-header li.user-header {
-  background-color: #dd4b39;
+  background-color: #f82425;
 }
 .skin-red .content-header {
   background: transparent;
@@ -994,7 +994,7 @@
 .skin-red .sidebar-menu > li.active > a {
   color: #ffffff;
   background: #1e282c;
-  border-left-color: #dd4b39;
+  border-left-color: #f82425;
 }
 .skin-red .sidebar-menu > li > .treeview-menu {
   margin: 0 1px;
@@ -1052,7 +1052,7 @@
  * ---------
  */
 .skin-red-light .main-header .navbar {
-  background-color: #dd4b39;
+  background-color: #f82425;
 }
 .skin-red-light .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -1078,7 +1078,7 @@
   color: #fff;
 }
 .skin-red-light .main-header .navbar .sidebar-toggle:hover {
-  background-color: #d73925;
+  background-color: #f82425;
 }
 @media (max-width: 767px) {
   .skin-red-light .main-header .navbar .dropdown-menu li.divider {
@@ -1088,11 +1088,11 @@
     color: #fff;
   }
   .skin-red-light .main-header .navbar .dropdown-menu li a:hover {
-    background: #d73925;
+    background: #f82425;
   }
 }
 .skin-red-light .main-header .logo {
-  background-color: #dd4b39;
+  background-color: #f82425;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
@@ -1100,7 +1100,7 @@
   background-color: #dc4735;
 }
 .skin-red-light .main-header li.user-header {
-  background-color: #dd4b39;
+  background-color: #f82425;
 }
 .skin-red-light .content-header {
   background: transparent;
@@ -1137,7 +1137,7 @@
   background: #f4f4f5;
 }
 .skin-red-light .sidebar-menu > li.active {
-  border-left-color: #dd4b39;
+  border-left-color: #f82425;
 }
 .skin-red-light .sidebar-menu > li.active > a {
   font-weight: 600;

@@ -19,7 +19,7 @@
 			</div>
 		</div>
 
-		<div class="form-group col-md-12" style="display:@yield('use_jabatan','initial')">
+		<div class="form-group col-md-12" style="display:@yield('use_ktp','initial')">
 			<label for="jabatan" class="col-md-3 col-sm-12 col-xs-12">Dengan No. KTP</label>
 			<div class="col-md-9 col-sm-12 col-xs-12">
 				<div class="checkbox">

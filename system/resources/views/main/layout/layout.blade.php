@@ -95,7 +95,7 @@
 		  <li class="dropdown user user-menu">
 			<a href="{{ asset('/') }}">
 			  <i class="fa fa-map-marker" style="font-size:20px;"></i>
-			  <span class="hidden-xs">Peta</span>
+			  <span class="hidden-xs">PKN GEO MAP</span>
 			</a>
 		  </li>
 		  <!-- User Account: style can be found in dropdown.less -->

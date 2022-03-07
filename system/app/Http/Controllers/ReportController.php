@@ -489,7 +489,7 @@ class ReportController extends Controller
 				colorByPoint: true,
 				data: [{
 					name: '".@$dataGrafik[0][0]."',
-					color: '#dd4b39',
+					color: '#f82425',
 					y: ".@$dataGrafik[0][1]."
 				},{
 					name: '".@$dataGrafik[1][0]."',
@@ -504,7 +504,7 @@ class ReportController extends Controller
 					data: [".@$dataGrafik[0][1]."]
 				}, {
 					name: '".@$dataGrafik[2][0]."',
-					color: '#dd4b39',
+					color: '#f82425',
 					data: [".@$dataGrafik[2][1]."]
 				}]";
 		}

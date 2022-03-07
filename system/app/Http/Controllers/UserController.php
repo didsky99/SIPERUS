@@ -304,10 +304,10 @@ class UserController extends Controller
 				->get();
 			$dataStatus = DB::table('ref_status')
 				->get();
-			$dataBio = DB::table('m_bio')
-				->get();
+			// $dataBio = DB::table('m_bio')
+			// 	->get();
 			return view('main.user.add-index',array(
-				'dataBio' => $dataBio,
+				// 'dataBio' => $dataBio,
 				'dataProvinsi' => $dataProvinsi,
 				'dataIdentitas' => $dataIdentitas,
 				'dataPekerjaan' => $dataPekerjaan,

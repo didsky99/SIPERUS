@@ -29,7 +29,7 @@ class AjaxController extends Controller
 				->get();
 		$idProvinsi = $daerah;
 		foreach($dataProv as $tmp){
-			$idProvinsi = $tmp->geo_prov_nkpu_id;
+			$idProvinsi = $tmp->geo_prov_kpu_id;
 		}
 		$data = DB::table('m_bio')
 			->select(
@@ -121,8 +121,8 @@ class AjaxController extends Controller
 						->groupBy('geo_deskel_id')
 							->get();			
 		} else if($jenis == 'kel'){
-			$check = DB::table('m_geo_deskel')
-				->join('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','m_geo_deskel.geo_kec_id')
+			$check = DB::table('m_geo_deskel_kpu')
+				->join('m_geo_kec_kpu','m_geo_kec_kpu.geo_kec_id','=','m_geo_deskel_kpu.geo_kec_id')
 				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec_kpu.geo_kab_id')
 				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','m_geo_prov_kpu.geo_prov_id')
 					->where('geo_deskel_nama','like','%'.$data.'%')
@@ -184,7 +184,7 @@ class AjaxController extends Controller
 				echo '<option value="'.$tmp->geo_kec_id.'">'.$tmp->geo_kec_nama.'</option>';
 			}
 		} else if($jenis == 'kel') {
-			$data = DB::table('m_geo_deskel')
+			$data = DB::table('m_geo_deskel_kpu')
 				->where('geo_kec_id',$kec)
 					->get();
 			echo '<option value="">--- Kelurahan ---</option>';
@@ -657,16 +657,22 @@ class AjaxController extends Controller
 		}else{
 			$data = DB::table('m_bio')
 			->select(
-				'm_bio.*',
 				'm_bio.bio_id as val',
-				DB::raw('CONCAT_WS(" ",bio_id,bio_nama_depan,bio_nama_tengah,bio_nama_belakang) as text')
+				// 'm_bio.bio_alamat as alamat',
+				// 'm_bio.bio_provinsi as prov',
+				// 'm_bio.bio_kabupaten as kab',
+				// 'm_bio.bio_kecamatan as kec',
+				// 'm_bio.bio_kelurahan as kel',
+				// 'm_bio.bio_handphone as hp',
+				// 'm_bio.bio_email as email',
+				// 'm_bio.menjabat as jabatan',
+				DB::raw('CONCAT_WS(" ",bio_nama_depan,bio_nama_tengah,bio_nama_belakang) as text')
 			)
 			->where(DB::raw('CONCAT_WS(" ",bio_nama_depan,bio_nama_tengah,bio_nama_belakang)'),"like","%$search%")
 			->where("menjabat","=",null)
 			->orWhere("menjabat","=",0)
 			->get();
 		}
-
 		echo json_encode($data);
 	}
 

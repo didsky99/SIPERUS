@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 class Kabupaten extends Model {
 
 	//
-	protected $table="m_geo_kab";
+	protected $table="m_geo_kab_kpu";
 	protected $primaryKey = 'geo_kab_id';
 
 	public function provinsi()

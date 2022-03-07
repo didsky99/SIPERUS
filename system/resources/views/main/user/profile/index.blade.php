@@ -194,14 +194,14 @@ foreach($dataUsers as $tmps){} ?>
 											          	<div class="box-profil-footer" style="width: 350px; margin: 10px auto;">
 											          		<div class="row">
 												          		<div class="col-md-6 col-sm-6 col-xs-6">
-												          			<div class="btn btn-warning btn-block" data-toggle="modal" data-target="#modal-privasi"><b>Ubah Akun</b></div>	
+												          			<div class="btn btn-danger btn-block" data-toggle="modal" data-target="#modal-privasi"><b>Ubah Akun</b></div>	
 												          		</div>
 												          		<div class="col-md-6 col-sm-6 col-xs-6">
 												          			<form action="{{ asset('save/image/'.$tmps->id) }}" method="post" enctype="multipart/form-data">
 												          				<input type="file" name="foto" id="change-image" onchange="$('#kirim-foto').click()" class="hidden">
 												          				<input type="submit" name="kirim" id="kirim-foto" class="hidden">
 												          				<input type="hidden" name="_token" value="{{ csrf_token() }}">
-												          				<div class="btn btn-warning btn-block" id="ganti-profil" onclick="$('#change-image').click()"><b>Ganti Profil</b></div>
+												          				<div class="btn btn-danger btn-block" id="ganti-profil" onclick="$('#change-image').click()"><b>Ganti Profil</b></div>
 												          			</form>
 												          		</div>
 												          	</div>

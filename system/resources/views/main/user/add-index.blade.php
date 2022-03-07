@@ -67,6 +67,7 @@
 	  </div>
 	</section>
 </div>
+<script src="{{asset('asset/js/moment.js')}}"></script>
 <script src="{{ asset('asset/js/jquery-3.0.0.min.js') }}"> </script>
 <script src="{{ asset('asset/plugins/jQuery/jquery-2.2.3.min.js') }}"></script>
 <script src="{{ asset('asset/bootstrap/js/bootstrap.min.js') }}"></script>

@@ -4,8 +4,8 @@
 	@if(session('statActHide') != 1)
 	<div onclick="actionEdit({{$val->verifikasi_id}},'{{$val->verifikasi_staf_admin}}',{{'{'.(@$obj?:'').'}'}})" class="btn btn-warning" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Edit"><i class="fa fa-edit"></i></div>
 	<a href="{{asset('input/hapus/verifikasi/'.$val->verifikasi_id)}}" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?');" class="btn btn-danger" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Delete"><i class="fa fa-trash"></i></a>
-	<div onclick="printUser('{{ @$val->verifikasi_id }}')" class="hide btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
-	<div onclick="getExcel('{{ @$val->verifikasi_id }}')" class="hide btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Excel"><i class="fa fa-file"></i></div>
+	<!-- <div onclick="printUser('{{ @$val->verifikasi_id }}')" class="hide btn btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Print"><i class="fa fa-print"></i></div>
+	<div onclick="getExcel('{{ @$val->verifikasi_id }}')" class="hide btn-default" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="Excel"><i class="fa fa-file"></i></div> -->
 	@endif
 </td>
 @overwrite

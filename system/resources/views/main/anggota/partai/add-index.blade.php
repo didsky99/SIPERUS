@@ -1,3 +1,4 @@
+<meta charset = "UTF-8" />
 @extends('main.layout.layout')
 
 @section('title-page','Add User')
@@ -35,24 +36,15 @@
 					Form Pengurus
 				</div>
 				<div class="box-body formInput">
-					<form action="{{ asset('anggota/partai/add') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data" novalidate>
+					<form action="{{ asset('anggota/partai/add') }}" method="post" accept-charset="utf-8" enctype="multipart/form-data" >
 						<input type="hidden" name="_token" value="{{ csrf_token() }}"/>
 						<div class="nav-tabs-custom tab-custom" style="box-shadow: 0 0 0 rgba(0,0,0,0);">
 							<ul class="nav nav-tabs" style="border:0px; margin-bottom: 20px;">
-								<!-- <li class="col-md-4 col-sm-4 col-xs-12 active" align="center"><a id="clickBiodata" href="#biodata" data-toggle="tab">Biodata Diri</a></li> -->
-								<!-- <li class="col-md-4 col-sm-4 col-xs-12" align="center"><a href="#riwayat" data-toggle="tab">Riwayat</a></li>
-								<li class="col-md-3 col-sm-3 col-xs-12" align="center"><a href="#dokumen" data-toggle="tab">Dokumen Pendukung</a></li> -->
 							</ul>
 							<div class="tab-content">
 								<div class="active tab-pane" id="biodata">
-									@include('main.user.tabs-biodata')
+									@include('main.anggota.partai.tabs-biodata')
 								</div>
-								<!-- <div class="tab-pane" id="riwayat">
-									@include('main.user.tabs-riwayat')
-								</div>
-								<div class="tab-pane" id="dokumen">
-									@include('main.user.tabs-dokumen')
-								</div> -->
 								<div class="form-group">
 									<div class="row">
 										<div class="col-md-2 pull-right">
@@ -179,17 +171,6 @@ $(document).ready(function(){
 		var kec = $(this).val();
 		changeKelurahanOptionKPU('#abKec','#abKel',prov,kab,kec);
 	});
-
-	// $('#search-bio').change(function(){
-	// 	var prov = $(this).val();
-	// 	var kab = $('#abKab').val();
-	// 	var kec = $('#abKec').val();
-	// 	var kel = $('#abKel').val();
-	// 	var email = $(this).val();
-	// 	var hp = $(this).val();
-	// 	var jabatan = $(this).val();
-	// 	changeKabupatenOptionKPU('#search-bio','#abKab',prov);
-	// });
 	
 	$('.window').click(function() {
 		$('.popup').fadeOut(500);

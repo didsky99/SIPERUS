@@ -96,7 +96,7 @@ class DashboardController extends Controller
 	public function changeToKPU($jenis){
 		if($jenis == 'penduduk'){
 			$dataPendudukKPU = DB::table('m_penduduk')
-				->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_penduduk.geo_kab_id')
+				->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_penduduk.geo_kab_id')
 					->whereNull('geo_kab_kpu')
 						->get();
 			foreach($dataPendudukKPU as $tmp){
@@ -258,7 +258,7 @@ class DashboardController extends Controller
 				$id = $tmp->geo_kab_id;
 				$nama = $tmp->geo_kab_nama;
 				
-				/* $cek->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id'); */
+				/* $cek->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id'); */
 					/* ->where('m_geo_prov.geo_prov_id',$provId); */
 				
 			} else if($jenis == 'kec') {
@@ -267,10 +267,10 @@ class DashboardController extends Controller
 				$id = $tmp->geo_kec_id;
 				$nama = $tmp->geo_kec_nama;
 				
-				$cek->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_geo_kec.geo_kab_id')
-					->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
+				$cek->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec.geo_kab_id')
+					->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
 					->where('m_geo_prov.geo_prov_id',$provId)
-					->where('m_geo_kab.geo_kab_id',$kabId);
+					->where('m_geo_kab_kpu.geo_kab_id',$kabId);
 				
 			} else if($jenis == 'deskel') {
 				$provId = $tmp->geo_prov_id2;
@@ -280,10 +280,10 @@ class DashboardController extends Controller
 				$nama = $tmp->geo_deskel_nama;
 				
 				$cek->join('m_geo_kec','m_geo_kec.geo_kec_id','=','m_geo_deskel.geo_kec_id')
-					->join('m_geo_kab','m_geo_kab.geo_kab_id','=','m_geo_kec.geo_kab_id')
-					->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
+					->join('m_geo_kab_kpu','m_geo_kab_kpu.geo_kab_id','=','m_geo_kec.geo_kab_id')
+					->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
 					->where('m_geo_prov.geo_prov_id',$provId)
-					->where('m_geo_kab.geo_kab_id',$kabId)
+					->where('m_geo_kab_kpu.geo_kab_id',$kabId)
 					->where('m_geo_kec.geo_kec_id',$kecId);
 				
 			} else if($jenis == 'rw') {
@@ -463,10 +463,10 @@ class DashboardController extends Controller
 				'm_struk_pimda.struk_pimda_nama as struk_nama',
 				'r_bio_pimda.bio_pimda_sk as sk'
 			)
-				->join('r_bio_pimda','r_bio_pimda.struk_pimda_id','=','m_struk_pimda.struk_pimda_id')
-				->join('m_bio','m_bio.bio_id','=','r_bio_pimda.bio_id')
+				->join('r_bio_pimda','r_bio_pimda.struk_pimda_id','=','m_struk_pimda.struk_pimda_id','LEFT')
+				->join('m_bio','m_bio.bio_id','=','r_bio_pimda.bio_id','LEFT')
 				->join('m_geo_prov_kpu','m_geo_prov_kpu.geo_prov_id','=','r_bio_pimda.geo_prov_id')
-					->where('m_struk_pimda.struk_pimda_nama','like','ketua%')
+					// ->where('m_struk_pimda.struk_pimda_nama','like','ketua%')
 						->groupBy('r_bio_pimda.geo_prov_id')
 							->get(); 
 						
@@ -620,7 +620,7 @@ class DashboardController extends Controller
 					
 			foreach($dataDapil as $tmp){
 				$like = SUBSTR($tmp->nama_dapil,0,-2);
-				$dataKab = DB::table('m_geo_kab')
+				$dataKab = DB::table('m_geo_kab_kpu')
 					->where('geo_kab_nama','like','%'.$like.'%')
 						->first();
 				if(count($dataKab) != 0){
@@ -1280,8 +1280,8 @@ class DashboardController extends Controller
 		if($pengurus == '') {
 			if (session('idProvinsi')) {
 					$prov = session()->get('idProvinsi');
-					$dataKabReal = DB::table('m_geo_kab')
-						->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
+					$dataKabReal = DB::table('m_geo_kab_kpu')
+						->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
 							->where('m_geo_prov.geo_prov_id',$prov)
 								->get();
 
@@ -1317,9 +1317,9 @@ class DashboardController extends Controller
 								$jumlah_kursi = 0;
 								$dataKursi = DB::table('m_geo_deskel')
 									->join('m_geo_kec','m_geo_deskel.geo_kec_id','=','m_geo_kec.geo_kec_id')
-									->join('m_geo_kab','m_geo_kec.geo_kab_id','=','m_geo_kab.geo_kab_id')
-									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-									->where('m_geo_kab.geo_kab_id',$tmp->geo_kab_id)
+									->join('m_geo_kab_kpu','m_geo_kec.geo_kab_id','=','m_geo_kab_kpu.geo_kab_id')
+									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+									->where('m_geo_kab_kpu.geo_kab_id',$tmp->geo_kab_id)
 									->where('m_geo_prov.geo_prov_id',$prov)
 										->count();
 								$jumlah_kursi = $dataKursi;
@@ -1348,7 +1348,7 @@ class DashboardController extends Controller
 						if($jenis[$a][0] == 'KAB/KOTA'){
 							foreach($dataProvAll as $tmp){
 								$jumlah_kursi = 0;
-								$dataKab = DB::table('m_geo_kab')
+								$dataKab = DB::table('m_geo_kab_kpu')
 									->where('geo_prov_id',$tmp->geo_prov_id)
 										->count();
 								$jumlah_kursi = $dataKab;
@@ -1360,9 +1360,9 @@ class DashboardController extends Controller
 								$jumlah_kursi = 0;
 								$dataKursi = DB::table('m_geo_deskel')
 									->join('m_geo_kec','m_geo_deskel.geo_kec_id','=','m_geo_kec.geo_kec_id')
-									->join('m_geo_kab','m_geo_kec.geo_kab_id','=','m_geo_kab.geo_kab_id')
-									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-									->where('m_geo_kab.geo_prov_id', $tmp->geo_prov_id)
+									->join('m_geo_kab_kpu','m_geo_kec.geo_kab_id','=','m_geo_kab_kpu.geo_kab_id')
+									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+									->where('m_geo_kab_kpu.geo_prov_id', $tmp->geo_prov_id)
 										->count();
 								$jumlah_kursi = $dataKursi;
 								$datakursiallbelum = $datakursiallbelum.",".number_format($jumlah_kursi,1,'.','');
@@ -1373,9 +1373,9 @@ class DashboardController extends Controller
 								$jumlah_kursi = 0;
 								
 								$dataKursi = DB::table('m_geo_kec')
-									->join('m_geo_kab','m_geo_kec.geo_kab_id','=','m_geo_kab.geo_kab_id')
-									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-									->where('m_geo_kab.geo_prov_id', $tmp->geo_prov_id)
+									->join('m_geo_kab_kpu','m_geo_kec.geo_kab_id','=','m_geo_kab_kpu.geo_kab_id')
+									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+									->where('m_geo_kab_kpu.geo_prov_id', $tmp->geo_prov_id)
 										->count();
 								$jumlah_kursi = $dataKursi;
 								$datakursialls = $datakursialls.",".number_format($jumlah_kursi,1,'.','');
@@ -1384,8 +1384,8 @@ class DashboardController extends Controller
 						}
 					}
 				} else {
-					$dataKabReal = DB::table('m_geo_kab')
-						->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
+					$dataKabReal = DB::table('m_geo_kab_kpu')
+						->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
 							->where('m_geo_prov.geo_prov_id',$prov)
 								->get();
 
@@ -1421,9 +1421,9 @@ class DashboardController extends Controller
 								$jumlah_kursi = 0;
 								$dataKursi = DB::table('m_geo_deskel')
 									->join('m_geo_kec','m_geo_deskel.geo_kec_id','=','m_geo_kec.geo_kec_id')
-									->join('m_geo_kab','m_geo_kec.geo_kab_id','=','m_geo_kab.geo_kab_id')
-									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab.geo_prov_id')
-									->where('m_geo_kab.geo_kab_id',$tmp->geo_kab_id)
+									->join('m_geo_kab_kpu','m_geo_kec.geo_kab_id','=','m_geo_kab_kpu.geo_kab_id')
+									->join('m_geo_prov','m_geo_prov.geo_prov_id','=','m_geo_kab_kpu.geo_prov_id')
+									->where('m_geo_kab_kpu.geo_kab_id',$tmp->geo_kab_id)
 									->where('m_geo_prov.geo_prov_id',$prov)
 										->count();
 								$jumlah_kursi = $dataKursi;

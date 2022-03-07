@@ -199,7 +199,7 @@ if(strpos(' '.$url_parent,'/wilayah') == true){
 										 /*--}}
 									@endif 
 									
-									<li @if($d_parents2->menu_alias == 'belum') onclick="showAlert('warning','Peringatan !','Menu {{ $d_parents2->menu }} Belum Bisa Di Akses')" @endif  class="<?php if($url_parent == $d_parents2->menu_file){ echo 'active'; }else{ if(strpos(' '.$url_parent,$d_parents2->menu_file)) { echo 'active'; } else { echo 'non-active'; } } ?>"><a href="{{ $link }}"><i class="fa fa-circle-o"></i><span>{{ $d_parents2->menu }}</span></a></li>
+									<li @if($d_parents2->menu_alias == 'belum') onclick="showAlert('danger','Peringatan !','Menu {{ $d_parents2->menu }} Belum Bisa Di Akses')" @endif  class="<?php if($url_parent == $d_parents2->menu_file){ echo 'active'; }else{ if(strpos(' '.$url_parent,$d_parents2->menu_file)) { echo 'active'; } else { echo 'non-active'; } } ?>"><a href="{{ $link }}"><i class="fa fa-circle-o"></i><span>{{ $d_parents2->menu }}</span></a></li>
 								<?php }
 								echo '</ul>';
 							}

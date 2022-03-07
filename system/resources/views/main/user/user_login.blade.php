@@ -13,7 +13,7 @@
 	@section('content_action_edit','user_management/user')
 
 	@section('goto_prov')
-		location.href="{{url()}}/data_pengurus/pimda/"+provId;
+		location.href="{{url()}}/user_management/user/"+provId;
 	@stop
 	 
 	@section('content_table_header')
@@ -30,8 +30,8 @@
 
 	@section('content_table_body')
 		{{--*/$no =1/*--}}
-		{{--*/$bio_xxx_id='bio_pimda_id'/*--}}
-		{{--*/$type='pimda'/*--}}
+		{{--*/$bio_xxx_id='bio_user_id'/*--}}
+		{{--*/$type='user'/*--}}
 		  @foreach($dataUser as $val)
 		   {{--*/
 

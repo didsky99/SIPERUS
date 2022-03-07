@@ -212,8 +212,8 @@
 	var provId, kabId, kecId, kelId, rwId, rtId;
 	var response, url;
 	var link = '';
-	var reloadIcon = '<i class="fa fa-refresh fa-spin" style="color: #dd4b39;"></i>';
-	var reloadIcon5x = '<i class="fa fa-refresh fa-spin fa-5x" style="color: #dd4b39;"></i>';
+	var reloadIcon = '<i class="fa fa-refresh fa-spin" style="color: #f82425;"></i>';
+	var reloadIcon5x = '<i class="fa fa-refresh fa-spin fa-5x" style="color: #f82425;"></i>';
 	
 	provId = $('#prov').val();
 	kabId = $('#kab').val();
