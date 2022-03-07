@@ -433,7 +433,7 @@ class InputController extends Controller
 
 		})->export('xls');
 	}
-
+	
 	public function tambah(Request $request,$type,$value='')
 	{
 		$data=$this->getInput($request,$type);
@@ -448,6 +448,7 @@ class InputController extends Controller
 			//$data['dapil'] = $request->input('dapil');
 			$data['bio_id'] = 0;
 		}
+		$redirect = '';
 
 		$noSK = $request->input('no_sk')?:null;
 		$noKTA = $request->input('no_kta')?:null;
